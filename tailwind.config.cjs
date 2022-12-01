@@ -1,8 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{html,js,svelte,ts}'],
+  darkMode: 'class',
+  content: [
+    require('path').join(require.resolve('@skeletonlabs/skeleton'),
+    './src/**/*.{html,js,svelte,ts}',
+  ],
   theme: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/typography'), require("daisyui")],
+  plugins: [
+    require('@skeletonlabs/skeleton/tailwind/theme.cjs'),
+    require('@tailwindcss/typography'), 
+    require("daisyui"),
+  ],
 }

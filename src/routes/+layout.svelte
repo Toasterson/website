@@ -1,16 +1,18 @@
 <script lang="ts">
-	import '../app.css';
+	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
+	import '@skeletonlabs/skeleton/styles/all.css';
+	import '../app.postcss'
 	
 	type Nav = {
-		name: string,
-		href: string
-	}
-	
+		name: string;
+		href: string;
+	};
+
 	let nav_pages: Nav[] = [
-		{name: "Homepage", href: "/"},
-		{name: "About", href: "/about"},
-		{name: "Blog", href: "/blog"}
-	]
+		{ name: 'Homepage', href: '/' },
+		{ name: 'About', href: '/about' },
+		{ name: 'Blog', href: '/blog' }
+	];
 </script>
 
 <div class="navbar bg-base-100">
@@ -18,7 +20,7 @@
 		<ul class="flex flex-row">
 			{#each nav_pages as nav_page}
 				<li class="mx-2.5"><a href={nav_page.href}>{nav_page.name}</a></li>
-			{/each}		
+			{/each}
 		</ul>
 	</div>
 	<div class="navbar-center">
