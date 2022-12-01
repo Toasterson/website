@@ -4,4 +4,4 @@
 
 </script>
 
-<a class="text-teal-600" href={href}>{text}</a>
+<a class="text-teal-600 hover:underline" href={href}>{text}</a>

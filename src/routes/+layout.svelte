@@ -8,7 +8,7 @@
 	
 	let nav_pages: Nav[] = [
 		{name: "Homepage", href: "/"},
-		{name: "About", href: "/"},
+		{name: "About", href: "/about"},
 		{name: "Blog", href: "/blog"}
 	]
 </script>
