@@ -1,8 +1,8 @@
 <script lang="ts">
-	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
 	import '@skeletonlabs/skeleton/styles/all.css';
-	import '../app.postcss'
-	
+	import '../theme.postcss'
+	import '../app.css';
+
 	type Nav = {
 		name: string;
 		href: string;
@@ -15,21 +15,16 @@
 	];
 </script>
 
-<div class="navbar bg-base-100">
-	<div class="navbar-start">
-		<ul class="flex flex-row">
-			{#each nav_pages as nav_page}
-				<li class="mx-2.5"><a href={nav_page.href}>{nav_page.name}</a></li>
-			{/each}
-		</ul>
+<div class="mt-5 grid grid-cols-[400px_1fr_400px]">
+	<div class="text-lg">
+		{#each nav_pages as nav_page}
+			<a class="mx-3" href={nav_page.href}>{nav_page.name}</a>
+		{/each}
 	</div>
-	<div class="navbar-center">
-		<a href="/" class="btn btn-ghost normal-case text-xl">Toastys Website</a>
-	</div>
-	<div class="navbar-end" />
+	<div class="mx-auto"><h1>Toastys Website</h1></div>
+	<div />
 </div>
+
 <div class="flex justify-center mt-20">
-	<div class="sm:max-w-lg md:max-w-xl lg:max-w-7xl">
-		<slot />
-	</div>
+	<slot />
 </div>
