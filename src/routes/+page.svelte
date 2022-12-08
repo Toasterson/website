@@ -4,11 +4,11 @@
 
 	onMount(() => {
 		//@ts-ignore
-		new Twitch.Embed('twitch-embed', {
-			width: 1280,
-			height: 720,
-			channel: 'Toasterson'
-		});
+		//new Twitch.Embed('twitch-embed', {
+		//	width: 1280,
+		//	height: 720,
+		//	channel: 'Toasterson'
+		//});
 	});
 </script>
 
@@ -17,11 +17,11 @@
 	<script src="https://embed.twitch.tv/embed/v1.js"></script>
 </svelte:head>
 
-<div class="block items-center">
-	<h1 class="text-3xl font-bold underline text-center">Welcome to my Website</h1>
+<div class="mx-4 box-border">
+	<h1 class="font-bold underline text-center text-4xl lg:text-3xl">Welcome to my Website</h1>
 
 	<div class="mt-5 text-center">
-		<p>
+		<p class="!text-3xl !lg:text-xl">
 			You have found my personal blog on the Internet. Here you can find my blog posts some
 			information about me and some project showcases I have been working on. Since this Blog is
 			written in <Link href="https://kit.svelte.dev/" text="SvelteKit" /> I can add as many features
@@ -30,8 +30,7 @@
 				text="TailwindCSS"
 			/> so expect me to get some better styling eventually. Suggestions welcome :)
 		</p>
-		<p />
 	</div>
 
-	<div class="mt-10 w-full" id="twitch-embed" />
+	<!--<div class="mt-10 w-full" id="twitch-embed" />-->
 </div>
