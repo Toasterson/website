@@ -17,7 +17,7 @@
 	<script src="https://embed.twitch.tv/embed/v1.js"></script>
 </svelte:head>
 
-<div class="mx-4 box-border">
+<div class="mx-4">
 	<h1 class="font-bold underline text-center text-4xl lg:text-3xl">Welcome to my Website</h1>
 
 	<div class="mt-5 text-center">
