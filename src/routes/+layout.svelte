@@ -25,6 +25,6 @@
 	<div />
 </div>
 
-<div class="flex justify-center mt-20">
+<div class="mt-20 p-5">
 	<slot />
 </div>
