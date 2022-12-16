@@ -24,22 +24,19 @@ jobs:
         with:
           node-version: 16
 
-      - name: Cache pnpm modules
+      - name: Cache npm modules
         uses: actions/cache@v2
         with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package.lock') }}
           restore-keys: |
             ${{ runner.os }}-
 
-      - name: Install pnpm and node_modules
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
-          run_install: true
+      - name: Install node_modules
+        run: npm install
 
       - name: Build site
-        run: pnpm build
+        run: npm build
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
