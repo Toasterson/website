@@ -25,6 +25,8 @@
 	<div />
 </div>
 
-<div class="flex justify-center mt-20">
+<div class="grid grid-cols-[200px_1fr_200px]">
+	<div></div>
 	<slot />
+	<div></div>
 </div>
