@@ -25,7 +25,7 @@
 	<div />
 </div>
 
-<div class="grid grid-cols-[200px_1fr_200px]">
+<div class="grid grid-cols-[100px_600px_100px] md:grid-cols-[1fr_600px_1fr]">
 	<div></div>
 	<slot />
 	<div></div>
