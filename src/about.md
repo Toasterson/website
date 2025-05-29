@@ -1,7 +1,7 @@
 ---
 layout: page.njk
-title: Operator Profile - Till Wegmüller
-description: Systems Engineer specializing in Unix, Rust, Kubernetes, and Virtualization
+title: About Till Wegmüller
+description: Systems Engineer specializing in OpenIndiana distribution development, Rust programming, and Unix infrastructure
 ---
 
 ```
@@ -12,75 +12,73 @@ description: Systems Engineer specializing in Unix, Rust, Kubernetes, and Virtua
 ```
 
 # Till Wegmüller—@toasterson
-## Unix Systems Engineer • Rust Developer • Infrastructure Architect
+## Systems Engineer • OpenIndiana Developer • Infrastructure Architect
 
 ---
 
 **[SYSTEM LOGIN]** *Grüessech*, and welcome to my profile...
 
-I'm Till, though most people call me Toasty. I work as an independent systems engineer across Europe and Brasil, focusing on the intersection of modern development practices and solid Unix foundations. Think of me as someone who believes that the old ways (pipes, processes, and proper error handling) combined with modern tools (Rust, Kubernetes, containers) create the most reliable systems.
+I'm Till, though most people call me Toasty. I work as an independent systems engineer based in Europe, specializing in OpenIndiana distribution development, Rust programming, and Unix infrastructure.
 
 ## **[CORE COMPETENCIES]**
 
-My expertise centers around building and maintaining robust infrastructure using time-tested Unix principles enhanced with modern tooling. I work primarily with **illumos** systems, develop in **Rust**, orchestrate with **Kubernetes**, and manage virtualized environments at scale.
+My expertise centers around OpenIndiana distribution development, where I contribute to package maintenance, system integration, and helping users adopt modern Unix environments. I develop primarily in Rust for system-level applications and manage virtualized infrastructure at scale.
 
 ```
 > whoami
-toasty@illumos.node: Systems Engineer & Code Craftsman
+toasty@openindiana.node: Systems Engineer & Distribution Developer
 > uname -a
-illumos illumos.node 5.11 omnios-r151046 i86pc Independent Developer
+SunOS openindiana.node 5.11 hipster-20231031 i86pc i386 i86pc Solaris
 > ps aux | grep "current_focus"
+- OpenIndiana distribution development
 - Rust systems programming
-- Kubernetes cluster management  
-- Unix system administration
+- Container orchestration
 - Virtualization infrastructure
 - Open source contributions
 ```
 
 ## **[TECHNICAL STACK]**
 
-**Primary Environment:** illumos/OpenIndiana  
-**Languages:** Rust, Go, C, Shell scripting  
-**Orchestration:** Kubernetes, Docker, containerd  
-**Virtualization:** bhyve, QEMU/KVM, zones/containers  
-**Networking:** TCP/IP, SDN, service mesh architectures  
-**Philosophy:** "This is #Unix, use the Pipe Padawan"
+**Primary Operating Environment:** OpenIndiana
+**Secondary Systems:** Various Unix distributions as needed
+**Programming Languages:** Rust, Shell scripting
+**Virtualization:** bhyve, zones/containers, QEMU/KVM
+**Orchestration:** Kubernetes, Docker, containerd
+**Specializations:** Package management, system administration, infrastructure automation
 
 ### **[CURRENT PROJECTS]**
 
-I'm always working on something interesting. Here's what's currently consuming my cycles:
+### ⚙️ **OpenIndiana Distribution Development**
+**Project Type:** Core Distribution Work
+**Mission:** Contributing to the OpenIndiana operating system through package maintenance, system integration work, and user support. This involves ensuring software compatibility, managing dependencies, and helping the community adopt modern development practices.
 
-### 🚀 **Aurora OpenCloud**
-**Project Type:** Open Source Infrastructure  
-**Mission:** Building a federated cloud orchestrator specifically designed for illumos environments. This isn't just another Kubernetes distribution—it's about bringing modern orchestration to Unix systems while respecting their architectural principles.
-
-**→** [View on GitHub](https://github.com/OpenFlowLabs/aurora-opencloud)
-
-### ⚙️ **illumos Ecosystem Development**
-**Project Type:** Core System Contributions  
-**Mission:** Contributing to the illumos operating system, maintaining packages, and helping bridge the gap between traditional Unix and modern development practices. Every commit here matters for the entire ecosystem.
-
-**→** [Learn More](https://www.illumos.org/)
+**→** [Learn More](https://www.openindiana.org/)
 
 ### 🦀 **Rust Systems Programming**
-**Project Type:** Language Integration  
-**Mission:** Bringing memory safety to systems programming without sacrificing Unix philosophy. Projects include [IPS in Rust](https://github.com/OpenFlowLabs/ips) and various infrastructure tools that need both performance and reliability.
+**Project Type:** Language Integration
+**Mission:** Developing system tools and applications in Rust, including projects like [IPS in Rust](https://github.com/OpenFlowLabs/ips) and various infrastructure utilities that require both performance and memory safety.
 
 **→** [Read Technical Posts](/blog/)
 
+### **Oxifed**
+**Project Type:** ActivityPub Serving Daemons
+**Mission:** Using AI tools to build a ActivityPub server that can handle multiple domains and provide some features I would like it to have.
+
 ### 📦 **Infrastructure Tooling**
-**Project Type:** Developer Experience  
-**Mission:** Creating tools that make Unix systems more accessible to modern development workflows. From package management to deployment automation—making the Force strong with this generation of developers.
+**Project Type:** Developer Experience
+**Mission:** Creating tools that make OpenIndiana and Unix systems more accessible to modern development workflows, from package management to deployment automation. The list of tools currently includes
+- [illumos installer](https://github.com/Toasterson/installer)
+- [OpenIndiana images (Cloud and Vagrant)](https://github.com/OpenIndiana/oi-packer)
 
 ## **[COLLABORATION OPPORTUNITIES]**
 
 I'm always interested in working with fellow engineers on:
 
-- **illumos system development** (kernel and userland)
-- **Rust infrastructure projects** (especially systems-level work)
-- **Kubernetes ecosystem** (operators, CNI plugins, storage)
+- **OpenIndiana distribution development** (packaging, integration, testing)
+- **Rust systems programming** (especially Unix-focused projects)
+- **Container orchestration** (Kubernetes operators, runtime development)
 - **Virtualization technology** (hypervisors, container runtimes)
-- **Open source consulting** (architecture, implementation, maintenance)
+- **Infrastructure automation** (deployment tools, monitoring)
 
 ## **[COMMUNICATION CHANNELS]**
 
@@ -92,8 +90,6 @@ I'm always interested in working with fellow engineers on:
 
 **Professional Platforms:**
 - **LinkedIn:** [Professional Profile](https://www.linkedin.com/in/till-wegm%C3%BCller-825ba3131/)
-- **Company:** [OpenFlowLabs](https://www.linkedin.com/company/open-flow-labs/)
-- **Consulting:** [RingerHQ](https://www.ringerhq.com/experts/Toasterson)
 
 **Live Content:**
 - **Twitch:** [Live Coding Sessions](https://twitch.tv/Toasterson) *(Rust, Unix, infrastructure work)*
@@ -116,18 +112,17 @@ If my contributions to open source infrastructure and Unix systems have provided
 
 ## **[CLOSING NOTES]**
 
-In a galaxy of complex distributed systems and ever-changing technologies, I remain focused on building reliable infrastructure using proven Unix principles enhanced with modern tools. Whether it's crafting efficient Rust code, orchestrating Kubernetes clusters, or diving deep into illumos internals, the goal is always the same: create systems that work reliably and can be maintained by the next engineer.
+I focus on building reliable infrastructure using proven Unix principles enhanced with modern tools. Whether developing efficient Rust applications, maintaining OpenIndiana packages, or orchestrating container workloads, the goal is always creating systems that work reliably and can be maintained by the next engineer.
 
-The Force is strong with those who understand pipes, embrace proper error handling, and aren't afraid to read the manual.
-
-*May your builds be reproducible, your deployments be automated, and may you never encounter a race condition at 3 AM.*
+My approach combines traditional Unix wisdom with contemporary development practices to create infrastructure that's both robust and accessible.
 
 ---
 
 ```
 [SESSION COMPLETE]
 [LOGOUT SUCCESSFUL]
-> Connection to illumos.node closed.
+> Connection to openindiana.node closed.
 ```
 
-**System Status:** All services operational • Coffee level: Adequate • Current focus: Making Unix systems accessible to the next generation
+**[SYSTEM FOOTER]**
+*Last updated: 2025.01 • Status: All systems operational • Focus: Building reliable Unix infrastructure*

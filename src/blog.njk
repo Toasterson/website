@@ -1,26 +1,26 @@
 ---
 layout: layout.njk
-title: Technical Posts
-description: Engineering notes and technical insights by Till Wegmüller (@toasterson)
+title: Mission Logs - Archive Access
+description: Operational reports and technical logs from the digital frontier by Till Wegmüller (@toasterson)
 ---
 
 <div class="space-y-6">
     <!-- Blog Header -->
     <div class="terminal-prompt mb-4"></div>
-    <h1 class="text-3xl font-bold glow-text text-neon-cyan">TECHNICAL POSTS</h1>
-    
+    <h1 class="text-3xl font-bold glow-text text-neon-cyan">MISSION LOGS ARCHIVE</h1>
+
     <div class="ascii-art mb-8">
 ╔══════════════════════════════════════════════════════════════════╗
-║  ENGINEERING NOTES - UNIX SYSTEMS & RUST DEVELOPMENT           ║
-║  ACCESS LEVEL: PUBLIC                                            ║
-║  OPERATOR: TOASTY@ILLUMOS.NODE                                  ║
+║  CLASSIFIED OPERATIONAL REPORTS - OPENINDIANA SECTOR           ║
+║  ACCESS LEVEL: PUBLIC DISTRIBUTION                              ║
+║  OPERATOR: TOASTY@OPENINDIANA.NODE                              ║
 ╚══════════════════════════════════════════════════════════════════╝
     </div>
 
     <div class="terminal-prompt"></div>
     <p class="text-lg text-neon-green mb-8">
-        Technical posts covering Unix systems engineering, Rust development, Kubernetes operations,
-        and the intersection of traditional Unix philosophy with modern infrastructure practices.
+        Welcome to the mission archives. These logs document my ongoing operations in the vast expanse
+        of systems programming, kernel development, and the occasional philosophical musing.
     </p>
 
     <!-- Blog Post Entries -->
@@ -32,11 +32,11 @@ description: Engineering notes and technical insights by Till Wegmüller (@toast
                     <div class="w-3 h-3 bg-neon-green rounded-full mr-4 glow-text"></div>
                     <div>
                         <div class="blog-post-date">
-                            {{ post.date | date("yyyy.MM.dd") }} • 
+                            STARDATE: {{ post.date | date("yyyy.MM.dd") }} •
                             <span class="text-neon-cyan">{{ post.date | date("HH:mm") }} UTC</span>
                         </div>
                         <div class="text-xs text-neon-purple mt-1">
-                            [TECHNICAL] • [ARCHIVED] • [SYSTEMS ENGINEERING]
+                            [CLASSIFICATION: PUBLIC] • [STATUS: ARCHIVED] • [SECTOR: TECHNICAL]
                         </div>
                     </div>
                 </div>
@@ -44,21 +44,21 @@ description: Engineering notes and technical insights by Till Wegmüller (@toast
                     {{ post.readingInfo.minutes }} MIN READ
                 </div>
             </div>
-            
+
             <a href="{{ post.url }}" class="block group">
                 <h2 class="blog-post-title group-hover:text-neon-green transition-colors mb-3">
-                    {{ post.title }}
+                    <span class="text-neon-cyan">[MISSION LOG]</span> {{ post.title }}
                 </h2>
-                
+
                 {% if post.summary %}
                 <div class="blog-post-summary">
                     <div class="terminal-prompt text-sm"></div>
                     {{ post.summary }}
                 </div>
                 {% endif %}
-                
+
                 <div class="mt-4 text-neon-cyan text-sm group-hover:text-neon-green transition-colors">
-                    → Read full post
+                    → Access full mission report
                 </div>
             </a>
         </div>
@@ -67,25 +67,19 @@ description: Engineering notes and technical insights by Till Wegmüller (@toast
 
     <!-- Archive Footer -->
     <div class="mt-12 text-center border-t border-neon-blue pt-8">
-        <div class="ascii-art text-sm mb-4">
-┌─────────────────────────────────────────────────────────────┐
-│  "Your focus determines your reality."                     │
-│                                   - Qui-Gon Jinn          │
-│                                                             │
-│  Each post represents lessons learned in the field,        │
-│  solutions to real problems, and insights gained from      │
-│  building reliable Unix-based infrastructure.              │
-└─────────────────────────────────────────────────────────────┘
+        <div class="text-center mb-4 text-neon-cyan">
+            <p>Technical posts covering OpenIndiana development, Rust programming,</p>
+            <p>virtualization technologies, and Unix system administration.</p>
         </div>
-        
+
         <div class="text-neon-green text-sm">
             <div class="terminal-prompt"></div>
-            <span class="loading-dots">Archive status: All systems operational</span>
+            <span class="loading-dots">Archive status: All posts accessible</span>
         </div>
-        
+
         <div class="mt-6">
             <a href="/feed.xml" class="hacker-button">
-                SUBSCRIBE TO RSS FEED
+                SUBSCRIBE TO TRANSMISSION FEED
             </a>
         </div>
     </div>
@@ -97,7 +91,7 @@ description: Engineering notes and technical insights by Till Wegmüller (@toast
         // Animate status indicators
         const statusDots = document.querySelectorAll('.bg-neon-green');
         let dotIndex = 0;
-        
+
         setInterval(() => {
             statusDots.forEach((dot, index) => {
                 if (index === dotIndex) {
@@ -110,7 +104,7 @@ description: Engineering notes and technical insights by Till Wegmüller (@toast
             });
             dotIndex = (dotIndex + 1) % statusDots.length;
         }, 2000);
-        
+
         // Add hover effects to post entries
         const logEntries = document.querySelectorAll('.blog-post-item');
         logEntries.forEach(entry => {
@@ -118,7 +112,7 @@ description: Engineering notes and technical insights by Till Wegmüller (@toast
                 this.style.borderColor = 'var(--neon-cyan)';
                 this.style.transform = 'translateX(5px)';
             });
-            
+
             entry.addEventListener('mouseleave', function() {
                 this.style.borderColor = 'var(--neon-blue)';
                 this.style.transform = 'translateX(0)';

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if title %}{{ title }} - {% endif %}T0@STY'S TERMINAL [ILLUMOS.NODE]</title>
-    <meta name="description" content="{{ description or 'Personal cyber-operations terminal of Till Wegmüller (@toasterson) - Illumos Systems Architect & Space Opera Enthusiast' }}">
+    <title>{% if title %}{{ title }} - {% endif %}T0@STY'S TERMINAL [OPENINDIANA.NODE]</title>
+    <meta name="description" content="{{ description or 'Personal cyber-operations terminal of Till Wegmüller (@toasterson) - OpenIndiana Systems Architect & Space Opera Enthusiast' }}">
     
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="icon" type="image/png" href="/favicon.png">
@@ -77,14 +77,20 @@
         <div class="nav-container">
             <div class="container mx-auto px-4 py-4">
                 <div class="flex items-center justify-between">
-                    <div class="text-2xl font-bold text-neon-green">
-                        TOASTY'S TERMINAL
-                        <div class="text-sm text-neon-cyan">Unix Systems • Rust Development • Infrastructure</div>
+                    <div class="ascii-art">
+╔═══════════════════════════════════════════════════════════════╗
+║  ████████╗ ██████╗  █████╗ ███████╗████████╗██╗   ██╗███████╗║
+║  ╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝╚══██╔══╝╚██╗ ██╔╝██╔════╝║
+║     ██║   ██║   ██║███████║███████╗   ██║    ╚████╔╝ ███████╗║
+║     ██║   ██║   ██║██╔══██║╚════██║   ██║     ╚██╔╝  ╚════██║║
+║     ██║   ╚██████╔╝██║  ██║███████║   ██║      ██║   ███████║║
+║     ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝      ╚═╝   ╚══════╝║
+╚═══════════════════════════════════════════════════════════════╝
                     </div>
                     <div class="text-right">
-                        <div class="text-xs text-neon-cyan mb-1">STATUS: ONLINE</div>
+                        <div class="text-xs text-neon-cyan mb-1">SYSTEM STATUS: ONLINE</div>
                         <div class="text-xs text-neon-green" id="current-time"></div>
-                        <div class="text-xs text-neon-orange">NODE: illumos.core</div>
+                        <div class="text-xs text-neon-orange">NODE: OPENINDIANA.CORE</div>
                         <div class="grid grid-cols-2 gap-2 mt-2 text-xs">
                             <div>CPU: <span id="cpu-usage" class="text-neon-green">42%</span></div>
                             <div>MEM: <span id="memory-usage" class="text-neon-cyan">67%</span></div>
@@ -100,7 +106,7 @@
                         <span class="text-neon-green">●</span>
                         <span class="text-neon-orange ml-2">●</span>
                         <span class="text-neon-blue ml-2">●</span>
-                        <span class="ml-4 text-neon-cyan">navigation.sh - Active Session</span>
+                        <span class="ml-4 text-neon-cyan">navigation.exe - Active Session</span>
                     </div>
                     <div class="terminal-content">
                         <div class="flex flex-wrap gap-4 items-center">
@@ -108,9 +114,9 @@
                             <nav class="flex flex-wrap gap-6">
                                 <a href="/" class="nav-link">./home</a>
                                 <a href="/about/" class="nav-link">./about</a>
-                                <a href="/blog/" class="nav-link">./posts</a>
-                                <a href="https://github.com/toasterson" class="nav-link" target="_blank">./github</a>
-                                <a href="https://chaos.social/@Toasterson" class="nav-link" target="_blank">./social</a>
+                                <a href="/blog/" class="nav-link">./mission_logs</a>
+                                <a href="https://github.com/toasterson" class="nav-link" target="_blank">./github_ops</a>
+                                <a href="https://chaos.social/@Toasterson" class="nav-link" target="_blank">./comms</a>
                             </nav>
                         </div>
                     </div>
@@ -138,15 +144,15 @@
         <!-- Footer Terminal -->
         <footer class="footer">
             <div class="container mx-auto px-4">
-                <div class="text-center mb-4 text-neon-purple italic">
-                    "These aren't the bugs you're looking for."
+                <div class="text-center mb-4 text-neon-cyan">
+                    <div class="text-sm">Building reliable systems with Unix principles</div>
                 </div>
                 <div class="text-neon-cyan text-sm">
-                    <p>© 2024 Till Wegmüller • Powered by Unix & Coffee</p>
+                    <p>© 2025 Till Wegmüller • Powered by OpenIndiana & Determination</p>
                     <p class="mt-2">
-                        <span class="text-neon-green">STATUS:</span> All systems operational • 
-                        <span class="text-neon-orange">UPTIME:</span> <span id="uptime">∞</span> • 
-                        <span class="text-neon-purple">LOCATION:</span> Europe/Brasil
+                        <span class="text-neon-green">[STATUS]</span> All systems operational • 
+                        <span class="text-neon-orange">[UPTIME]</span> <span id="uptime">∞</span> • 
+                        <span class="text-neon-purple">[LOCATION]</span> Sol-3/Europe
                     </p>
                 </div>
             </div>
@@ -160,7 +166,7 @@
             const timeString = now.toISOString().replace('T', ' ').substring(0, 19);
             const timeElement = document.getElementById('current-time');
             if (timeElement) {
-                timeElement.textContent = `${timeString} UTC`;
+                timeElement.textContent = `STARDATE: ${timeString}`;
             }
         }
         

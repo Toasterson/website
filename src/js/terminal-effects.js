@@ -90,31 +90,31 @@ class TerminalEffects {
         
         switch(command.toLowerCase().trim()) {
             case 'whoami':
-                this.typeOutput(output, 'toasty@illumos.node: Systems Architect & Code Whisperer');
+                this.typeOutput(output, 'toasty@openindiana.node: Systems Architect & Code Whisperer');
                 break;
             case 'pwd':
                 this.typeOutput(output, '/home/toasty/digital_realm');
                 break;
             case 'ls':
-                this.typeOutput(output, 'mission_logs/  projects/  coffee.sh*  dreams.txt  spice_must_flow.md');
+                this.typeOutput(output, 'mission_logs/  projects/  system_tools/  documentation/  build_scripts/');
                 break;
             case 'cat spice_must_flow.md':
                 this.typeOutput(output, '"He who controls the spice controls the universe." - Baron Harkonnen');
                 break;
             case 'ps aux | grep motivation':
-                this.typeOutput(output, 'toasty    1337  99.9  50.0  space_opera  coffee_driven  solving_problems');
+                this.typeOutput(output, 'toasty    1337  99.9  50.0  rust_dev  system_admin  solving_problems');
                 break;
             case 'uname -a':
-                this.typeOutput(output, 'illumos illumos.node 5.11 omnios-r151046 i86pc i386 i86pc Solaris');
+                this.typeOutput(output, 'SunOS openindiana.node 5.11 hipster-20231031 i86pc i386 i86pc Solaris');
                 break;
-            case 'echo $FAVORITE_QUOTE':
-                this.typeOutput(output, '"I must not fear bugs. Bugs are the mind-killer."');
+            case 'echo $FOCUS':
+                this.typeOutput(output, 'Building reliable Unix systems');
                 break;
             case 'clear':
                 output.innerHTML = '';
                 break;
             case 'help':
-                this.typeOutput(output, 'Available commands: whoami, pwd, ls, ps, uname, echo $FAVORITE_QUOTE, clear\nTry typing them and pressing Enter!');
+                this.typeOutput(output, 'Available commands: whoami, pwd, ls, ps, uname, echo $FOCUS, clear\nTry typing them and pressing Enter!');
                 break;
             default:
                 this.typeOutput(output, `bash: ${command}: command not found\nType 'help' for available commands`);
@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
         terminal.className = 'interactive-terminal fixed bottom-4 right-4 w-80 h-40 bg-black/90 border border-neon-green rounded-lg p-4 font-mono text-sm hidden';
         terminal.innerHTML = `
             <div class="text-neon-green mb-2">[INTERACTIVE TERMINAL]</div>
-            <div class="text-neon-cyan mb-2">toasty@illumos.node:~$ <span class="blink">_</span></div>
+            <div class="text-neon-cyan mb-2">toasty@openindiana.node:~$ <span class="blink">_</span></div>
             <input type="text" class="terminal-input bg-transparent border-none outline-none text-neon-green w-full" placeholder="Type 'help' for commands...">
             <div class="terminal-output text-neon-cyan text-xs mt-2 max-h-20 overflow-y-auto"></div>
             <button onclick="this.parentElement.classList.toggle('hidden')" class="absolute top-2 right-2 text-neon-orange hover:text-neon-red">×</button>
@@ -310,7 +310,7 @@ console.log(`
 ╔══════════════════════════════════════════════════════════════════╗
 ║  Welcome to Toasty's Terminal - Developer Console Activated     ║
 ║                                                                  ║
-║  "I must not fear bugs. Bugs are the mind-killer."             ║
+║  OpenIndiana systems engineer and Rust developer                ║
 ║                                                                  ║
 ║  Try the Konami Code: ↑↑↓↓←→←→BA                                ║
 ║  Or explore the interactive terminal in the bottom-right!       ║
