@@ -1,5 +1,5 @@
 # Build stage with Deno
-FROM denoland/deno:1.39.0 as builder
+FROM denoland/deno:2.3.3 as builder
 
 WORKDIR /app
 
