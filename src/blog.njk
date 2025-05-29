@@ -1,0 +1,26 @@
+---
+layout: layout.njk
+title: Blog
+description: Blog posts by Till Wegmüller (@toasterson)
+---
+
+<ol class="border-l border-gray-700">
+    {% for post in search.pages("type=post", "date=desc") %}
+    <li>
+        <div class="flex flex-start items-center pt-3">
+            <div class="bg-gray-600 w-2 h-2 rounded-full -ml-1 mr-3"></div>
+            <p class="text-gray-400 text-sm">
+                {{ post.date | date("HUMAN_DATE") }}
+            </p>
+        </div>
+        <a href="{{ post.url }}">
+            <div class="mt-0.5 ml-4 mb-6">
+                <h4 class="text-gray-200 font-semibold text-xl mb-1.5">{{ post.title }}</h4>
+                {% if post.summary %}
+                <p class="text-gray-400 mb-3">{{ post.summary }}</p>
+                {% endif %}
+            </div>
+        </a>
+    </li>
+    {% endfor %}
+</ol>

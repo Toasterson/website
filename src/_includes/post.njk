@@ -1,0 +1,35 @@
+---
+layout: layout.njk
+---
+
+<article class="prose prose-lg max-w-none">
+    <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-100 mb-4">{{ title }}</h1>
+        <div class="flex items-center text-gray-400 text-sm space-x-4">
+            <time datetime="{{ date | date('DATETIME') }}">
+                {{ date | date("HUMAN_DATE") }}
+            </time>
+            {% if readingInfo %}
+            <span>{{ readingInfo.minutes }} min read</span>
+            {% endif %}
+        </div>
+        {% if summary %}
+        <p class="text-xl text-gray-300 mt-4 font-medium">{{ summary }}</p>
+        {% endif %}
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+        {{ content | safe }}
+    </div>
+
+    <footer class="mt-12 pt-8 border-t border-gray-700">
+        <div class="flex justify-between items-center">
+            <a href="/blog/" class="text-blue-400 hover:text-blue-300 font-medium">
+                ← Back to all posts
+            </a>
+            <div class="text-sm text-gray-400">
+                Published {{ date | date("HUMAN_DATE") }}
+            </div>
+        </div>
+    </footer>
+</article>

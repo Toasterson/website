@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }} - {% endif %}Toasty's Personal Blog</title>
+    <meta name="description" content="{{ description or 'Personal blog of Till Wegmüller (@toasterson)' }}">
+    
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Toasty's Personal Blog" href="/feed.xml">
+    
+    {% if twitch %}
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    {% endif %}
+</head>
+<body>
+    <div class="min-h-screen bg-gray-900">
+        <!-- Navigation -->
+        <div class="mt-5 grid grid-cols-[400px_1fr_400px]">
+            <div class="text-lg">
+                <a class="mx-3" href="/">Homepage</a>
+                <a class="mx-3" href="/about/">About</a>
+                <a class="mx-3" href="/blog/">Blog</a>
+            </div>
+            <div class="mx-auto"><h1>Toastys Website</h1></div>
+            <div></div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="grid grid-cols-[100px_600px_100px] md:grid-cols-[1fr_600px_1fr] mt-8">
+            <div></div>
+            <div class="px-4">
+                {{ content | safe }}
+            </div>
+            <div></div>
+        </main>
+    </div>
+</body>
+</html>

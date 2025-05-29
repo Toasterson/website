@@ -1,0 +1,33 @@
+---
+layout: layout.njk
+title: Welcome to my Website
+description: Personal blog and website of Till Wegmüller (@toasterson)
+twitch: true
+---
+
+<div class="block items-center">
+    <h1 class="text-3xl font-bold underline text-center">Welcome to my Website</h1>
+
+    <div class="mt-5 text-center">
+        <p>
+            You have found my personal blog on the Internet. Here you can find my blog posts some
+            information about me and some project showcases I have been working on. Since this Blog is
+            written in <a href="https://kit.svelte.dev/" class="text-blue-400 hover:text-blue-300 underline">SvelteKit</a> I can add as many features
+            here as I like and make this space my own. I do my styling with <a
+                href="https://tailwindcss.com/" class="text-blue-400 hover:text-blue-300 underline">TailwindCSS</a> so expect me to get some better styling eventually. Suggestions welcome :)
+        </p>
+        <p />
+    </div>
+
+    <div class="mt-10 w-full" id="twitch-embed"></div>
+</div>
+
+<script>
+    if (typeof Twitch !== 'undefined') {
+        new Twitch.Embed('twitch-embed', {
+            width: 1280,
+            height: 720,
+            channel: 'Toasterson'
+        });
+    }
+</script>

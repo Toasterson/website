@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles - Dark theme */
+body {
+  @apply bg-gray-900 text-gray-100;
+}
+
+.prose {
+  @apply max-w-none text-gray-300;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  @apply text-gray-100;
+}
+
+.prose p {
+  @apply text-gray-300;
+}
+
+.prose a {
+  @apply text-blue-400 hover:text-blue-300;
+}
+
+.prose ul, .prose ol {
+  @apply text-gray-300;
+}
+
+.prose blockquote {
+  @apply border-gray-600 text-gray-400;
+}
+
+.prose code {
+  @apply bg-gray-800 text-gray-200;
+}
+
+.prose pre {
+  @apply bg-gray-800;
+}
+
+.nav-link {
+  @apply mx-3 text-lg text-gray-300 hover:text-white transition-colors;
+}
+
+/* Blog timeline styles */
+ol.border-l {
+  @apply border-gray-700;
+}
+
+.blog-post-date {
+  @apply text-gray-400 text-sm;
+}
+
+.blog-post-title {
+  @apply text-xl font-semibold text-gray-200 hover:text-white transition-colors;
+}
+
+.blog-post-summary {
+  @apply text-gray-400 mt-2;
+}
+
+/* Typography improvements */
+h1, h2, h3, h4, h5, h6 {
+  @apply text-gray-100;
+}
+
+a {
+  @apply text-blue-400 hover:text-blue-300;
+}
+
+/* Main container */
+.min-h-screen {
+  @apply bg-gray-900;
+}
