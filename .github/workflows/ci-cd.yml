@@ -2,10 +2,10 @@ name: Complete CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
-    tags: [ 'v*' ]
+    branches: [main, develop]
+    tags: ["v*"]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 env:
   REGISTRY: ghcr.io
@@ -16,37 +16,35 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Setup Deno
-      uses: denoland/setup-deno@v1
-      with:
-        deno-version: v1.39.0
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.39.0
 
-    - name: Cache Deno dependencies
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/deno
-        key: ${{ runner.os }}-deno-${{ hashFiles('**/deno.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-deno-
+      - name: Cache Deno dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/deno
+          key: ${{ runner.os }}-deno-${{ hashFiles('**/deno.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-deno-
 
-    - name: Install dependencies
-      run: |
-        cd website
-        deno cache --reload deno.json
+      - name: Install dependencies
+        run: |
+          deno cache --reload deno.json
 
-    - name: Build site
-      run: |
-        cd website
-        deno task build
+      - name: Build site
+        run: |
+          deno task build
 
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: site-build
-        path: website/_site
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-build
+          path: _site
 
   docker:
     needs: test
@@ -59,48 +57,47 @@ jobs:
       image-digest: ${{ steps.build.outputs.digest }}
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-    - name: Log in to Container Registry
-      uses: docker/login-action@v3
-      with:
-        registry: ${{ env.REGISTRY }}
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Ensure lowercase image name
-      id: lowercase
-      run: |
-        echo "lowercase-image=$(echo "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+      - name: Ensure lowercase image name
+        id: lowercase
+        run: |
+          echo "lowercase-image=$(echo "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
 
-    - name: Extract metadata
-      id: meta
-      uses: docker/metadata-action@v5
-      with:
-        images: ${{ steps.lowercase.outputs.lowercase-image }}
-        tags: |
-          type=ref,event=branch,suffix=-lume
-          type=ref,event=pr,suffix=-lume
-          type=semver,pattern={{version}}-lume
-          type=semver,pattern={{major}}.{{minor}}-lume
-          type=sha,prefix={{branch}}-lume-
-          type=raw,value=lume,enable={{is_default_branch}}
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ steps.lowercase.outputs.lowercase-image }}
+          tags: |
+            type=ref,event=branch,suffix=-lume
+            type=ref,event=pr,suffix=-lume
+            type=semver,pattern={{version}}-lume
+            type=semver,pattern={{major}}.{{minor}}-lume
+            type=sha,prefix={{branch}}-lume-
+            type=raw,value=lume,enable={{is_default_branch}}
 
-    - name: Build and push Docker image
-      id: build
-      uses: docker/build-push-action@v5
-      with:
-        context: ./website
-        push: ${{ github.event_name != 'pull_request' }}
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        platforms: linux/amd64,linux/arm64
+      - name: Build and push Docker image
+        id: build
+        uses: docker/build-push-action@v5
+        with:
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: linux/amd64,linux/arm64
 
   helm:
     needs: test
@@ -111,58 +108,58 @@ jobs:
     if: github.event_name != 'pull_request'
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Configure Git
-      run: |
-        git config user.name "$GITHUB_ACTOR"
-        git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-    - name: Install Helm
-      uses: azure/setup-helm@v4
-      with:
-        version: '3.14.0'
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: "3.14.0"
 
-    - name: Set up Helm OCI registry
-      run: |
-        echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ${{ env.REGISTRY }} --username ${{ github.actor }} --password-stdin
+      - name: Set up Helm OCI registry
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ${{ env.REGISTRY }} --username ${{ github.actor }} --password-stdin
 
-    - name: Update chart version
-      run: |
-        cd website/helm/lume-site
-        if [[ "${{ github.ref }}" == refs/tags/* ]]; then
-          VERSION=${GITHUB_REF#refs/tags/v}
-          sed -i "s/^version:.*/version: $VERSION/" Chart.yaml
-          sed -i "s/^appVersion:.*/appVersion: \"$VERSION\"/" Chart.yaml
-        else
-          VERSION="0.1.0-${GITHUB_SHA::8}"
-          sed -i "s/^version:.*/version: $VERSION/" Chart.yaml
-          sed -i "s/^appVersion:.*/appVersion: \"${GITHUB_SHA::8}\"/" Chart.yaml
-        fi
-
-    - name: Package Helm chart
-      run: |
-        cd website/helm
-        helm dependency update lume-site
-        helm package lume-site --destination ./packaged
-
-    - name: Ensure lowercase chart repository name
-      id: lowercase-chart
-      run: |
-        echo "lowercase-chart-repo=$(echo "${{ env.REGISTRY }}/${{ env.CHART_REPO }}" | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
-
-    - name: Push Helm chart to OCI registry
-      run: |
-        cd website/helm/packaged
-        for chart in *.tgz; do
-          if [ -f "$chart" ]; then
-            echo "Pushing $chart..."
-            helm push "$chart" oci://${{ steps.lowercase-chart.outputs.lowercase-chart-repo }}
+      - name: Update chart version
+        run: |
+          cd helm/lume-site
+          if [[ "${{ github.ref }}" == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/v}
+            sed -i "s/^version:.*/version: $VERSION/" Chart.yaml
+            sed -i "s/^appVersion:.*/appVersion: \"$VERSION\"/" Chart.yaml
+          else
+            VERSION="0.1.0-${GITHUB_SHA::8}"
+            sed -i "s/^version:.*/version: $VERSION/" Chart.yaml
+            sed -i "s/^appVersion:.*/appVersion: \"${GITHUB_SHA::8}\"/" Chart.yaml
           fi
-        done
+
+      - name: Package Helm chart
+        run: |
+          cd helm
+          helm dependency update lume-site
+          helm package lume-site --destination ./packaged
+
+      - name: Ensure lowercase chart repository name
+        id: lowercase-chart
+        run: |
+          echo "lowercase-chart-repo=$(echo "${{ env.REGISTRY }}/${{ env.CHART_REPO }}" | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+
+      - name: Push Helm chart to OCI registry
+        run: |
+          cd helm/packaged
+          for chart in *.tgz; do
+            if [ -f "$chart" ]; then
+              echo "Pushing $chart..."
+              helm push "$chart" oci://${{ steps.lowercase-chart.outputs.lowercase-chart-repo }}
+            fi
+          done
 
   security-scan:
     needs: docker
@@ -173,23 +170,23 @@ jobs:
     if: github.event_name != 'pull_request'
 
     steps:
-    - name: Ensure lowercase image name for security scan
-      id: lowercase-security
-      run: |
-        echo "lowercase-image=$(echo "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+      - name: Ensure lowercase image name for security scan
+        id: lowercase-security
+        run: |
+          echo "lowercase-image=$(echo "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
 
-    - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: ${{ steps.lowercase-security.outputs.lowercase-image }}:${{ github.ref == 'refs/heads/main' && 'lume' || format('{0}-lume', github.ref_name) }}
-        format: 'sarif'
-        output: 'trivy-results.sarif'
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ steps.lowercase-security.outputs.lowercase-image }}:${{ github.ref == 'refs/heads/main' && 'lume' || format('{0}-lume', github.ref_name) }}
+          format: "sarif"
+          output: "trivy-results.sarif"
 
-    - name: Upload Trivy scan results to GitHub Security tab
-      uses: github/codeql-action/upload-sarif@v3
-      if: always()
-      with:
-        sarif_file: 'trivy-results.sarif'
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: "trivy-results.sarif"
 
   deploy-staging:
     needs: [docker, helm]
@@ -198,17 +195,17 @@ jobs:
     if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Setup kubectl
-      uses: azure/setup-kubectl@v4
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v4
 
-    - name: Deploy to staging
-      run: |
-        echo "Deploying to staging environment..."
-        # Add your staging deployment commands here
-        # This could involve updating a GitOps repository or direct kubectl commands
+      - name: Deploy to staging
+        run: |
+          echo "Deploying to staging environment..."
+          # Add your staging deployment commands here
+          # This could involve updating a GitOps repository or direct kubectl commands
 
   deploy-production:
     needs: [docker, helm, security-scan]
@@ -217,17 +214,17 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Setup kubectl
-      uses: azure/setup-kubectl@v4
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v4
 
-    - name: Deploy to production
-      run: |
-        echo "Deploying to production environment..."
-        # Add your production deployment commands here
-        # This could involve updating a GitOps repository or direct kubectl commands
+      - name: Deploy to production
+        run: |
+          echo "Deploying to production environment..."
+          # Add your production deployment commands here
+          # This could involve updating a GitOps repository or direct kubectl commands
 
   notify:
     needs: [docker, helm]
@@ -235,11 +232,11 @@ jobs:
     if: always() && github.event_name != 'pull_request'
 
     steps:
-    - name: Notify deployment status
-      run: |
-        if [[ "${{ needs.docker.result }}" == "success" && "${{ needs.helm.result }}" == "success" ]]; then
-          echo "✅ Deployment pipeline completed successfully"
-        else
-          echo "❌ Deployment pipeline failed"
-          exit 1
-        fi
+      - name: Notify deployment status
+        run: |
+          if [[ "${{ needs.docker.result }}" == "success" && "${{ needs.helm.result }}" == "success" ]]; then
+            echo "✅ Deployment pipeline completed successfully"
+          else
+            echo "❌ Deployment pipeline failed"
+            exit 1
+          fi
