@@ -1,0 +1,53 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: lume-site
+  namespace: lume-site
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: lume-site
+      version: '>=0.1.0'
+      sourceRef:
+        kind: HelmRepository
+        name: lume-site-oci
+        namespace: lume-site
+      interval: 1m
+  values:
+    image:
+      repository: ghcr.io/toasterson/website
+      tag: lume
+      pullPolicy: Always
+    
+    replicaCount: 2
+    
+    ingress:
+      enabled: true
+      className: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      hosts:
+        - host: wegmueller.it
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: lume-site-tls
+          hosts:
+            - wegmueller.it
+    
+    resources:
+      limits:
+        cpu: 200m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+    
+    autoscaling:
+      enabled: true
+      minReplicas: 2
+      maxReplicas: 5
+      targetCPUUtilizationPercentage: 70

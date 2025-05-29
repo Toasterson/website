@@ -7,17 +7,10 @@ layout: layout.njk
     <article class="prose prose-lg max-w-none">
         {{ content | safe }}
     </article>
-    
+
     <!-- Page Footer with Navigation -->
     <div class="mt-12 pt-8 border-t border-neon-blue">
-        <div class="ascii-art text-center text-sm">
-┌─────────────────────────────────────────────────────────────┐
-│  "The mystery of life isn't a problem to solve,            │
-│   but a reality to experience."                            │
-│                                   - Frank Herbert          │
-└─────────────────────────────────────────────────────────────┘
-        </div>
-        
+
         <div class="flex justify-center mt-6 space-x-4">
             <a href="/" class="nav-link">← Return to Base</a>
             <a href="/blog/" class="nav-link">Mission Logs</a>
@@ -34,34 +27,34 @@ layout: layout.njk
         padding-bottom: 0.5rem;
         margin-bottom: 1.5rem;
     }
-    
+
     .prose p {
         color: #d1d5db;
         line-height: 1.7;
         margin-bottom: 1.5rem;
     }
-    
+
     .prose a {
         color: var(--neon-cyan);
         text-decoration: none;
         border-bottom: 1px solid transparent;
         transition: all 0.3s ease;
     }
-    
+
     .prose a:hover {
         color: var(--neon-green);
         border-bottom-color: var(--neon-green);
         text-shadow: 0 0 8px var(--neon-green);
     }
-    
+
     .prose ul, .prose ol {
         color: #d1d5db;
     }
-    
+
     .prose li {
         margin-bottom: 0.5rem;
     }
-    
+
     .prose blockquote {
         border-left: 4px solid var(--neon-purple);
         background: rgba(157, 78, 221, 0.1);
@@ -71,7 +64,7 @@ layout: layout.njk
         color: #c4b5fd;
         margin: 2rem 0;
     }
-    
+
     .prose code {
         background: rgba(0, 0, 0, 0.7) !important;
         color: var(--neon-cyan) !important;
@@ -80,7 +73,7 @@ layout: layout.njk
         padding: 2px 6px;
         font-family: 'JetBrains Mono', monospace;
     }
-    
+
     .prose pre {
         background: rgba(0, 0, 0, 0.9) !important;
         border: 1px solid var(--neon-blue);
@@ -89,51 +82,51 @@ layout: layout.njk
         padding: 1rem;
         overflow-x: auto;
     }
-    
+
     .prose pre code {
         background: transparent !important;
         border: none !important;
         padding: 0 !important;
         color: var(--neon-green) !important;
     }
-    
+
     .prose strong {
         color: var(--neon-orange);
         font-weight: 600;
     }
-    
+
     .prose em {
         color: var(--neon-purple);
         font-style: italic;
     }
-    
+
     .prose img {
         border-radius: 8px;
         border: 2px solid var(--neon-blue);
         box-shadow: 0 0 20px rgba(77, 157, 224, 0.3);
         margin: 2rem auto;
     }
-    
+
     .prose hr {
         border: none;
         height: 2px;
         background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
         margin: 3rem 0;
     }
-    
+
     .prose table {
         border-collapse: collapse;
         border: 1px solid var(--neon-blue);
         background: rgba(0, 0, 0, 0.5);
     }
-    
+
     .prose th {
         background: rgba(0, 255, 65, 0.1);
         color: var(--neon-green);
         padding: 0.75rem;
         border: 1px solid var(--neon-blue);
     }
-    
+
     .prose td {
         padding: 0.75rem;
         border: 1px solid var(--neon-blue);

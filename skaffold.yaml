@@ -1,0 +1,115 @@
+apiVersion: skaffold/v4beta7
+kind: Config
+metadata:
+  name: lume-site
+build:
+  artifacts:
+  - image: ghcr.io/toasterson/website
+    context: .
+    docker:
+      dockerfile: Dockerfile
+      buildArgs:
+        BUILDKIT_INLINE_CACHE: "1"
+  local:
+    push: false
+    useDockerCLI: true
+    useBuildkit: true
+
+manifests:
+  helm:
+    releases:
+    - name: lume-site
+      chartPath: helm/lume-site
+      namespace: lume-site
+      createNamespace: true
+      valuesFiles:
+      - helm/lume-site/values.yaml
+      setValues:
+        image.repository: ghcr.io/toasterson/website
+        image.tag: lume
+        image.pullPolicy: Never
+        replicaCount: 1
+        ingress.enabled: false
+        service.type: NodePort
+      wait: true
+
+deploy:
+  helm: {}
+  statusCheckDeadlineSeconds: 300
+  kubeContext: docker-desktop
+
+portForward:
+- resourceType: service
+  resourceName: lume-site
+  namespace: lume-site
+  port: 80
+  localPort: 8080
+
+profiles:
+- name: kind
+  manifests:
+    helm:
+      releases:
+      - name: lume-site
+        chartPath: helm/lume-site
+        namespace: lume-site
+        createNamespace: true
+        valuesFiles:
+        - helm/lume-site/values.yaml
+        setValues:
+          image.repository: ghcr.io/toasterson/website
+          image.tag: lume
+          image.pullPolicy: Never
+          replicaCount: 1
+          ingress.enabled: false
+          service.type: NodePort
+  deploy:
+    kubeContext: kind-lume-test
+
+- name: dev
+  build:
+    artifacts:
+    - image: ghcr.io/toasterson/website
+      sync:
+        manual:
+        - src: "_site/**"
+          dest: /usr/share/nginx/html
+  manifests:
+    helm:
+      releases:
+      - name: lume-site-dev
+        chartPath: helm/lume-site
+        namespace: lume-site-dev
+        createNamespace: true
+        setValues:
+          image.repository: ghcr.io/toasterson/website
+          image.tag: lume
+          image.pullPolicy: Never
+          replicaCount: 1
+          ingress.enabled: true
+          ingress.hosts[0].host: dev.local
+          ingress.hosts[0].paths[0].path: /
+          ingress.hosts[0].paths[0].pathType: Prefix
+
+- name: production
+  build:
+    artifacts:
+    - image: ghcr.io/toasterson/website
+    cluster:
+      pullSecret: regcred
+  manifests:
+    helm:
+      releases:
+      - name: lume-site
+        chartPath: helm/lume-site
+        namespace: lume-site
+        createNamespace: true
+        valuesFiles:
+        - helm/lume-site/values.yaml
+        setValues:
+          image.repository: ghcr.io/toasterson/website
+          image.tag: lume
+          replicaCount: 2
+          ingress.enabled: true
+          ingress.hosts[0].host: wegmueller.it
+          autoscaling.enabled: true

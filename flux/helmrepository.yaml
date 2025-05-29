@@ -1,0 +1,9 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: lume-site-oci
+  namespace: lume-site
+spec:
+  type: oci
+  interval: 5m0s
+  url: oci://ghcr.io/toasterson/website/helm

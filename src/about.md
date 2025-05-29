@@ -6,8 +6,8 @@ description: Systems Engineer specializing in OpenIndiana distribution developme
 
 ```
 ╔══════════════════════════════════════════════════════════════════╗
-║                      OPERATOR DOSSIER                           ║
-║                   [ACCESS LEVEL: PUBLIC]                        ║
+║                      OPERATOR DOSSIER                            ║
+║                   [ACCESS LEVEL: PUBLIC]                         ║
 ╚══════════════════════════════════════════════════════════════════╝
 ```
 

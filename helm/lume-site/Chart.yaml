@@ -1,0 +1,16 @@
+apiVersion: v2
+name: lume-site
+description: A Helm chart for Lume static site deployment
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - lume
+  - static-site
+  - nginx
+home: https://github.com/Toasterson/website
+sources:
+  - https://github.com/Toasterson/website
+maintainers:
+  - name: Till Wegmüller
+    email: toasterson@gmail.com

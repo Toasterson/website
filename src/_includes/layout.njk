@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if title %}{{ title }} - {% endif %}T0@STY'S TERMINAL [OPENINDIANA.NODE]</title>
     <meta name="description" content="{{ description or 'Personal cyber-operations terminal of Till Wegmüller (@toasterson) - OpenIndiana Systems Architect & Space Opera Enthusiast' }}">
-    
+
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="icon" type="image/png" href="/favicon.png">
-    
+
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="Toasty's Terminal Feed" href="/feed.xml">
-    
+
     {% if twitch %}
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
     {% endif %}
-    
+
     <!-- Terminal Effects JavaScript -->
     <script src="/js/terminal-effects.js"></script>
-    
+
     <!-- Matrix rain effect script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
-            
+
             canvas.style.position = 'fixed';
             canvas.style.top = '0';
             canvas.style.left = '0';
@@ -33,40 +33,40 @@
             canvas.style.pointerEvents = 'none';
             canvas.style.zIndex = '-1';
             canvas.style.opacity = '0.1';
-            
+
             document.body.appendChild(canvas);
-            
+
             function resizeCanvas() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
             }
-            
+
             resizeCanvas();
             window.addEventListener('resize', resizeCanvas);
-            
+
             const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
             const fontSize = 14;
             const columns = canvas.width / fontSize;
             const drops = Array(Math.floor(columns)).fill(1);
-            
+
             function draw() {
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
+
                 ctx.fillStyle = '#00ff41';
                 ctx.font = fontSize + 'px monospace';
-                
+
                 for (let i = 0; i < drops.length; i++) {
                     const text = chars[Math.floor(Math.random() * chars.length)];
                     ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                    
+
                     if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
                         drops[i] = 0;
                     }
                     drops[i]++;
                 }
             }
-            
+
             setInterval(draw, 50);
         });
     </script>
@@ -78,14 +78,14 @@
             <div class="container mx-auto px-4 py-4">
                 <div class="flex items-center justify-between">
                     <div class="ascii-art">
-╔═══════════════════════════════════════════════════════════════╗
-║  ████████╗ ██████╗  █████╗ ███████╗████████╗██╗   ██╗███████╗║
-║  ╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝╚══██╔══╝╚██╗ ██╔╝██╔════╝║
-║     ██║   ██║   ██║███████║███████╗   ██║    ╚████╔╝ ███████╗║
-║     ██║   ██║   ██║██╔══██║╚════██║   ██║     ╚██╔╝  ╚════██║║
-║     ██║   ╚██████╔╝██║  ██║███████║   ██║      ██║   ███████║║
-║     ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝      ╚═╝   ╚══════╝║
-╚═══════════════════════════════════════════════════════════════╝
+╔══════════════════════════════════════════════════════════════╗
+║ ████████╗ ██████╗  █████╗ ███████╗████████╗██╗   ██╗███████╗ ║
+║ ╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝╚══██╔══╝╚██╗ ██╔╝██╔════╝ ║
+║    ██║   ██║   ██║███████║███████╗   ██║    ╚████╔╝ ███████╗ ║
+║    ██║   ██║   ██║██╔══██║╚════██║   ██║     ╚██╔╝  ╚════██║ ║
+║    ██║   ╚██████╔╝██║  ██║███████║   ██║      ██║   ███████║ ║
+║    ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝      ╚═╝   ╚══════╝ ║
+╚══════════════════════════════════════════════════════════════╝
                     </div>
                     <div class="text-right">
                         <div class="text-xs text-neon-cyan mb-1">SYSTEM STATUS: ONLINE</div>
@@ -99,7 +99,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Navigation Terminal -->
                 <div class="mt-6 terminal-window">
                     <div class="terminal-header">
@@ -150,8 +150,8 @@
                 <div class="text-neon-cyan text-sm">
                     <p>© 2025 Till Wegmüller • Powered by OpenIndiana & Determination</p>
                     <p class="mt-2">
-                        <span class="text-neon-green">[STATUS]</span> All systems operational • 
-                        <span class="text-neon-orange">[UPTIME]</span> <span id="uptime">∞</span> • 
+                        <span class="text-neon-green">[STATUS]</span> All systems operational •
+                        <span class="text-neon-orange">[UPTIME]</span> <span id="uptime">∞</span> •
                         <span class="text-neon-purple">[LOCATION]</span> Sol-3/Europe
                     </p>
                 </div>
@@ -169,10 +169,10 @@
                 timeElement.textContent = `STARDATE: ${timeString}`;
             }
         }
-        
+
         updateTime();
         setInterval(updateTime, 1000);
-        
+
         // Simulate uptime
         let uptime = 0;
         function updateUptime() {
@@ -185,9 +185,9 @@
                 uptimeElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
             }
         }
-        
+
         setInterval(updateUptime, 1000);
-        
+
         // Terminal typing effect for prompts
         document.addEventListener('DOMContentLoaded', function() {
             const prompts = document.querySelectorAll('.terminal-prompt');
@@ -195,7 +195,7 @@
                 prompt.style.animation = 'blink 1s infinite';
             });
         });
-        
+
         // Add CSS for blinking cursor
         const style = document.createElement('style');
         style.textContent = `
