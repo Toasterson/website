@@ -25,7 +25,7 @@ jobs:
         deno-version: v1.39.0
 
     - name: Cache Deno dependencies
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/.cache/deno
         key: ${{ runner.os }}-deno-${{ hashFiles('**/deno.lock') }}
@@ -43,7 +43,7 @@ jobs:
         deno task build
 
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: site-build
         path: website/_site
@@ -122,9 +122,9 @@ jobs:
         git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
     - name: Install Helm
-      uses: azure/setup-helm@v3
+      uses: azure/setup-helm@v4
       with:
-        version: '3.12.1'
+        version: '3.14.0'
 
     - name: Set up Helm OCI registry
       run: |
@@ -186,7 +186,7 @@ jobs:
         output: 'trivy-results.sarif'
 
     - name: Upload Trivy scan results to GitHub Security tab
-      uses: github/codeql-action/upload-sarif@v2
+      uses: github/codeql-action/upload-sarif@v3
       if: always()
       with:
         sarif_file: 'trivy-results.sarif'
@@ -202,7 +202,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Setup kubectl
-      uses: azure/setup-kubectl@v3
+      uses: azure/setup-kubectl@v4
 
     - name: Deploy to staging
       run: |
@@ -221,7 +221,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Setup kubectl
-      uses: azure/setup-kubectl@v3
+      uses: azure/setup-kubectl@v4
 
     - name: Deploy to production
       run: |
