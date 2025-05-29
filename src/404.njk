@@ -1,13 +1,13 @@
 ---
 layout: layout.njk
-title: 404 - Signal Lost
-description: The page you're looking for has drifted into the void
+title: 404 - Page Not Found
+description: The page you're looking for doesn't exist in this system
 ---
 
 <div class="space-y-8 text-center">
     <div class="ascii-art">
 ╔══════════════════════════════════════════════════════════════════╗
-║                        SIGNAL LOST                              ║
+║                        PAGE NOT FOUND                           ║
 ║                     ERROR CODE: 404                             ║
 ║                                                                  ║
 ║     ██████╗ ██╗  ██╗ ██████╗ ██╗  ██╗                          ║
@@ -17,76 +17,76 @@ description: The page you're looking for has drifted into the void
 ║     ██║  ██║     ██║╚██████╔╝     ██║                          ║
 ║     ╚═╝  ╚═╝     ╚═╝ ╚═════╝      ╚═╝                          ║
 ║                                                                  ║
-║         RESOURCE NOT FOUND IN THIS SECTOR                       ║
+║         RESOURCE NOT FOUND IN FILESYSTEM                        ║
 ╚══════════════════════════════════════════════════════════════════╝
     </div>
 
     <div class="terminal-prompt mb-4"></div>
-    <h1 class="text-4xl font-bold text-neon-orange glow-text">TRANSMISSION INTERRUPTED</h1>
+    <h1 class="text-4xl font-bold text-neon-orange glow-text">PATH NOT FOUND</h1>
     
     <div class="terminal-window max-w-2xl mx-auto">
         <div class="terminal-header">
             <span class="text-neon-orange">●</span>
             <span class="text-neon-orange ml-2">●</span>
             <span class="text-neon-orange ml-2">●</span>
-            <span class="ml-4 text-neon-orange">error_404.log - Signal Analysis</span>
+            <span class="ml-4 text-neon-orange">error_404.log - Path Resolution</span>
         </div>
         <div class="terminal-content">
             <div class="text-left space-y-4">
-                <div class="text-neon-red">[ERROR] Page not found in current reality matrix</div>
-                <div class="text-neon-orange">[STATUS] Navigation system offline</div>
-                <div class="text-neon-purple">[LOCATION] Lost somewhere between space and time</div>
-                <div class="text-neon-cyan">[SUGGESTION] Attempting automatic reroute...</div>
+                <div class="text-neon-red">[ERROR] Requested path not found in filesystem</div>
+                <div class="text-neon-orange">[STATUS] HTTP 404 - Resource unavailable</div>
+                <div class="text-neon-purple">[LOCATION] /dev/null</div>
+                <div class="text-neon-cyan">[SUGGESTION] Check available routes below...</div>
             </div>
         </div>
     </div>
 
     <div class="max-w-2xl mx-auto text-lg text-gray-300 leading-relaxed">
         <p class="mb-6">
-            It appears you've drifted into uncharted digital space. The navigation computers 
-            cannot locate the requested coordinates in our current reality matrix.
+            The requested resource couldn't be found in the current filesystem. 
+            This usually means the URL is incorrect or the page has been moved.
         </p>
         
         <p class="mb-6 text-neon-cyan">
-            <em>"Fear is the mind-killer, but 404 errors are just inconvenient."</em><br>
-            - Bene Gesserit Web Developer Manual
+            <em>"These aren't the droids pages you're looking for."</em><br>
+            - Obi-Wan Kenobi (probably debugging a web server)
         </p>
     </div>
 
     <div class="space-y-6">
-        <h2 class="text-2xl text-neon-green">EMERGENCY NAVIGATION OPTIONS</h2>
+        <h2 class="text-2xl text-neon-green">AVAILABLE PATHS</h2>
         
         <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
             <div class="project-card">
-                <h3 class="text-neon-cyan font-bold mb-3">🏠 RETURN TO BASE</h3>
+                <h3 class="text-neon-cyan font-bold mb-3">🏠 HOME DIRECTORY</h3>
                 <p class="text-sm mb-4">
-                    Navigate back to the main command center where all systems are operational.
+                    Return to the main page with project overview and system information.
                 </p>
-                <a href="/" class="hacker-button">RETURN HOME</a>
+                <a href="/" class="hacker-button">GO HOME</a>
             </div>
 
             <div class="project-card">
-                <h3 class="text-neon-cyan font-bold mb-3">📝 MISSION LOGS</h3>
+                <h3 class="text-neon-cyan font-bold mb-3">📝 TECHNICAL POSTS</h3>
                 <p class="text-sm mb-4">
-                    Access the archive of technical reports and operational documentation.
+                    Browse technical articles about Unix, Rust, and infrastructure.
                 </p>
-                <a href="/blog/" class="hacker-button">READ LOGS</a>
+                <a href="/blog/" class="hacker-button">READ POSTS</a>
             </div>
 
             <div class="project-card">
-                <h3 class="text-neon-cyan font-bold mb-3">👤 OPERATOR FILE</h3>
+                <h3 class="text-neon-cyan font-bold mb-3">👤 ABOUT</h3>
                 <p class="text-sm mb-4">
-                    Review the complete dossier and operational history of the system architect.
+                    Learn about my background in Unix systems, Rust development, and infrastructure.
                 </p>
                 <a href="/about/" class="hacker-button">VIEW PROFILE</a>
             </div>
 
             <div class="project-card">
-                <h3 class="text-neon-cyan font-bold mb-3">🔍 MANUAL SEARCH</h3>
+                <h3 class="text-neon-cyan font-bold mb-3">🔍 GITHUB</h3>
                 <p class="text-sm mb-4">
-                    Initiate manual search protocols through the GitHub operations center.
+                    Browse open source projects and contributions to the illumos ecosystem.
                 </p>
-                <a href="https://github.com/toasterson" class="hacker-button" target="_blank">SEARCH GITHUB</a>
+                <a href="https://github.com/toasterson" class="hacker-button" target="_blank">VIEW GITHUB</a>
             </div>
         </div>
     </div>
@@ -94,8 +94,8 @@ description: The page you're looking for has drifted into the void
     <div class="mt-12 text-center">
         <div class="terminal-prompt"></div>
         <p class="text-neon-purple text-sm">
-            "The universe is not only stranger than we imagine, it is stranger than we can imagine."<br>
-            <span class="text-xs text-gray-400">- J.B.S. Haldane (and probably why this page doesn't exist)</span>
+            "Do or do not, there is no try... but there is definitely 404."<br>
+            <span class="text-xs text-gray-400">- Yoda (debugging web servers)</span>
         </p>
     </div>
 

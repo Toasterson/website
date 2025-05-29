@@ -27,8 +27,8 @@ site.use(feed({
   output: "/feed.xml",
   query: "type=post",
   info: {
-    title: "T0@STY'S TERMINAL FEED [ILLUMOS.NODE]",
-    description: "Mission logs and technical transmissions from the digital frontier by Till Wegmüller (@toasterson) - Illumos Systems Architect & Space Opera Enthusiast",
+    title: "Toasty's Technical Posts",
+    description: "Unix systems engineering, Rust development, and infrastructure insights by Till Wegmüller (@toasterson)",
   },
   items: {
     title: "=title",

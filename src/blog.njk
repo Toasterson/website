@@ -1,30 +1,29 @@
 ---
 layout: layout.njk
-title: Mission Logs - Archive Access
-description: Operational reports and technical logs from the digital frontier by Till Wegmüller (@toasterson)
+title: Technical Posts
+description: Engineering notes and technical insights by Till Wegmüller (@toasterson)
 ---
 
 <div class="space-y-6">
-    <!-- Mission Logs Header -->
+    <!-- Blog Header -->
     <div class="terminal-prompt mb-4"></div>
-    <h1 class="text-3xl font-bold glow-text text-neon-cyan">MISSION LOGS ARCHIVE</h1>
+    <h1 class="text-3xl font-bold glow-text text-neon-cyan">TECHNICAL POSTS</h1>
     
     <div class="ascii-art mb-8">
 ╔══════════════════════════════════════════════════════════════════╗
-║  CLASSIFIED OPERATIONAL REPORTS - ILLUMOS SECTOR               ║
-║  ACCESS LEVEL: PUBLIC DISTRIBUTION                              ║
+║  ENGINEERING NOTES - UNIX SYSTEMS & RUST DEVELOPMENT           ║
+║  ACCESS LEVEL: PUBLIC                                            ║
 ║  OPERATOR: TOASTY@ILLUMOS.NODE                                  ║
 ╚══════════════════════════════════════════════════════════════════╝
     </div>
 
     <div class="terminal-prompt"></div>
     <p class="text-lg text-neon-green mb-8">
-        Welcome to the mission archives. These logs document my ongoing operations in the vast expanse 
-        of systems programming, kernel development, and the occasional philosophical musing about 
-        the nature of code and consciousness.
+        Technical posts covering Unix systems engineering, Rust development, Kubernetes operations,
+        and the intersection of traditional Unix philosophy with modern infrastructure practices.
     </p>
 
-    <!-- Mission Log Entries -->
+    <!-- Blog Post Entries -->
     <div class="space-y-6">
         {% for post in search.pages("type=post", "date=desc") %}
         <div class="blog-post-item">
@@ -33,11 +32,11 @@ description: Operational reports and technical logs from the digital frontier by
                     <div class="w-3 h-3 bg-neon-green rounded-full mr-4 glow-text"></div>
                     <div>
                         <div class="blog-post-date">
-                            STARDATE: {{ post.date | date("yyyy.MM.dd") }} • 
+                            {{ post.date | date("yyyy.MM.dd") }} • 
                             <span class="text-neon-cyan">{{ post.date | date("HH:mm") }} UTC</span>
                         </div>
                         <div class="text-xs text-neon-purple mt-1">
-                            [CLASSIFICATION: PUBLIC] • [STATUS: ARCHIVED] • [SECTOR: TECHNICAL]
+                            [TECHNICAL] • [ARCHIVED] • [SYSTEMS ENGINEERING]
                         </div>
                     </div>
                 </div>
@@ -48,7 +47,7 @@ description: Operational reports and technical logs from the digital frontier by
             
             <a href="{{ post.url }}" class="block group">
                 <h2 class="blog-post-title group-hover:text-neon-green transition-colors mb-3">
-                    <span class="text-neon-cyan">[MISSION LOG]</span> {{ post.title }}
+                    {{ post.title }}
                 </h2>
                 
                 {% if post.summary %}
@@ -59,7 +58,7 @@ description: Operational reports and technical logs from the digital frontier by
                 {% endif %}
                 
                 <div class="mt-4 text-neon-cyan text-sm group-hover:text-neon-green transition-colors">
-                    → Access full mission report
+                    → Read full post
                 </div>
             </a>
         </div>
@@ -70,12 +69,12 @@ description: Operational reports and technical logs from the digital frontier by
     <div class="mt-12 text-center border-t border-neon-blue pt-8">
         <div class="ascii-art text-sm mb-4">
 ┌─────────────────────────────────────────────────────────────┐
-│  "The beginning is a very delicate time."                  │
-│                                   - Princess Irulan       │
+│  "Your focus determines your reality."                     │
+│                                   - Qui-Gon Jinn          │
 │                                                             │
-│  Every mission log represents a moment of discovery,       │
-│  a battle fought in the digital realm, or a lesson        │
-│  learned in the eternal quest for better systems.         │
+│  Each post represents lessons learned in the field,        │
+│  solutions to real problems, and insights gained from      │
+│  building reliable Unix-based infrastructure.              │
 └─────────────────────────────────────────────────────────────┘
         </div>
         
@@ -86,14 +85,14 @@ description: Operational reports and technical logs from the digital frontier by
         
         <div class="mt-6">
             <a href="/feed.xml" class="hacker-button">
-                SUBSCRIBE TO TRANSMISSION FEED
+                SUBSCRIBE TO RSS FEED
             </a>
         </div>
     </div>
 </div>
 
 <script>
-    // Add some dynamic effects to the mission logs
+    // Add some dynamic effects to the posts
     document.addEventListener('DOMContentLoaded', function() {
         // Animate status indicators
         const statusDots = document.querySelectorAll('.bg-neon-green');
@@ -112,7 +111,7 @@ description: Operational reports and technical logs from the digital frontier by
             dotIndex = (dotIndex + 1) % statusDots.length;
         }, 2000);
         
-        // Add hover effects to mission entries
+        // Add hover effects to post entries
         const logEntries = document.querySelectorAll('.blog-post-item');
         logEntries.forEach(entry => {
             entry.addEventListener('mouseenter', function() {

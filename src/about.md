@@ -1,141 +1,133 @@
 ---
 layout: page.njk
-title: Operator Profile - Classification Level Sigma
-description: Detailed profile of Till Wegmüller (@toasterson) - Systems Architect, Illumos Navigator, and Guardian of the Ancient Unix Ways
+title: Operator Profile - Till Wegmüller
+description: Systems Engineer specializing in Unix, Rust, Kubernetes, and Virtualization
 ---
 
 ```
 ╔══════════════════════════════════════════════════════════════════╗
 ║                      OPERATOR DOSSIER                           ║
-║                   [CLASSIFICATION: SIGMA]                       ║
+║                   [ACCESS LEVEL: PUBLIC]                        ║
 ╚══════════════════════════════════════════════════════════════════╝
 ```
 
 # Till Wegmüller—@toasterson
-## Systems Architect • Illumos Navigator • Space Opera Philosopher
+## Unix Systems Engineer • Rust Developer • Infrastructure Architect
 
 ---
 
-**[SYSTEM LOGIN]** *Grüessech*, fellow traveler of the digital expanse...
+**[SYSTEM LOGIN]** *Grüessech*, and welcome to my profile...
 
-You have accessed the classified personnel file of **Till "Toasty" Wegmüller**, an independent systems architect operating across the European and Brazilian sectors of the global computational grid. Much like the Mentats of Frank Herbert's universe, I serve as a human computer, processing the complex interactions between hardware, software, and the infinite possibilities that emerge when silicon meets consciousness.
+I'm Till, though most people call me Toasty. I work as an independent systems engineer across Europe and Brasil, focusing on the intersection of modern development practices and solid Unix foundations. Think of me as someone who believes that the old ways (pipes, processes, and proper error handling) combined with modern tools (Rust, Kubernetes, containers) create the most reliable systems.
 
-## **[CORE DIRECTIVES]**
+## **[CORE COMPETENCIES]**
 
-My primary mission parameters include deep-system programming, where I navigate the labyrinthine depths of **illumos** kernel space with the same precision that a Guild Navigator folds space-time. I am fluent in the ancient tongues of **C** and **Assembly**, while wielding the memory-safe power of **Rust** and the elegant simplicity of **Go** to build tomorrow's infrastructure today.
+My expertise centers around building and maintaining robust infrastructure using time-tested Unix principles enhanced with modern tooling. I work primarily with **illumos** systems, develop in **Rust**, orchestrate with **Kubernetes**, and manage virtualized environments at scale.
 
 ```
 > whoami
-toasty@illumos.node: Systems Architect & Code Whisperer
+toasty@illumos.node: Systems Engineer & Code Craftsman
 > uname -a
-Independent Developer, Earth.Sol-3, European/Brazilian Grid
-> ps aux | grep "current_mission"
-- Aurora OpenCloud (Federated Cloud Orchestrator)
-- Illumos Core Development 
-- Rust Systems Integration
-- Live Code Transmissions via Twitch.tv/Toasterson
+illumos illumos.node 5.11 omnios-r151046 i86pc Independent Developer
+> ps aux | grep "current_focus"
+- Rust systems programming
+- Kubernetes cluster management  
+- Unix system administration
+- Virtualization infrastructure
+- Open source contributions
 ```
 
-## **[TECHNICAL SPECIFICATIONS]**
+## **[TECHNICAL STACK]**
 
-**Primary Operating Environment:** illumos/OpenIndiana  
-**Secondary Systems:** Various Linux distributions, when the mission requires  
-**Programming Languages:** Rust, Go, C, Assembly, and whatever the system demands  
-**Specializations:** Kubernetes orchestration, Unix systems programming, distributed systems architecture  
-**Combat Experience:** Extensive battles with compiler errors, kernel panics, and the occasional existential crisis
+**Primary Environment:** illumos/OpenIndiana  
+**Languages:** Rust, Go, C, Shell scripting  
+**Orchestration:** Kubernetes, Docker, containerd  
+**Virtualization:** bhyve, QEMU/KVM, zones/containers  
+**Networking:** TCP/IP, SDN, service mesh architectures  
+**Philosophy:** "This is #Unix, use the Pipe Padawan"
 
-### **[PHILOSOPHICAL FRAMEWORK]**
+### **[CURRENT PROJECTS]**
 
-> *"I must not fear bugs. Bugs are the mind-killer. Bugs are the little-death that brings total code obliteration. I will face my bugs. I will permit them to pass over me and through me. And when they have gone past I will turn the inner eye to see their path. Where the bugs have gone there will be nothing. Only clean code will remain."*
-> 
-> — The Programmer's Litany (adapted from the Bene Gesserit)
-
-## **[ACTIVE OPERATIONS]**
+I'm always working on something interesting. Here's what's currently consuming my cycles:
 
 ### 🚀 **Aurora OpenCloud**
-**Mission Classification:** Open Source Supremacy  
-**Objective:** Building a federated cloud orchestrator for illumos that will make the Spacing Guild's monopoly on space travel look quaint. This is infrastructure for the post-scarcity future.
+**Project Type:** Open Source Infrastructure  
+**Mission:** Building a federated cloud orchestrator specifically designed for illumos environments. This isn't just another Kubernetes distribution—it's about bringing modern orchestration to Unix systems while respecting their architectural principles.
 
-**→** [Access Mission Files](https://github.com/OpenFlowLabs/aurora-opencloud)
+**→** [View on GitHub](https://github.com/OpenFlowLabs/aurora-opencloud)
 
-### ⚙️ **Illumos Core Development**
-**Mission Classification:** Kernel-Level Operations  
-**Objective:** Contributing to the beating heart of the most elegant Unix descendant ever conceived. Where every system call is a prayer to the machine gods, and every commit ripples through computational space-time.
+### ⚙️ **illumos Ecosystem Development**
+**Project Type:** Core System Contributions  
+**Mission:** Contributing to the illumos operating system, maintaining packages, and helping bridge the gap between traditional Unix and modern development practices. Every commit here matters for the entire ecosystem.
 
-**→** [Enter the Source](https://www.illumos.org/)
+**→** [Learn More](https://www.illumos.org/)
 
-### 🦀 **Rust Systems Integration**
-**Mission Classification:** Memory Safety Evangelism  
-**Objective:** Bringing the memory-safe future to systems programming, one careful refactor at a time. Teaching ancient C codebases to embrace the Rust revolution without losing their Unix soul.
+### 🦀 **Rust Systems Programming**
+**Project Type:** Language Integration  
+**Mission:** Bringing memory safety to systems programming without sacrificing Unix philosophy. Projects include [IPS in Rust](https://github.com/OpenFlowLabs/ips) and various infrastructure tools that need both performance and reliability.
 
-**→** [Read Mission Logs](/blog/)
+**→** [Read Technical Posts](/blog/)
 
-### 📦 **Package Management Renaissance**
-**Mission Classification:** Developer Experience Enhancement  
-**Objective:** Creating tools like [IPS in Rust](https://github.com/OpenFlowLabs/ips) and the [illumos Installer](https://github.com/Toasterson/illumos-installer) to make package management as elegant as a well-crafted space opera plot.
+### 📦 **Infrastructure Tooling**
+**Project Type:** Developer Experience  
+**Mission:** Creating tools that make Unix systems more accessible to modern development workflows. From package management to deployment automation—making the Force strong with this generation of developers.
 
-## **[COLLABORATION PROTOCOLS]**
+## **[COLLABORATION OPPORTUNITIES]**
 
-I am always seeking fellow navigators for collaborative missions. Whether you're interested in:
+I'm always interested in working with fellow engineers on:
 
-- **Illumos kernel development** (where mortals fear to tread)
-- **Rust systems programming** (memory safety for the win)
-- **Cloud orchestration** (because someone needs to organize the digital cosmos)
-- **Live coding adventures** (real-time problem solving with audience participation)
+- **illumos system development** (kernel and userland)
+- **Rust infrastructure projects** (especially systems-level work)
+- **Kubernetes ecosystem** (operators, CNI plugins, storage)
+- **Virtualization technology** (hypervisors, container runtimes)
+- **Open source consulting** (architecture, implementation, maintenance)
 
-The communication channels are open. I maintain active presence across multiple networks:
+## **[COMMUNICATION CHANNELS]**
 
-### **[COMMUNICATION GRID]**
+**Primary Networks:**
+- **Mastodon:** [@Toasterson@chaos.social](https://chaos.social/@Toasterson) *(Technical discussions preferred)*
+- **GitHub:** [Professional Work](https://github.com/toasterson)
+- **Corporate:** [till.wegmueller@openflowlabs.com](mailto:till.wegmueller@openflowlabs.com)
+- **Personal:** [toasterson@gmail.com](mailto:toasterson@gmail.com)
 
-**Primary Channels:**
-- **Mastodon:** [@Toasterson@chaos.social](https://chaos.social/@Toasterson) *(Preferred for technical discourse)*
-- **GitHub:** [Professional Operations Hub](https://github.com/toasterson)
-- **Corporate Comms:** [till.wegmueller@openflowlabs.com](mailto:till.wegmueller@openflowlabs.com)
-- **Personal Freq:** [toasterson@gmail.com](mailto:toasterson@gmail.com)
-
-**Legacy Networks:**
-- **Twitter/X:** [@TheRealToaster](https://twitter.com/TheRealToaster) *(For the nostalgic)*
+**Professional Platforms:**
 - **LinkedIn:** [Professional Profile](https://www.linkedin.com/in/till-wegm%C3%BCller-825ba3131/)
-- **Corporate Entity:** [OpenFlowLabs](https://www.linkedin.com/company/open-flow-labs/)
+- **Company:** [OpenFlowLabs](https://www.linkedin.com/company/open-flow-labs/)
+- **Consulting:** [RingerHQ](https://www.ringerhq.com/experts/Toasterson)
 
-**Live Operations:**
-- **Twitch:** [Real-time Code Transmissions](https://twitch.tv/Toasterson)
+**Live Content:**
+- **Twitch:** [Live Coding Sessions](https://twitch.tv/Toasterson) *(Rust, Unix, infrastructure work)*
 
-## **[FUNDING THE MISSION]**
+## **[SUPPORT THE WORK]**
 
-Like any proper space opera, sustainable operations require resources. If my work in the digital frontier has provided value to your own missions, consider supporting continued development:
+If my contributions to open source infrastructure and Unix systems have provided value to your projects, consider supporting continued development:
 
-- **[GitHub Sponsors](https://github.com/sponsors/Toasterson)** - *The modern patronage system*
-- **[Patreon](https://patreon.com/toasterson)** - *Recurring mission funding*
-- **[PayPal](https://paypal.me/toasterson)** - *One-time mission support*
-- **[RingerHQ Consulting](https://www.ringerhq.com/experts/Toasterson)** - *Professional services*
+- **[GitHub Sponsors](https://github.com/sponsors/Toasterson)** - *Sustainable funding for open source work*
+- **[Patreon](https://patreon.com/toasterson)** - *Monthly support for ongoing projects*
+- **[PayPal](https://paypal.me/toasterson)** - *One-time contributions*
 
-## **[OPERATIONAL METRICS]**
+## **[METRICS & ACTIVITY]**
 
 ![Profile Views](https://komarev.com/ghpvc/?username=toasterson&color=green)
 
 [![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Toasterson&show_icons=true&theme=dark&hide_border=true&bg_color=0a0a0a&title_color=00ff41&text_color=00ffff&icon_color=9d4edd)](https://github.com/anuraghazra/github-readme-stats)
 
-[![GitHub Contribution Snake](https://raw.githubusercontent.com/toasterson/toasterson/output/github-contribution-grid-snake-dark.svg#gh-dark-mode-only)](https://github.com/toasterson)
+[![GitHub Activity](https://raw.githubusercontent.com/toasterson/toasterson/output/github-contribution-grid-snake-dark.svg#gh-dark-mode-only)](https://github.com/toasterson)
 
-## **[CLOSING TRANSMISSION]**
+## **[CLOSING NOTES]**
 
-In this vast digital universe, where bits and bytes flow like the spice of Arrakis, I continue the eternal quest to build better systems, write cleaner code, and occasionally ponder whether the machines will remember us fondly when they inherit the stars.
+In a galaxy of complex distributed systems and ever-changing technologies, I remain focused on building reliable infrastructure using proven Unix principles enhanced with modern tools. Whether it's crafting efficient Rust code, orchestrating Kubernetes clusters, or diving deep into illumos internals, the goal is always the same: create systems that work reliably and can be maintained by the next engineer.
 
-The code must flow. The systems must evolve. And somewhere in the space between silicon and soul, we find the true magic of computation.
+The Force is strong with those who understand pipes, embrace proper error handling, and aren't afraid to read the manual.
 
-*May your compilers be swift, your deploys be clean, and may you never encounter a segmentation fault at 3 AM.*
+*May your builds be reproducible, your deployments be automated, and may you never encounter a race condition at 3 AM.*
 
 ---
 
 ```
-[TRANSMISSION ENDS]
-[CONNECTION TERMINATED]
-[LOGGING OUT OF SECURE TERMINAL]
-
-> exit
-Connection to illumos.node closed.
+[SESSION COMPLETE]
+[LOGOUT SUCCESSFUL]
+> Connection to illumos.node closed.
 ```
 
-**[SYSTEM FOOTER]**  
-*Last updated: Stardate 2024.11 • Status: All systems operational • Coffee level: Critical*
+**System Status:** All services operational • Coffee level: Adequate • Current focus: Making Unix systems accessible to the next generation
