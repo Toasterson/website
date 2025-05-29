@@ -3,40 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if title %}{{ title }} - {% endif %}Toasty's Personal Blog</title>
-    <meta name="description" content="{{ description or 'Personal blog of Till Wegmüller (@toasterson)' }}">
+    <title>{% if title %}{{ title }} - {% endif %}T0@STY'S TERMINAL [ILLUMOS.NODE]</title>
+    <meta name="description" content="{{ description or 'Personal cyber-operations terminal of Till Wegmüller (@toasterson) - Illumos Systems Architect & Space Opera Enthusiast' }}">
     
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="Toasty's Personal Blog" href="/feed.xml">
+    <link rel="alternate" type="application/rss+xml" title="Toasty's Terminal Feed" href="/feed.xml">
     
     {% if twitch %}
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
     {% endif %}
+    
+    <!-- Terminal Effects JavaScript -->
+    <script src="/js/terminal-effects.js"></script>
+    
+    <!-- Matrix rain effect script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '-1';
+            canvas.style.opacity = '0.1';
+            
+            document.body.appendChild(canvas);
+            
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            const fontSize = 14;
+            const columns = canvas.width / fontSize;
+            const drops = Array(Math.floor(columns)).fill(1);
+            
+            function draw() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#00ff41';
+                ctx.font = fontSize + 'px monospace';
+                
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+            
+            setInterval(draw, 50);
+        });
+    </script>
 </head>
-<body>
-    <div class="min-h-screen bg-gray-900">
-        <!-- Navigation -->
-        <div class="mt-5 grid grid-cols-[400px_1fr_400px]">
-            <div class="text-lg">
-                <a class="mx-3" href="/">Homepage</a>
-                <a class="mx-3" href="/about/">About</a>
-                <a class="mx-3" href="/blog/">Blog</a>
+<body class="scanlines">
+    <div class="min-h-screen">
+        <!-- Terminal Header -->
+        <div class="nav-container">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="ascii-art">
+╔═══════════════════════════════════════════════════════════════╗
+║  ████████╗ ██████╗  █████╗ ███████╗████████╗██╗   ██╗███████╗║
+║  ╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝╚══██╔══╝╚██╗ ██╔╝██╔════╝║
+║     ██║   ██║   ██║███████║███████╗   ██║    ╚████╔╝ ███████╗║
+║     ██║   ██║   ██║██╔══██║╚════██║   ██║     ╚██╔╝  ╚════██║║
+║     ██║   ╚██████╔╝██║  ██║███████║   ██║      ██║   ███████║║
+║     ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝      ╚═╝   ╚══════╝║
+╚═══════════════════════════════════════════════════════════════╝
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs text-neon-cyan mb-1">SYSTEM STATUS: ONLINE</div>
+                        <div class="text-xs text-neon-green" id="current-time"></div>
+                        <div class="text-xs text-neon-orange">NODE: ILLUMOS.CORE</div>
+                        <div class="grid grid-cols-2 gap-2 mt-2 text-xs">
+                            <div>CPU: <span id="cpu-usage" class="text-neon-green">42%</span></div>
+                            <div>MEM: <span id="memory-usage" class="text-neon-cyan">67%</span></div>
+                            <div>PROC: <span id="active-processes" class="text-neon-purple">187</span></div>
+                            <div>NET: <span class="text-neon-blue">STABLE</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Terminal -->
+                <div class="mt-6 terminal-window">
+                    <div class="terminal-header">
+                        <span class="text-neon-green">●</span>
+                        <span class="text-neon-orange ml-2">●</span>
+                        <span class="text-neon-blue ml-2">●</span>
+                        <span class="ml-4 text-neon-cyan">navigation.exe - Active Session</span>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="flex flex-wrap gap-4 items-center">
+                            <span class="terminal-prompt"></span>
+                            <nav class="flex flex-wrap gap-6">
+                                <a href="/" class="nav-link">./home</a>
+                                <a href="/about/" class="nav-link">./about</a>
+                                <a href="/blog/" class="nav-link">./mission_logs</a>
+                                <a href="https://github.com/toasterson" class="nav-link" target="_blank">./github_ops</a>
+                                <a href="https://chaos.social/@Toasterson" class="nav-link" target="_blank">./comms</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mx-auto"><h1>Toastys Website</h1></div>
-            <div></div>
         </div>
 
-        <!-- Main Content -->
-        <main class="grid grid-cols-[100px_600px_100px] md:grid-cols-[1fr_600px_1fr] mt-8">
-            <div></div>
-            <div class="px-4">
-                {{ content | safe }}
+        <!-- Main Content Terminal -->
+        <main class="container mx-auto px-4 py-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <span class="text-neon-green">●</span>
+                        <span class="text-neon-orange ml-2">●</span>
+                        <span class="text-neon-blue ml-2">●</span>
+                        <span class="ml-4 text-neon-cyan">main_console.sh - {{ title or 'Home Directory' }}</span>
+                    </div>
+                    <div class="terminal-content">
+                        {{ content | safe }}
+                    </div>
+                </div>
             </div>
-            <div></div>
         </main>
+
+        <!-- Footer Terminal -->
+        <footer class="footer">
+            <div class="container mx-auto px-4">
+                <div class="ascii-art text-center mb-4">
+┌─────────────────────────────────────────────────────────────┐
+│  "The spice must flow, and so must the code."              │
+│                                   - Duke Leto Atreides     │
+└─────────────────────────────────────────────────────────────┘
+                </div>
+                <div class="text-neon-cyan text-sm">
+                    <p>© 2024 Till Wegmüller • Powered by Illumos & Determination</p>
+                    <p class="mt-2">
+                        <span class="text-neon-green">[STATUS]</span> All systems operational • 
+                        <span class="text-neon-orange">[UPTIME]</span> <span id="uptime">∞</span> • 
+                        <span class="text-neon-purple">[LOCATION]</span> Sol-3/Europe/Brasil
+                    </p>
+                </div>
+            </div>
+        </footer>
     </div>
+
+    <script>
+        // Real-time clock
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toISOString().replace('T', ' ').substring(0, 19);
+            const timeElement = document.getElementById('current-time');
+            if (timeElement) {
+                timeElement.textContent = `STARDATE: ${timeString}`;
+            }
+        }
+        
+        updateTime();
+        setInterval(updateTime, 1000);
+        
+        // Simulate uptime
+        let uptime = 0;
+        function updateUptime() {
+            uptime++;
+            const hours = Math.floor(uptime / 3600);
+            const minutes = Math.floor((uptime % 3600) / 60);
+            const seconds = uptime % 60;
+            const uptimeElement = document.getElementById('uptime');
+            if (uptimeElement) {
+                uptimeElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }
+        
+        setInterval(updateUptime, 1000);
+        
+        // Terminal typing effect for prompts
+        document.addEventListener('DOMContentLoaded', function() {
+            const prompts = document.querySelectorAll('.terminal-prompt');
+            prompts.forEach(prompt => {
+                prompt.style.animation = 'blink 1s infinite';
+            });
+        });
+        
+        // Add CSS for blinking cursor
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes blink {
+                0%, 50% { opacity: 1; }
+                51%, 100% { opacity: 0.3; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>

@@ -1,0 +1,151 @@
+---
+layout: layout.njk
+title: 404 - Signal Lost
+description: The page you're looking for has drifted into the void
+---
+
+<div class="space-y-8 text-center">
+    <div class="ascii-art">
+╔══════════════════════════════════════════════════════════════════╗
+║                        SIGNAL LOST                              ║
+║                     ERROR CODE: 404                             ║
+║                                                                  ║
+║     ██████╗ ██╗  ██╗ ██████╗ ██╗  ██╗                          ║
+║     ██╔══██╗██║  ██║██╔═══██╗██║  ██║                          ║
+║     ██████╔╝███████║██║   ██║███████║                          ║
+║     ██╔══██╗╚════██║██║   ██║╚════██║                          ║
+║     ██║  ██║     ██║╚██████╔╝     ██║                          ║
+║     ╚═╝  ╚═╝     ╚═╝ ╚═════╝      ╚═╝                          ║
+║                                                                  ║
+║         RESOURCE NOT FOUND IN THIS SECTOR                       ║
+╚══════════════════════════════════════════════════════════════════╝
+    </div>
+
+    <div class="terminal-prompt mb-4"></div>
+    <h1 class="text-4xl font-bold text-neon-orange glow-text">TRANSMISSION INTERRUPTED</h1>
+    
+    <div class="terminal-window max-w-2xl mx-auto">
+        <div class="terminal-header">
+            <span class="text-neon-orange">●</span>
+            <span class="text-neon-orange ml-2">●</span>
+            <span class="text-neon-orange ml-2">●</span>
+            <span class="ml-4 text-neon-orange">error_404.log - Signal Analysis</span>
+        </div>
+        <div class="terminal-content">
+            <div class="text-left space-y-4">
+                <div class="text-neon-red">[ERROR] Page not found in current reality matrix</div>
+                <div class="text-neon-orange">[STATUS] Navigation system offline</div>
+                <div class="text-neon-purple">[LOCATION] Lost somewhere between space and time</div>
+                <div class="text-neon-cyan">[SUGGESTION] Attempting automatic reroute...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-2xl mx-auto text-lg text-gray-300 leading-relaxed">
+        <p class="mb-6">
+            It appears you've drifted into uncharted digital space. The navigation computers 
+            cannot locate the requested coordinates in our current reality matrix.
+        </p>
+        
+        <p class="mb-6 text-neon-cyan">
+            <em>"Fear is the mind-killer, but 404 errors are just inconvenient."</em><br>
+            - Bene Gesserit Web Developer Manual
+        </p>
+    </div>
+
+    <div class="space-y-6">
+        <h2 class="text-2xl text-neon-green">EMERGENCY NAVIGATION OPTIONS</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            <div class="project-card">
+                <h3 class="text-neon-cyan font-bold mb-3">🏠 RETURN TO BASE</h3>
+                <p class="text-sm mb-4">
+                    Navigate back to the main command center where all systems are operational.
+                </p>
+                <a href="/" class="hacker-button">RETURN HOME</a>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-neon-cyan font-bold mb-3">📝 MISSION LOGS</h3>
+                <p class="text-sm mb-4">
+                    Access the archive of technical reports and operational documentation.
+                </p>
+                <a href="/blog/" class="hacker-button">READ LOGS</a>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-neon-cyan font-bold mb-3">👤 OPERATOR FILE</h3>
+                <p class="text-sm mb-4">
+                    Review the complete dossier and operational history of the system architect.
+                </p>
+                <a href="/about/" class="hacker-button">VIEW PROFILE</a>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-neon-cyan font-bold mb-3">🔍 MANUAL SEARCH</h3>
+                <p class="text-sm mb-4">
+                    Initiate manual search protocols through the GitHub operations center.
+                </p>
+                <a href="https://github.com/toasterson" class="hacker-button" target="_blank">SEARCH GITHUB</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-12 text-center">
+        <div class="terminal-prompt"></div>
+        <p class="text-neon-purple text-sm">
+            "The universe is not only stranger than we imagine, it is stranger than we can imagine."<br>
+            <span class="text-xs text-gray-400">- J.B.S. Haldane (and probably why this page doesn't exist)</span>
+        </p>
+    </div>
+
+    <div class="mt-8 ascii-art text-xs opacity-50">
+          *     .        *  .    *    .   . *   .   *   .
+       .   *           .    .        .        .       .
+             .   .            *                *
+        .                .        .    *            .    *
+     *    .   *    .            .              .        .
+           .            *                 .           .
+                 *           .    *             *    .    *
+      .    *                      .                        .
+    </div>
+</div>
+
+<script>
+    // Add some fun 404 page effects
+    document.addEventListener('DOMContentLoaded', function() {
+        // Simulate search attempts
+        const searchMessages = [
+            'Scanning sector 7G...',
+            'Checking backup archives...',
+            'Consulting the Mentat databases...',
+            'Asking the Oracle...',
+            'Deploying probe droids...',
+            'Search completed. Page remains in the void.'
+        ];
+        
+        let messageIndex = 0;
+        const messageElement = document.querySelector('.text-neon-cyan');
+        
+        const searchInterval = setInterval(() => {
+            if (messageIndex < searchMessages.length - 1) {
+                messageElement.textContent = `[SEARCHING] ${searchMessages[messageIndex]}`;
+                messageIndex++;
+            } else {
+                messageElement.textContent = '[COMPLETE] Search protocols exhausted. Page not found in this reality.';
+                clearInterval(searchInterval);
+            }
+        }, 1500);
+        
+        // Add some random glitch effects to the error code
+        const errorCode = document.querySelector('h1');
+        setInterval(() => {
+            if (Math.random() < 0.1) {
+                errorCode.style.transform = `translateX(${Math.random() * 4 - 2}px)`;
+                setTimeout(() => {
+                    errorCode.style.transform = 'translateX(0)';
+                }, 100);
+            }
+        }, 2000);
+    });
+</script>

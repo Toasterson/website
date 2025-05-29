@@ -2,6 +2,7 @@
   "version": "5",
   "specifiers": {
     "npm:@js-temporal/polyfill@0.4.4": "0.4.4",
+    "npm:@tailwindcss/typography@~0.5.10": "0.5.16_tailwindcss@3.3.6__postcss@8.5.4",
     "npm:autoprefixer@10.4.16": "10.4.16_postcss@8.4.32",
     "npm:date-fns@2.30.0": "2.30.0",
     "npm:markdown-it-attrs@4.1.6": "4.1.6_markdown-it@14.0.0",
@@ -11,7 +12,8 @@
     "npm:postcss-import@15.1.0": "15.1.0_postcss@8.4.32",
     "npm:postcss-nesting@12.0.1": "12.0.1_postcss@8.4.32_postcss-selector-parser@6.1.2",
     "npm:postcss@8.4.32": "8.4.32",
-    "npm:tailwindcss@3.3.6": "3.3.6_postcss@8.5.4"
+    "npm:tailwindcss@3.3.6": "3.3.6_postcss@8.5.4",
+    "npm:tailwindcss@^3.3.6": "3.3.6_postcss@8.5.4"
   },
   "npm": {
     "@alloc/quick-lru@5.2.0": {
@@ -23,7 +25,7 @@
     "@csstools/selector-specificity@3.1.1_postcss-selector-parser@6.1.2": {
       "integrity": "sha512-a7cxGcJ2wIlMFLlh8z2ONm+715QkPHiyJcxwQlKOz/03GPw1COpfhcmC9wm4xlZfp//jWHNNMwzjtqHXVWU9KA==",
       "dependencies": [
-        "postcss-selector-parser"
+        "postcss-selector-parser@6.1.2"
       ]
     },
     "@isaacs/cliui@8.0.2": {
@@ -87,6 +89,16 @@
     },
     "@pkgjs/parseargs@0.11.0": {
       "integrity": "sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg=="
+    },
+    "@tailwindcss/typography@0.5.16_tailwindcss@3.3.6__postcss@8.5.4": {
+      "integrity": "sha512-0wDLwCVF5V3x3b1SGXPCDcdsbDHMBe+lkFzBRaHeLvNi+nrrnZ1lA18u+OTWO8iSWU2GxUOCvlXtDuqftc1oiA==",
+      "dependencies": [
+        "lodash.castarray",
+        "lodash.isplainobject",
+        "lodash.merge",
+        "postcss-selector-parser@6.0.10",
+        "tailwindcss"
+      ]
     },
     "a-sync-waterfall@1.0.1": {
       "integrity": "sha512-RYTOHHdWipFUliRFMCS4X2Yn2X8M87V/OpSqWzKKOGhzqyUxzyVmhHDH9sAvG+ZuQf/TAOFsLCpMw09I1ufUnA=="
@@ -375,6 +387,15 @@
         "uc.micro"
       ]
     },
+    "lodash.castarray@4.4.0": {
+      "integrity": "sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q=="
+    },
+    "lodash.isplainobject@4.0.6": {
+      "integrity": "sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA=="
+    },
+    "lodash.merge@4.6.2": {
+      "integrity": "sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ=="
+    },
     "lru-cache@10.4.3": {
       "integrity": "sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ=="
     },
@@ -525,7 +546,7 @@
       "integrity": "sha512-HQbt28KulC5AJzG+cZtj9kvKB93CFCdLvog1WFLf1D+xmMvPGlBstkpTEZfK5+AN9hfJocyBFCNiqyS48bpgzQ==",
       "dependencies": [
         "postcss@8.5.4",
-        "postcss-selector-parser"
+        "postcss-selector-parser@6.1.2"
       ]
     },
     "postcss-nesting@12.0.1_postcss@8.4.32_postcss-selector-parser@6.1.2": {
@@ -533,7 +554,14 @@
       "dependencies": [
         "@csstools/selector-specificity",
         "postcss@8.4.32",
-        "postcss-selector-parser"
+        "postcss-selector-parser@6.1.2"
+      ]
+    },
+    "postcss-selector-parser@6.0.10": {
+      "integrity": "sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==",
+      "dependencies": [
+        "cssesc",
+        "util-deprecate"
       ]
     },
     "postcss-selector-parser@6.1.2": {
@@ -679,7 +707,7 @@
         "postcss-js",
         "postcss-load-config",
         "postcss-nested",
-        "postcss-selector-parser",
+        "postcss-selector-parser@6.1.2",
         "resolve",
         "sucrase"
       ],
@@ -1237,5 +1265,13 @@
     "https://deno.land/x/xml@2.1.3/utils/streamable.ts": "1603a5f10c859b95d4e9502365a0fba0b19d5d068356e20d5a6813cd37fee780",
     "https://deno.land/x/xml@2.1.3/utils/stringifier.ts": "c701b506835237c0c6c0a08fd94e0a012b644def3f4c819c64788daf2e649ea3",
     "https://deno.land/x/xml@2.1.3/utils/types.ts": "ecaf7785e54a6f1da6f8e56da2bce9853407ceb7d5b3b70f0a60a0890151fe4c"
+  },
+  "workspace": {
+    "packageJson": {
+      "dependencies": [
+        "npm:@tailwindcss/typography@~0.5.10",
+        "npm:tailwindcss@^3.3.6"
+      ]
+    }
   }
 }

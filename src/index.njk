@@ -1,33 +1,229 @@
 ---
 layout: layout.njk
-title: Welcome to my Website
-description: Personal blog and website of Till Wegmüller (@toasterson)
+title: System Access Granted
+description: Personal cyber-operations terminal of Till Wegmüller (@toasterson) - Illumos Systems Architect & Space Opera Enthusiast
 twitch: true
 ---
 
-<div class="block items-center">
-    <h1 class="text-3xl font-bold underline text-center">Welcome to my Website</h1>
-
-    <div class="mt-5 text-center">
-        <p>
-            You have found my personal blog on the Internet. Here you can find my blog posts some
-            information about me and some project showcases I have been working on. Since this Blog is
-            written in <a href="https://kit.svelte.dev/" class="text-blue-400 hover:text-blue-300 underline">SvelteKit</a> I can add as many features
-            here as I like and make this space my own. I do my styling with <a
-                href="https://tailwindcss.com/" class="text-blue-400 hover:text-blue-300 underline">TailwindCSS</a> so expect me to get some better styling eventually. Suggestions welcome :)
-        </p>
-        <p />
+<div class="space-y-6">
+    <!-- System Welcome Message -->
+    <div class="terminal-prompt mb-4"></div>
+    <div class="text-neon-green text-lg glow-text">
+        <span class="loading-dots">Establishing connection to ILLUMOS.NODE</span>
+    </div>
+    
+    <div class="ascii-art text-center my-8">
+    ╔══════════════════════════════════════════════════════════════════╗
+    ║                    WELCOME TO THE GRID                          ║
+    ║                                                                  ║
+    ║  "Fear is the mind-killer. Fear is the little-death that        ║
+    ║   brings total obliteration."                                    ║
+    ║                                              - Bene Gesserit    ║
+    ║                                                                  ║
+    ║  CURRENT OPERATOR: TILL "TOASTY" WEGMÜLLER                      ║
+    ║  CLEARANCE LEVEL: SYSTEMS ARCHITECT                             ║
+    ║  SPECIALIZATION: ILLUMOS • RUST • DISTRIBUTED SYSTEMS          ║
+    ╚══════════════════════════════════════════════════════════════════╝
     </div>
 
-    <div class="mt-10 w-full" id="twitch-embed"></div>
+    <!-- Main Introduction -->
+    <div class="space-y-4">
+        <h1 class="text-3xl font-bold glow-text">ACCESS GRANTED: WELCOME TO MY DIGITAL REALM</h1>
+        
+        <div class="terminal-prompt"></div>
+        <p class="text-lg leading-relaxed">
+            Greetings, fellow traveler of the digital cosmos. You've successfully navigated to my personal 
+            <span class="text-neon-cyan">cyber-operations terminal</span>, where I document my explorations 
+            through the vast expanse of <span class="text-neon-green">systems programming</span>, 
+            <span class="text-neon-purple">illumos kernel hacking</span>, and the occasional 
+            <span class="text-neon-orange">space opera musings</span>.
+        </p>
+
+        <p class="leading-relaxed">
+            Like the navigators of the Spacing Guild who fold space-time, I fold code and systems to 
+            bridge the gap between machine and human consciousness. My primary vessel is 
+            <strong class="text-neon-cyan">illumos</strong>, that magnificent Unix descendant, 
+            and my weapons of choice include <strong class="text-neon-green">Rust</strong>, 
+            <strong class="text-neon-blue">Go</strong>, and the ancient art of 
+            <strong class="text-neon-purple">C systems programming</strong>.
+        </p>
+    </div>
+
+    <!-- Current Missions -->
+    <div class="mt-12">
+        <h2 class="text-2xl font-bold mb-6 text-neon-cyan">
+            <span class="terminal-prompt"></span>ACTIVE MISSIONS
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="project-card">
+                <h3 class="text-neon-purple font-bold mb-3">🚀 AURORA OPENCLOUD</h3>
+                <p class="text-sm mb-3">
+                    <span class="text-neon-orange">[CLASSIFICATION: OPEN-SOURCE]</span>
+                </p>
+                <p class="leading-relaxed">
+                    Federated Cloud Orchestrator for illumos - Building the infrastructure for 
+                    tomorrow's distributed computing empire. Like the planetary computers of Dune, 
+                    but actually functional.
+                </p>
+                <div class="mt-4">
+                    <a href="https://github.com/OpenFlowLabs/aurora-opencloud" 
+                       class="text-neon-cyan hover:text-neon-green transition-colors">
+                        → Access Repository
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-neon-purple font-bold mb-3">⚙️ ILLUMOS CORE</h3>
+                <p class="text-sm mb-3">
+                    <span class="text-neon-orange">[CLASSIFICATION: KERNEL-LEVEL]</span>
+                </p>
+                <p class="leading-relaxed">
+                    Contributing to the beating heart of the illumos operating system. 
+                    Where system calls meet cosmic significance and every commit 
+                    ripples through the fabric of computational space-time.
+                </p>
+                <div class="mt-4">
+                    <a href="https://www.illumos.org/" 
+                       class="text-neon-cyan hover:text-neon-green transition-colors">
+                        → Enter the Matrix
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-neon-purple font-bold mb-3">🦀 RUST INTEGRATION</h3>
+                <p class="text-sm mb-3">
+                    <span class="text-neon-orange">[CLASSIFICATION: EXPERIMENTAL]</span>
+                </p>
+                <p class="leading-relaxed">
+                    Bridging the ancient wisdom of C systems programming with the memory-safe 
+                    future that Rust promises. Like teaching the Guild navigators to use 
+                    safer spice alternatives.
+                </p>
+                <div class="mt-4">
+                    <a href="/blog/" 
+                       class="text-neon-cyan hover:text-neon-green transition-colors">
+                        → Mission Logs
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-neon-purple font-bold mb-3">📡 LIVE STREAMS</h3>
+                <p class="text-sm mb-3">
+                    <span class="text-neon-orange">[CLASSIFICATION: BROADCASTING]</span>
+                </p>
+                <p class="leading-relaxed">
+                    Real-time transmissions from the coding frontier. Watch as I battle 
+                    compiler errors, negotiate with kernel modules, and occasionally 
+                    discuss why Dune is the greatest space opera ever conceived.
+                </p>
+                <div class="mt-4">
+                    <a href="https://twitch.tv/Toasterson" 
+                       class="text-neon-cyan hover:text-neon-green transition-colors">
+                        → Join the Stream
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Current Stream Embed -->
+    <div class="mt-12">
+        <h2 class="text-2xl font-bold mb-6 text-neon-cyan">
+            <span class="terminal-prompt"></span>LIVE TRANSMISSION FEED
+        </h2>
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <span class="text-neon-green">●</span>
+                <span class="text-neon-orange ml-2">●</span>
+                <span class="text-neon-blue ml-2">●</span>
+                <span class="ml-4 text-neon-cyan">twitch_feed.exe - Live from the Grid</span>
+            </div>
+            <div class="terminal-content">
+                <div class="w-full" id="twitch-embed"></div>
+                <p class="text-neon-green text-sm mt-4">
+                    <span class="terminal-prompt"></span>Stream status: Monitoring for incoming transmissions...
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Information -->
+    <div class="mt-12 bg-black/50 border border-neon-blue rounded-lg p-6">
+        <h2 class="text-xl font-bold mb-4 text-neon-blue">SYSTEM SPECIFICATIONS</h2>
+        <div class="grid md:grid-cols-3 gap-4 text-sm">
+            <div>
+                <div class="text-neon-green font-bold">PRIMARY OS:</div>
+                <div>illumos/OpenIndiana</div>
+            </div>
+            <div>
+                <div class="text-neon-green font-bold">LANGUAGES:</div>
+                <div>Rust, Go, C, Assembly</div>
+            </div>
+            <div>
+                <div class="text-neon-green font-bold">INTERESTS:</div>
+                <div>Space Opera, Kernel Hacking</div>
+            </div>
+            <div>
+                <div class="text-neon-green font-bold">LOCATION:</div>
+                <div>Europe/Brasil Grid</div>
+            </div>
+            <div>
+                <div class="text-neon-green font-bold">COFFEE LEVEL:</div>
+                <div id="coffee-level">CRITICAL</div>
+            </div>
+            <div>
+                <div class="text-neon-green font-bold">FAVORITE QUOTE:</div>
+                <div>"I must not fear bugs..."</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="mt-12 text-center">
+        <div class="terminal-prompt mb-4"></div>
+        <h2 class="text-2xl font-bold mb-6 text-neon-cyan glow-text">
+            READY TO JOIN THE MISSION?
+        </h2>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="/about/" class="hacker-button">OPERATOR PROFILE</a>
+            <a href="/blog/" class="hacker-button">MISSION LOGS</a>
+            <a href="https://github.com/sponsors/Toasterson" class="hacker-button">FUND OPERATIONS</a>
+        </div>
+        
+        <div class="mt-8 text-neon-orange text-sm">
+            <p>Remember: The code is more what you'd call 'guidelines' than actual rules.</p>
+            <p class="text-xs mt-2 text-neon-purple">
+                "He who controls the kernel controls the universe." - Baron Vladimir Harkonnen (probably)
+            </p>
+        </div>
+    </div>
 </div>
 
 <script>
+    // Initialize Twitch embed if available
     if (typeof Twitch !== 'undefined') {
         new Twitch.Embed('twitch-embed', {
-            width: 1280,
-            height: 720,
-            channel: 'Toasterson'
+            width: '100%',
+            height: 400,
+            channel: 'Toasterson',
+            theme: 'dark',
+            muted: true
         });
     }
+    
+    // Dynamic coffee level
+    const coffeeStates = ['CRITICAL', 'LOW', 'NOMINAL', 'HIGH', 'OVERDRIVE'];
+    let coffeeIndex = 0;
+    
+    setInterval(() => {
+        const coffeeElement = document.getElementById('coffee-level');
+        if (coffeeElement) {
+            coffeeElement.textContent = coffeeStates[coffeeIndex];
+            coffeeIndex = (coffeeIndex + 1) % coffeeStates.length;
+        }
+    }, 3000);
 </script>

@@ -27,8 +27,8 @@ site.use(feed({
   output: "/feed.xml",
   query: "type=post",
   info: {
-    title: "Toasty's Personal Blog",
-    description: "Personal blog of Till Wegmüller (@toasterson)",
+    title: "T0@STY'S TERMINAL FEED [ILLUMOS.NODE]",
+    description: "Mission logs and technical transmissions from the digital frontier by Till Wegmüller (@toasterson) - Illumos Systems Architect & Space Opera Enthusiast",
   },
   items: {
     title: "=title",
@@ -39,5 +39,7 @@ site.use(feed({
 
 // Copy static assets
 site.copy("favicon.png");
+site.copy("js");
+site.copy("robots.txt");
 
 export default site;

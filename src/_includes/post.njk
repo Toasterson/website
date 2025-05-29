@@ -2,34 +2,276 @@
 layout: layout.njk
 ---
 
-<article class="prose prose-lg max-w-none">
-    <header class="mb-8">
-        <h1 class="text-4xl font-bold text-gray-100 mb-4">{{ title }}</h1>
-        <div class="flex items-center text-gray-400 text-sm space-x-4">
-            <time datetime="{{ date | date('DATETIME') }}">
-                {{ date | date("HUMAN_DATE") }}
-            </time>
-            {% if readingInfo %}
-            <span>{{ readingInfo.minutes }} min read</span>
+<div class="space-y-6">
+    <!-- Mission Report Header -->
+    <div class="terminal-window mb-8">
+        <div class="terminal-header">
+            <span class="text-neon-green">●</span>
+            <span class="text-neon-orange ml-2">●</span>
+            <span class="text-neon-blue ml-2">●</span>
+            <span class="ml-4 text-neon-cyan">mission_report.log - {{ title }}</span>
+        </div>
+        <div class="terminal-content">
+            <div class="ascii-art text-xs mb-4">
+╔══════════════════════════════════════════════════════════════════╗
+║                      MISSION REPORT HEADER                      ║
+║  OPERATOR: TOASTY@ILLUMOS.NODE                                  ║
+║  CLASSIFICATION: PUBLIC DISTRIBUTION                            ║
+║  STATUS: OPERATIONAL LOG - ARCHIVED                             ║
+╚══════════════════════════════════════════════════════════════════╝
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6 text-sm">
+                <div>
+                    <div class="text-neon-green font-bold">MISSION DESIGNATION:</div>
+                    <div class="text-neon-cyan">{{ title }}</div>
+                </div>
+                <div>
+                    <div class="text-neon-green font-bold">STARDATE:</div>
+                    <div class="text-neon-orange">{{ date | date("yyyy.MM.dd") }} • {{ date | date("HH:mm") }} UTC</div>
+                </div>
+                <div>
+                    <div class="text-neon-green font-bold">ESTIMATED READ TIME:</div>
+                    <div class="text-neon-purple">{{ readingInfo.minutes or '5' }} minutes</div>
+                </div>
+                <div>
+                    <div class="text-neon-green font-bold">SECTOR:</div>
+                    <div class="text-neon-blue">Technical Operations</div>
+                </div>
+            </div>
+            
+            {% if summary %}
+            <div class="mt-6 p-4 bg-black/50 border border-neon-cyan rounded">
+                <div class="text-neon-cyan font-bold mb-2">[MISSION SUMMARY]</div>
+                <div class="text-lg text-gray-300">{{ summary }}</div>
+            </div>
             {% endif %}
         </div>
-        {% if summary %}
-        <p class="text-xl text-gray-300 mt-4 font-medium">{{ summary }}</p>
-        {% endif %}
-    </header>
-
-    <div class="prose prose-lg max-w-none">
-        {{ content | safe }}
     </div>
 
-    <footer class="mt-12 pt-8 border-t border-gray-700">
-        <div class="flex justify-between items-center">
-            <a href="/blog/" class="text-blue-400 hover:text-blue-300 font-medium">
-                ← Back to all posts
-            </a>
-            <div class="text-sm text-gray-400">
-                Published {{ date | date("HUMAN_DATE") }}
+    <!-- Mission Report Content -->
+    <article class="prose prose-lg max-w-none">
+        <div class="terminal-prompt mb-4"></div>
+        <h1 class="text-4xl font-bold text-neon-green glow-text mb-8 border-b-2 border-neon-green pb-4">
+            [MISSION LOG] {{ title }}
+        </h1>
+        
+        <div class="prose-content">
+            {{ content | safe }}
+        </div>
+    </article>
+
+    <!-- Mission Report Footer -->
+    <div class="mt-12">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <span class="text-neon-green">●</span>
+                <span class="text-neon-orange ml-2">●</span>
+                <span class="text-neon-blue ml-2">●</span>
+                <span class="ml-4 text-neon-cyan">mission_complete.log</span>
+            </div>
+            <div class="terminal-content">
+                <div class="ascii-art text-xs mb-4">
+┌─────────────────────────────────────────────────────────────┐
+│  MISSION STATUS: COMPLETED                                  │
+│  DATA INTEGRITY: VERIFIED                                   │
+│  ARCHIVE STATUS: STORED                                     │
+└─────────────────────────────────────────────────────────────┘
+                </div>
+                
+                <div class="flex flex-wrap justify-between items-center gap-4">
+                    <div>
+                        <a href="/blog/" class="nav-link">
+                            ← Return to Mission Archive
+                        </a>
+                    </div>
+                    <div class="text-neon-orange text-sm">
+                        Mission logged: {{ date | date("HUMAN_DATE") }}
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="https://github.com/toasterson" class="nav-link" target="_blank">
+                            Share via GitHub
+                        </a>
+                        <a href="https://chaos.social/@Toasterson" class="nav-link" target="_blank">
+                            Broadcast to Network
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <div class="terminal-prompt"></div>
+                    <span class="text-neon-cyan text-sm">End of transmission. May your code compile and your deployments be swift.</span>
+                </div>
             </div>
         </div>
-    </footer>
-</article>
+    </div>
+</div>
+
+<style>
+    .prose-content h1, .prose-content h2, .prose-content h3, 
+    .prose-content h4, .prose-content h5, .prose-content h6 {
+        color: var(--neon-cyan);
+        text-shadow: 0 0 10px var(--neon-cyan);
+        border-bottom: 1px solid var(--neon-cyan);
+        padding-bottom: 0.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .prose-content h2 {
+        color: var(--neon-green);
+        text-shadow: 0 0 10px var(--neon-green);
+        border-bottom-color: var(--neon-green);
+    }
+    
+    .prose-content p {
+        color: #d1d5db;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+    
+    .prose-content a {
+        color: var(--neon-cyan);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: all 0.3s ease;
+    }
+    
+    .prose-content a:hover {
+        color: var(--neon-green);
+        border-bottom-color: var(--neon-green);
+        text-shadow: 0 0 8px var(--neon-green);
+    }
+    
+    .prose-content ul, .prose-content ol {
+        color: #d1d5db;
+        margin-left: 1.5rem;
+    }
+    
+    .prose-content li {
+        margin-bottom: 0.5rem;
+        position: relative;
+    }
+    
+    .prose-content li::before {
+        content: '→';
+        color: var(--neon-green);
+        position: absolute;
+        left: -1.5rem;
+    }
+    
+    .prose-content blockquote {
+        border-left: 4px solid var(--neon-purple);
+        background: rgba(157, 78, 221, 0.1);
+        padding: 1rem;
+        border-radius: 0 8px 8px 0;
+        font-style: italic;
+        color: #c4b5fd;
+        margin: 2rem 0;
+        position: relative;
+    }
+    
+    .prose-content blockquote::before {
+        content: '"';
+        font-size: 3rem;
+        color: var(--neon-purple);
+        position: absolute;
+        left: 0.5rem;
+        top: -0.5rem;
+        opacity: 0.5;
+    }
+    
+    .prose-content code {
+        background: rgba(0, 0, 0, 0.8) !important;
+        color: var(--neon-cyan) !important;
+        border: 1px solid rgba(0, 255, 255, 0.3);
+        border-radius: 4px;
+        padding: 2px 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9em;
+    }
+    
+    .prose-content pre {
+        background: rgba(0, 0, 0, 0.9) !important;
+        border: 2px solid var(--neon-blue);
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(77, 157, 224, 0.3);
+        padding: 1.5rem;
+        overflow-x: auto;
+        margin: 2rem 0;
+        position: relative;
+    }
+    
+    .prose-content pre::before {
+        content: '[CODE BLOCK]';
+        position: absolute;
+        top: 0.5rem;
+        right: 1rem;
+        font-size: 0.7rem;
+        color: var(--neon-blue);
+        opacity: 0.7;
+    }
+    
+    .prose-content pre code {
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        color: var(--neon-green) !important;
+        font-size: 0.9rem;
+    }
+    
+    .prose-content strong {
+        color: var(--neon-orange);
+        font-weight: 600;
+        text-shadow: 0 0 5px var(--neon-orange);
+    }
+    
+    .prose-content em {
+        color: var(--neon-purple);
+        font-style: italic;
+    }
+    
+    .prose-content img {
+        border-radius: 8px;
+        border: 2px solid var(--neon-blue);
+        box-shadow: 0 0 20px rgba(77, 157, 224, 0.3);
+        margin: 2rem auto;
+        max-width: 100%;
+    }
+    
+    .prose-content hr {
+        border: none;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+        margin: 3rem 0;
+    }
+    
+    .prose-content table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid var(--neon-blue);
+        background: rgba(0, 0, 0, 0.7);
+        margin: 2rem 0;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .prose-content th {
+        background: rgba(0, 255, 65, 0.1);
+        color: var(--neon-green);
+        padding: 1rem;
+        border: 1px solid var(--neon-blue);
+        font-weight: 600;
+        text-align: left;
+    }
+    
+    .prose-content td {
+        padding: 1rem;
+        border: 1px solid var(--neon-blue);
+        color: #d1d5db;
+    }
+    
+    .prose-content td:hover {
+        background: rgba(0, 255, 255, 0.05);
+    }
+</style>

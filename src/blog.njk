@@ -1,26 +1,129 @@
 ---
 layout: layout.njk
-title: Blog
-description: Blog posts by Till Wegmüller (@toasterson)
+title: Mission Logs - Archive Access
+description: Operational reports and technical logs from the digital frontier by Till Wegmüller (@toasterson)
 ---
 
-<ol class="border-l border-gray-700">
-    {% for post in search.pages("type=post", "date=desc") %}
-    <li>
-        <div class="flex flex-start items-center pt-3">
-            <div class="bg-gray-600 w-2 h-2 rounded-full -ml-1 mr-3"></div>
-            <p class="text-gray-400 text-sm">
-                {{ post.date | date("HUMAN_DATE") }}
-            </p>
-        </div>
-        <a href="{{ post.url }}">
-            <div class="mt-0.5 ml-4 mb-6">
-                <h4 class="text-gray-200 font-semibold text-xl mb-1.5">{{ post.title }}</h4>
-                {% if post.summary %}
-                <p class="text-gray-400 mb-3">{{ post.summary }}</p>
-                {% endif %}
+<div class="space-y-6">
+    <!-- Mission Logs Header -->
+    <div class="terminal-prompt mb-4"></div>
+    <h1 class="text-3xl font-bold glow-text text-neon-cyan">MISSION LOGS ARCHIVE</h1>
+    
+    <div class="ascii-art mb-8">
+╔══════════════════════════════════════════════════════════════════╗
+║  CLASSIFIED OPERATIONAL REPORTS - ILLUMOS SECTOR               ║
+║  ACCESS LEVEL: PUBLIC DISTRIBUTION                              ║
+║  OPERATOR: TOASTY@ILLUMOS.NODE                                  ║
+╚══════════════════════════════════════════════════════════════════╝
+    </div>
+
+    <div class="terminal-prompt"></div>
+    <p class="text-lg text-neon-green mb-8">
+        Welcome to the mission archives. These logs document my ongoing operations in the vast expanse 
+        of systems programming, kernel development, and the occasional philosophical musing about 
+        the nature of code and consciousness.
+    </p>
+
+    <!-- Mission Log Entries -->
+    <div class="space-y-6">
+        {% for post in search.pages("type=post", "date=desc") %}
+        <div class="blog-post-item">
+            <div class="flex items-start justify-between mb-4">
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-neon-green rounded-full mr-4 glow-text"></div>
+                    <div>
+                        <div class="blog-post-date">
+                            STARDATE: {{ post.date | date("yyyy.MM.dd") }} • 
+                            <span class="text-neon-cyan">{{ post.date | date("HH:mm") }} UTC</span>
+                        </div>
+                        <div class="text-xs text-neon-purple mt-1">
+                            [CLASSIFICATION: PUBLIC] • [STATUS: ARCHIVED] • [SECTOR: TECHNICAL]
+                        </div>
+                    </div>
+                </div>
+                <div class="text-neon-orange text-xs">
+                    {{ post.readingInfo.minutes }} MIN READ
+                </div>
             </div>
-        </a>
-    </li>
-    {% endfor %}
-</ol>
+            
+            <a href="{{ post.url }}" class="block group">
+                <h2 class="blog-post-title group-hover:text-neon-green transition-colors mb-3">
+                    <span class="text-neon-cyan">[MISSION LOG]</span> {{ post.title }}
+                </h2>
+                
+                {% if post.summary %}
+                <div class="blog-post-summary">
+                    <div class="terminal-prompt text-sm"></div>
+                    {{ post.summary }}
+                </div>
+                {% endif %}
+                
+                <div class="mt-4 text-neon-cyan text-sm group-hover:text-neon-green transition-colors">
+                    → Access full mission report
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Archive Footer -->
+    <div class="mt-12 text-center border-t border-neon-blue pt-8">
+        <div class="ascii-art text-sm mb-4">
+┌─────────────────────────────────────────────────────────────┐
+│  "The beginning is a very delicate time."                  │
+│                                   - Princess Irulan       │
+│                                                             │
+│  Every mission log represents a moment of discovery,       │
+│  a battle fought in the digital realm, or a lesson        │
+│  learned in the eternal quest for better systems.         │
+└─────────────────────────────────────────────────────────────┘
+        </div>
+        
+        <div class="text-neon-green text-sm">
+            <div class="terminal-prompt"></div>
+            <span class="loading-dots">Archive status: All systems operational</span>
+        </div>
+        
+        <div class="mt-6">
+            <a href="/feed.xml" class="hacker-button">
+                SUBSCRIBE TO TRANSMISSION FEED
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Add some dynamic effects to the mission logs
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animate status indicators
+        const statusDots = document.querySelectorAll('.bg-neon-green');
+        let dotIndex = 0;
+        
+        setInterval(() => {
+            statusDots.forEach((dot, index) => {
+                if (index === dotIndex) {
+                    dot.style.boxShadow = '0 0 15px var(--neon-green)';
+                    dot.style.transform = 'scale(1.2)';
+                } else {
+                    dot.style.boxShadow = '0 0 5px var(--neon-green)';
+                    dot.style.transform = 'scale(1)';
+                }
+            });
+            dotIndex = (dotIndex + 1) % statusDots.length;
+        }, 2000);
+        
+        // Add hover effects to mission entries
+        const logEntries = document.querySelectorAll('.blog-post-item');
+        logEntries.forEach(entry => {
+            entry.addEventListener('mouseenter', function() {
+                this.style.borderColor = 'var(--neon-cyan)';
+                this.style.transform = 'translateX(5px)';
+            });
+            
+            entry.addEventListener('mouseleave', function() {
+                this.style.borderColor = 'var(--neon-blue)';
+                this.style.transform = 'translateX(0)';
+            });
+        });
+    });
+</script>
