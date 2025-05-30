@@ -62,6 +62,8 @@ spec:
               mountPath: /var/cache/nginx
             - name: var-run
               mountPath: /var/run
+            - name: var-lib-nginx
+              mountPath: /var/lib/nginx
       volumes:
         - name: nginx-config
           configMap:
@@ -71,6 +73,8 @@ spec:
         - name: var-cache-nginx
           emptyDir: {}
         - name: var-run
+          emptyDir: {}
+        - name: var-lib-nginx
           emptyDir: {}
       {{- with .Values.nodeSelector }}
       nodeSelector:
