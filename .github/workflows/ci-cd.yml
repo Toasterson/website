@@ -178,7 +178,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ${{ steps.lowercase-security.outputs.lowercase-image }}:${{ github.ref == 'refs/heads/main' && 'lume' || format('{0}-lume', github.ref_name) }}
+          image-ref: ${{ steps.lowercase-security.outputs.lowercase-image }}@${{ needs.docker.outputs.image-digest }}
           format: "sarif"
           output: "trivy-results.sarif"
 
