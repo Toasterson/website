@@ -1,7 +1,7 @@
 # Toasty's Personal Website
 
 This is the personal website and blog of Till Wegmüller (@toasterson), built with [Lume](https://lume.land/) - a static site generator for Deno.
-
+ 
 ## Features
 
 - Static site generation with Lume
