@@ -85,7 +85,7 @@ jobs:
             type=ref,event=pr,suffix=-lume
             type=semver,pattern={{version}}-lume
             type=semver,pattern={{major}}.{{minor}}-lume
-            type=sha,prefix={{branch}}-lume-
+            type=sha,prefix={{branch}}-lume-,enable={{is_branch}}
             type=raw,value=lume,enable={{is_default_branch}}
 
       - name: Build and push Docker image
