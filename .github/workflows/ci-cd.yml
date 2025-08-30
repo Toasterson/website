@@ -85,8 +85,8 @@ jobs:
             type=ref,event=pr,suffix=-lume
             type=semver,pattern={{version}}-lume
             type=semver,pattern={{major}}.{{minor}}-lume
-            type=sha,prefix={{branch}}-lume-,enable={{is_branch}}
-            type=raw,value=lume,enable={{is_default_branch}}
+            type=sha,prefix={{branch}}-lume-,enable=${{ github.ref_type == 'branch' }}
+            type=raw,value=lume,enable=${{ github.ref == 'refs/heads/main' }}
 
       - name: Build and push Docker image
         id: build
