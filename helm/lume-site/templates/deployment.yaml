@@ -33,6 +33,9 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ include "lume-site.imageRepository" . }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+            - "-g"
+            - "pid /var/run/nginx.pid;"
           ports:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
