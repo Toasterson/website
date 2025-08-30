@@ -33,9 +33,6 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ include "lume-site.imageRepository" . }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          args:
-            - "-g"
-            - "pid /var/run/nginx.pid;"
           ports:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
@@ -64,7 +61,7 @@ spec:
             - name: var-cache-nginx
               mountPath: /var/cache/nginx
             - name: var-run
-              mountPath: /var/run
+              mountPath: /run
             - name: var-lib-nginx
               mountPath: /var/lib/nginx
       volumes:
