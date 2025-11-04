@@ -16,7 +16,7 @@ layout: post.njk
 ---
 
 # Prefix
-In quite a few cases when I have a few specific questions about a topic, I find that a very specific guide has not been made by anyone for it. Like in this case where I wondered. So how actaually could you make a virtiofs driver for illumos in Rust. With Gemini DeepResearch mode I often found it made me such articles and that I enjoyed reading them. And since I enjoyed the read I figured other might aswell. Thus without further ado, here is geminis research report.
+In quite a few cases when I have a few specific questions about a topic, I find that a very specific guide has not been made by anyone for it. Like in this case where I wondered. So how actaually could you make a virtiofs driver for illumos in Rust. With Gemini DeepResearch mode I often found it made me such articles and that I enjoyed reading them. And since I enjoyed the read I figured other might aswell.
 
 # **An Architectural and Implementation Blueprint for a virtiofs Kernel Driver in Rust on illumos**
 
