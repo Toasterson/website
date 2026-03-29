@@ -198,43 +198,16 @@ jobs:
         with:
           sarif_file: "trivy-results.sarif"
 
-  deploy-staging:
-    needs: [docker, helm]
+  notify-keel:
+    needs: docker
     runs-on: ubuntu-latest
-    environment: staging
-    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup kubectl
-        uses: azure/setup-kubectl@v4
-
-      - name: Deploy to staging
-        run: |
-          echo "Deploying to staging environment..."
-          # Add your staging deployment commands here
-          # This could involve updating a GitOps repository or direct kubectl commands
-
-  deploy-production:
-    needs: [docker, helm, security-scan]
-    runs-on: ubuntu-latest
-    environment: production
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup kubectl
-        uses: azure/setup-kubectl@v4
-
-      - name: Deploy to production
+      - name: Notify Keel of new image
         run: |
-          echo "Deploying to production environment..."
-          # Add your production deployment commands here
-          # This could involve updating a GitOps repository or direct kubectl commands
+          curl -sfS -X POST https://keel.wegmueller.it/v1/webhooks/native \
+            -H "Content-Type: application/json" \
+            -d '{"name": "ghcr.io/toasterson/website", "tag": "lume"}'
 
   notify:
     needs: [docker, helm]
