@@ -156,5 +156,5 @@ k8s/
 *.yaml
 *.yml
 
-# Build artifacts that we don't need in Docker
-_site/
+# Build artifacts — _site is needed, it contains the pre-built site
+# _site/
