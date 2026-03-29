@@ -3,208 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if title %}{{ title }} - {% endif %}T0@STY'S TERMINAL [OPENINDIANA.NODE]</title>
-    <meta name="description" content="{{ description or 'Personal cyber-operations terminal of Till Wegmüller (@toasterson) - OpenIndiana Systems Architect & Space Opera Enthusiast' }}">
+    <title>{% if title %}{{ title }} — {% endif %}Toasty's Blog // Toasty's Terminal</title>
+    <meta name="description" content="{{ description or 'Systems engineering, Rust development, and Unix infrastructure by Till Wegmüller (@toasterson)' }}">
 
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="icon" type="image/png" href="/favicon.png">
-
-    <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="Toasty's Terminal Feed" href="/feed.xml">
 
     {% if twitch %}
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
     {% endif %}
 
-    <!-- Terminal Effects JavaScript -->
-    <script src="/js/terminal-effects.js"></script>
-
-    <!-- Matrix rain effect script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-
-            canvas.style.position = 'fixed';
-            canvas.style.top = '0';
-            canvas.style.left = '0';
-            canvas.style.width = '100%';
-            canvas.style.height = '100%';
-            canvas.style.pointerEvents = 'none';
-            canvas.style.zIndex = '-1';
-            canvas.style.opacity = '0.1';
-
-            document.body.appendChild(canvas);
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-
-            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-            const fontSize = 14;
-            const columns = canvas.width / fontSize;
-            const drops = Array(Math.floor(columns)).fill(1);
-
-            function draw() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                ctx.fillStyle = '#00ff41';
-                ctx.font = fontSize + 'px monospace';
-
-                for (let i = 0; i < drops.length; i++) {
-                    const text = chars[Math.floor(Math.random() * chars.length)];
-                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                        drops[i] = 0;
-                    }
-                    drops[i]++;
-                }
-            }
-
-            setInterval(draw, 50);
-        });
-    </script>
+    <script src="/js/terminal-effects.js" defer></script>
 </head>
-<body class="scanlines">
-    <div class="min-h-screen">
-        <!-- Terminal Header -->
-        <div class="nav-container">
-            <div class="container mx-auto px-4 py-4">
-                <div class="flex items-center justify-between">
-                    <div class="ascii-art">
-╔══════════════════════════════════════════════════════════════╗
-║ ████████╗ ██████╗  █████╗ ███████╗████████╗██╗   ██╗███████╗ ║
-║ ╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝╚══██╔══╝╚██╗ ██╔╝██╔════╝ ║
-║    ██║   ██║   ██║███████║███████╗   ██║    ╚████╔╝ ███████╗ ║
-║    ██║   ██║   ██║██╔══██║╚════██║   ██║     ╚██╔╝  ╚════██║ ║
-║    ██║   ╚██████╔╝██║  ██║███████║   ██║      ██║   ███████║ ║
-║    ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝   ╚═╝      ╚═╝   ╚══════╝ ║
-╚══════════════════════════════════════════════════════════════╝
-                    </div>
-                    <div class="text-right">
-                        <div class="text-xs text-neon-cyan mb-1">SYSTEM STATUS: ONLINE</div>
-                        <div class="text-xs text-neon-green" id="current-time"></div>
-                        <div class="text-xs text-neon-orange">NODE: OPENINDIANA.CORE</div>
-                        <div class="grid grid-cols-2 gap-2 mt-2 text-xs">
-                            <div>CPU: <span id="cpu-usage" class="text-neon-green">42%</span></div>
-                            <div>MEM: <span id="memory-usage" class="text-neon-cyan">67%</span></div>
-                            <div>PROC: <span id="active-processes" class="text-neon-purple">187</span></div>
-                            <div>NET: <span class="text-neon-blue">STABLE</span></div>
-                        </div>
-                    </div>
-                </div>
+<body class="min-h-screen flex flex-col">
 
-                <!-- Navigation Terminal -->
-                <div class="mt-6 terminal-window">
-                    <div class="terminal-header">
-                        <span class="text-neon-green">●</span>
-                        <span class="text-neon-orange ml-2">●</span>
-                        <span class="text-neon-blue ml-2">●</span>
-                        <span class="ml-4 text-neon-cyan">navigation.exe - Active Session</span>
-                    </div>
-                    <div class="terminal-content">
-                        <div class="flex flex-wrap gap-4 items-center">
-                            <span class="terminal-prompt"></span>
-                            <nav class="flex flex-wrap gap-6">
-                                <a href="/" class="nav-link">./home</a>
-                                <a href="/about/" class="nav-link">./about</a>
-                                <a href="/blog/" class="nav-link">./mission_logs</a>
-                                <a href="https://github.com/toasterson" class="nav-link" target="_blank">./github_ops</a>
-                                <a href="https://chaos.social/@Toasterson" class="nav-link" target="_blank">./comms</a>
-                            </nav>
-                        </div>
-                    </div>
+    <!-- ═══ HUD Navigation Bar ═══ -->
+    <header class="nav-bar sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+
+            <!-- Left: System ID -->
+            <a href="/" class="flex items-center gap-3 group">
+                <span class="status-dot"></span>
+                <span class="font-grotesk font-bold text-on-surface text-sm tracking-wider uppercase group-hover:text-primary transition-colors">
+                    Toasty's Blog
+                </span>
+            </a>
+
+            <!-- Center: Navigation -->
+            <nav class="hidden md:flex items-center gap-1">
+                <a href="/" class="nav-link">Terminal</a>
+                <a href="/blog/" class="nav-link">Mission_Logs</a>
+                <a href="/about/" class="nav-link">Uplink</a>
+                <a href="https://github.com/toasterson" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://chaos.social/@Toasterson" class="nav-link" target="_blank" rel="noopener">Comms</a>
+            </nav>
+
+            <!-- Right: System Status -->
+            <div class="hidden lg:flex items-center gap-4 label-mono text-on-surface-variant">
+                <span>CPU <span id="cpu-usage" class="text-primary">12%</span></span>
+                <span>MEM <span id="mem-usage" class="text-secondary">4.8GB</span></span>
+                <span id="hud-clock" class="text-on-surface-variant"></span>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-toggle" class="md:hidden text-on-surface-variant p-2" aria-label="Toggle navigation">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="3" y1="5" x2="17" y2="5"/>
+                    <line x1="3" y1="10" x2="17" y2="10"/>
+                    <line x1="3" y1="15" x2="17" y2="15"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav id="mobile-menu" class="md:hidden hidden px-6 pb-4">
+            <div class="flex flex-col gap-1 bg-surface-low rounded-hud p-3">
+                <a href="/" class="nav-link">Terminal</a>
+                <a href="/blog/" class="nav-link">Mission_Logs</a>
+                <a href="/about/" class="nav-link">Uplink</a>
+                <a href="https://github.com/toasterson" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://chaos.social/@Toasterson" class="nav-link" target="_blank" rel="noopener">Comms</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ═══ Main Content ═══ -->
+    <main class="flex-1 max-w-4xl mx-auto w-full px-6 py-12">
+        {{ content | safe }}
+    </main>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="site-footer">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="label-mono text-on-surface-variant">
+                    &copy; {{ "now" | date("yyyy") }} Till Wegm&uuml;ller &middot; Built with cheekyness and pipes
+                </div>
+                <div class="flex items-center gap-6 label-mono">
+                    <span class="text-primary">SYS: ONLINE</span>
+                    <span class="text-on-surface-variant">LOC: Sol-3/Europe</span>
+                    <a href="/feed.xml" class="text-secondary hover:text-primary transition-colors">RSS</a>
                 </div>
             </div>
         </div>
-
-        <!-- Main Content Terminal -->
-        <main class="container mx-auto px-4 py-8">
-            <div class="max-w-4xl mx-auto">
-                <div class="terminal-window">
-                    <div class="terminal-header">
-                        <span class="text-neon-green">●</span>
-                        <span class="text-neon-orange ml-2">●</span>
-                        <span class="text-neon-blue ml-2">●</span>
-                        <span class="ml-4 text-neon-cyan">main_console.sh - {{ title or 'Home Directory' }}</span>
-                    </div>
-                    <div class="terminal-content">
-                        {{ content | safe }}
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <!-- Footer Terminal -->
-        <footer class="footer">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-4 text-neon-cyan">
-                    <div class="text-sm">Building reliable systems with Unix principles</div>
-                </div>
-                <div class="text-neon-cyan text-sm">
-                    <p>© 2025 Till Wegmüller • Powered by OpenIndiana & Determination</p>
-                    <p class="mt-2">
-                        <span class="text-neon-green">[STATUS]</span> All systems operational •
-                        <span class="text-neon-orange">[UPTIME]</span> <span id="uptime">∞</span> •
-                        <span class="text-neon-purple">[LOCATION]</span> Sol-3/Europe
-                    </p>
-                </div>
-            </div>
-        </footer>
-    </div>
+    </footer>
 
     <script>
-        // Real-time clock
-        function updateTime() {
-            const now = new Date();
-            const timeString = now.toISOString().replace('T', ' ').substring(0, 19);
-            const timeElement = document.getElementById('current-time');
-            if (timeElement) {
-                timeElement.textContent = `STARDATE: ${timeString}`;
+        // HUD Clock
+        function updateClock() {
+            const el = document.getElementById('hud-clock');
+            if (el) {
+                const now = new Date();
+                el.textContent = now.toISOString().slice(0, 19).replace('T', ' ');
             }
         }
+        updateClock();
+        setInterval(updateClock, 1000);
 
-        updateTime();
-        setInterval(updateTime, 1000);
-
-        // Simulate uptime
-        let uptime = 0;
-        function updateUptime() {
-            uptime++;
-            const hours = Math.floor(uptime / 3600);
-            const minutes = Math.floor((uptime % 3600) / 60);
-            const seconds = uptime % 60;
-            const uptimeElement = document.getElementById('uptime');
-            if (uptimeElement) {
-                uptimeElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            }
+        // Mobile menu
+        const toggle = document.getElementById('mobile-menu-toggle');
+        const menu = document.getElementById('mobile-menu');
+        if (toggle && menu) {
+            toggle.addEventListener('click', () => menu.classList.toggle('hidden'));
         }
-
-        setInterval(updateUptime, 1000);
-
-        // Terminal typing effect for prompts
-        document.addEventListener('DOMContentLoaded', function() {
-            const prompts = document.querySelectorAll('.terminal-prompt');
-            prompts.forEach(prompt => {
-                prompt.style.animation = 'blink 1s infinite';
-            });
-        });
-
-        // Add CSS for blinking cursor
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes blink {
-                0%, 50% { opacity: 1; }
-                51%, 100% { opacity: 0.3; }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>

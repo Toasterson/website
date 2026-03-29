@@ -1,190 +1,120 @@
 ---
 layout: layout.njk
 title: System Access Granted
-description: Personal cyber-operations terminal of Till Wegmüller (@toasterson) - OpenIndiana Dev & Space Opera Enjoyer
+description: Systems engineering, Rust development, and Unix infrastructure by Till Wegmüller (@toasterson)
 twitch: true
 ---
 
-<div class="space-y-6">
-    <!-- System Welcome Message -->
-    <div class="terminal-prompt mb-4"></div>
-    <div class="text-neon-green text-lg">
-        <span class="loading-dots">Establishing connection to OPENINDIANA.NODE</span>
-    </div>
+<div class="space-y-16 animate-in">
 
-    <div class="ascii-art text-center my-8">
-    ╔══════════════════════════════════════════════════════════════════╗
-    ║                    WELCOME TO THE GRID                           ║
-    ║                                                                  ║
-    ║  CURRENT OPERATOR: TILL "TOASTY" WEGMÜLLER                       ║
-    ║  CLEARANCE LEVEL: SYSTEMS ENGINEER                               ║
-    ║  SPECIALIZATION: OPENINDIANA • RUST • VIRTUALIZATION             ║
-    ╚══════════════════════════════════════════════════════════════════╝
-    </div>
-
-    <!-- Main Introduction -->
-    <div class="space-y-4">
-        <h1 class="text-3xl font-bold glow-text">ACCESS GRANTED: WELCOME TO MY DIGITAL WORKSPACE</h1>
-
-        <div class="terminal-prompt"></div>
-        <p class="text-lg leading-relaxed">
-            Welcome to my personal workspace and technical blog. I'm an independent systems engineer
-            specializing in <span class="text-neon-cyan">OpenIndiana distribution development</span>,
-            <span class="text-neon-green">Rust programming</span>, and
-            <span class="text-neon-purple">virtualization technologies</span>.
+    <!-- Hero Section -->
+    <section class="space-y-6">
+        <div class="label-mono text-primary tracking-widest">OPERATOR ONLINE</div>
+        <h1 class="text-4xl md:text-5xl font-grotesk font-bold text-on-surface text-bloom leading-tight">
+            Welcome to my<br>Digital Workspace
+        </h1>
+        <p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+            I'm an independent systems engineer specializing in
+            <span class="text-primary">OpenIndiana distribution development</span>,
+            <span class="text-secondary">Rust programming</span>, and
+            <span class="text-tertiary">virtualization technologies</span>.
         </p>
+        <div class="flex flex-wrap gap-3 pt-2">
+            <a href="/blog/" class="btn-primary">Mission Logs</a>
+            <a href="/about/" class="btn-secondary">Operator Profile</a>
+            <a href="https://github.com/sponsors/Toasterson" class="btn-secondary">Fund Operations</a>
+        </div>
+    </section>
 
-        <p class="leading-relaxed">
-            My primary platform is <strong class="text-neon-cyan">OpenIndiana</strong>,
-            and I develop primarily in <strong class="text-neon-green">Rust</strong> while working on
-            <strong class="text-neon-purple">distribution packaging and system administration</strong>.
-        </p>
-    </div>
+    <!-- Active Missions -->
+    <section class="space-y-6">
+        <h2 class="headline text-secondary text-bloom-secondary">Active Missions</h2>
 
-    <!-- Current Projects -->
-    <div class="mt-12">
-        <h2 class="text-2xl font-bold mb-6 text-neon-cyan">
-            <span class="terminal-prompt"></span>ACTIVE MISSIONS
-        </h2>
-
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="project-card">
-                <h3 class="text-neon-purple font-bold mb-3">🏠🔧 HOMELAB</h3>
-                <p class="text-sm mb-3">
-                    <span class="text-neon-orange">[CLASSIFICATION: OVERENGINEERING]</span>
-                </p>
-                <p class="leading-relaxed">
-                    Building out my Homelab with the a huge complicated setup just so I can show it off.
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="data-plate space-y-3">
+                <div class="label-mono text-tertiary">OVERENGINEERING</div>
+                <h3 class="text-lg font-grotesk font-semibold text-on-surface">Homelab</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">
+                    Building out my Homelab with a huge complicated setup just so I can show it off.
                     Built with Kubernetes, Cilium, and many other tools.
                 </p>
-                <div class="mt-4">
-                    <a href="/blog/"
-                       class="text-neon-cyan hover:text-neon-green transition-colors">
-                        → Mission Logs
-                    </a>
-                </div>
+                <a href="/blog/" class="btn-tertiary">View logs &rarr;</a>
             </div>
 
-            <div class="project-card">
-                <h3 class="text-neon-purple font-bold mb-3">⚙️ OPENINDIANA</h3>
-                <p class="text-sm mb-3">
-                    <span class="text-neon-orange">[CLASSIFICATION: DISTRIBUTION]</span>
-                </p>
-                <p class="leading-relaxed">
+            <div class="data-plate space-y-3">
+                <div class="label-mono text-tertiary">DISTRIBUTION</div>
+                <h3 class="text-lg font-grotesk font-semibold text-on-surface">OpenIndiana</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">
                     Contributing to the OpenIndiana distribution through package maintenance,
                     system integration, and helping users transition to modern Unix environments.
                 </p>
-                <div class="mt-4">
-                    <a href="https://www.openindiana.org/"
-                       class="text-neon-cyan hover:text-neon-green transition-colors">
-                        → Enter the Matrix
-                    </a>
-                </div>
+                <a href="https://www.openindiana.org/" class="btn-tertiary" target="_blank" rel="noopener">Explore &rarr;</a>
             </div>
 
-            <div class="project-card">
-                <h3 class="text-neon-purple font-bold mb-3">🦀 RUST DEVELOPMENT</h3>
-                <p class="text-sm mb-3">
-                    <span class="text-neon-orange">[CLASSIFICATION: EXPERIMENTAL]</span>
-                </p>
-                <p class="leading-relaxed">
+            <div class="data-plate space-y-3">
+                <div class="label-mono text-tertiary">EXPERIMENTAL</div>
+                <h3 class="text-lg font-grotesk font-semibold text-on-surface">Rust Development</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">
                     Developing system tools and applications in Rust, for fun and profit.
                 </p>
-                <div class="mt-4">
-                    <a href="https://github.com/Toasterson"
-                       class="text-neon-cyan hover:text-neon-green transition-colors">
-                        → Access Repositories
-                    </a>
-                </div>
+                <a href="https://github.com/Toasterson" class="btn-tertiary" target="_blank" rel="noopener">Repositories &rarr;</a>
             </div>
 
-            <div class="project-card">
-                <h3 class="text-neon-purple font-bold mb-3">📡 LIVE STREAMS</h3>
-                <p class="text-sm mb-3">
-                    <span class="text-neon-orange">[CLASSIFICATION: BROADCASTING]</span>
-                </p>
-                <p class="leading-relaxed">
+            <div class="data-plate space-y-3">
+                <div class="label-mono text-tertiary">BROADCASTING</div>
+                <h3 class="text-lg font-grotesk font-semibold text-on-surface">Live Streams</h3>
+                <p class="text-on-surface-variant text-sm leading-relaxed">
                     Live coding sessions covering Rust development, OpenIndiana system administration,
-                    and solving real-world infrastructure challenges in real-time.
+                    and solving real-world infrastructure challenges.
                 </p>
-                <div class="mt-4">
-                    <a href="https://twitch.tv/Toasterson"
-                       class="text-neon-cyan hover:text-neon-green transition-colors">
-                        → Join the Stream
-                    </a>
-                </div>
+                <a href="https://twitch.tv/Toasterson" class="btn-tertiary" target="_blank" rel="noopener">Join stream &rarr;</a>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Current Stream Embed -->
-    <div class="mt-12">
-        <h2 class="text-2xl font-bold mb-6 text-neon-cyan">
-            <span class="terminal-prompt"></span>LIVE TRANSMISSION FEED
-        </h2>
-        <div class="terminal-window">
-            <div class="terminal-header">
-                <span class="text-neon-green">●</span>
-                <span class="text-neon-orange ml-2">●</span>
-                <span class="text-neon-blue ml-2">●</span>
-                <span class="ml-4 text-neon-cyan">twitch_feed.exe - Live from the Grid</span>
-            </div>
-            <div class="terminal-content">
-                <div class="w-full" id="twitch-embed"></div>
-                <p class="text-neon-green text-sm mt-4">
-                    <span class="terminal-prompt"></span>Stream status: Monitoring for incoming transmissions...
-                </p>
-            </div>
+    <!-- Live Transmission -->
+    <section class="space-y-6">
+        <h2 class="headline text-secondary text-bloom-secondary">Live Transmission</h2>
+        <div class="hud-platform rounded-hud p-6">
+            <div class="w-full" id="twitch-embed"></div>
+            <p class="label-mono text-on-surface-variant mt-4">
+                <span class="inline-block status-dot mr-2 align-middle"></span>
+                Monitoring for incoming transmissions...
+            </p>
         </div>
-    </div>
+    </section>
 
-    <!-- System Information -->
-    <div class="mt-12 bg-black/50 border border-neon-blue rounded-lg p-6">
-        <h2 class="text-xl font-bold mb-4 text-neon-blue">SYSTEM SPECIFICATIONS</h2>
-        <div class="grid md:grid-cols-3 gap-4 text-sm">
+    <!-- System Specs -->
+    <section class="hud-platform rounded-hud p-6 space-y-4">
+        <h2 class="headline text-on-surface-variant text-sm">System Specifications</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-3 label-mono text-sm">
             <div>
-                <div class="text-neon-green font-bold">PRIMARY OS:</div>
-                <div>OpenIndiana</div>
+                <span class="text-primary">OS</span>
+                <div class="text-on-surface-variant">OpenIndiana</div>
             </div>
             <div>
-                <div class="text-neon-green font-bold">LANGUAGES:</div>
-                <div>Rust, Shell</div>
+                <span class="text-primary">LANG</span>
+                <div class="text-on-surface-variant">Rust, Shell</div>
             </div>
             <div>
-                <div class="text-neon-green font-bold">SPECIALTIES:</div>
-                <div>Unix, Virtualization, Containers</div>
+                <span class="text-primary">SPEC</span>
+                <div class="text-on-surface-variant">Unix, Virtualization, Containers</div>
             </div>
             <div>
-                <div class="text-neon-green font-bold">LOCATION:</div>
-                <div>Europe Grid</div>
+                <span class="text-primary">LOC</span>
+                <div class="text-on-surface-variant">Europe Grid</div>
             </div>
             <div>
-                <div class="text-neon-green font-bold">FOCUS:</div>
-                <div>Fun and Profit</div>
+                <span class="text-primary">FOCUS</span>
+                <div class="text-on-surface-variant">Fun and Profit</div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Call to Action -->
-    <div class="mt-12 text-center">
-        <div class="terminal-prompt mb-4"></div>
-        <h2 class="text-2xl font-bold mb-6 text-neon-cyan glow-text">
-            READY TO JOIN THE MISSION?
-        </h2>
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="/about/" class="hacker-button">OPERATOR PROFILE</a>
-            <a href="/blog/" class="hacker-button">MISSION LOGS</a>
-            <a href="https://github.com/sponsors/Toasterson" class="hacker-button">FUND OPERATIONS</a>
-        </div>
 
-        <div class="mt-8 text-neon-orange text-sm">
-            <p>Hacking away on the world one commit at a time.</p>
-        </div>
-    </div>
 </div>
 
 <script>
-    // Initialize Twitch embed if available
     if (typeof Twitch !== 'undefined') {
         new Twitch.Embed('twitch-embed', {
             width: '100%',
@@ -194,6 +124,4 @@ twitch: true
             muted: true
         });
     }
-
-
 </script>

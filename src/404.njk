@@ -1,151 +1,56 @@
 ---
 layout: layout.njk
-title: 404 - Page Not Found
-description: The page you're looking for doesn't exist in this system
+title: 404 — Path Not Found
+description: The requested resource was not found in this filesystem
 ---
 
-<div class="space-y-8 text-center">
-    <div class="ascii-art">
-╔══════════════════════════════════════════════════════════════════╗
-║                        PAGE NOT FOUND                           ║
-║                     ERROR CODE: 404                             ║
-║                                                                  ║
-║     ██████╗ ██╗  ██╗ ██████╗ ██╗  ██╗                          ║
-║     ██╔══██╗██║  ██║██╔═══██╗██║  ██║                          ║
-║     ██████╔╝███████║██║   ██║███████║                          ║
-║     ██╔══██╗╚════██║██║   ██║╚════██║                          ║
-║     ██║  ██║     ██║╚██████╔╝     ██║                          ║
-║     ╚═╝  ╚═╝     ╚═╝ ╚═════╝      ╚═╝                          ║
-║                                                                  ║
-║         RESOURCE NOT FOUND IN FILESYSTEM                        ║
-╚══════════════════════════════════════════════════════════════════╝
-    </div>
+<div class="space-y-12 text-center animate-in py-12">
 
-    <div class="terminal-prompt mb-4"></div>
-    <h1 class="text-4xl font-bold text-neon-orange glow-text">PATH NOT FOUND</h1>
-    
-    <div class="terminal-window max-w-2xl mx-auto">
-        <div class="terminal-header">
-            <span class="text-neon-orange">●</span>
-            <span class="text-neon-orange ml-2">●</span>
-            <span class="text-neon-orange ml-2">●</span>
-            <span class="ml-4 text-neon-orange">error_404.log - Path Resolution</span>
-        </div>
-        <div class="terminal-content">
-            <div class="text-left space-y-4">
-                <div class="text-neon-red">[ERROR] Requested path not found in filesystem</div>
-                <div class="text-neon-orange">[STATUS] HTTP 404 - Resource unavailable</div>
-                <div class="text-neon-purple">[LOCATION] /dev/null</div>
-                <div class="text-neon-cyan">[SUGGESTION] Check available routes below...</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="max-w-2xl mx-auto text-lg text-gray-300 leading-relaxed">
-        <p class="mb-6">
-            The requested resource couldn't be found in the current filesystem. 
-            This usually means the URL is incorrect or the page has been moved.
+    <!-- Error Display -->
+    <section class="space-y-4">
+        <div class="label-mono text-error tracking-widest">ERROR 404</div>
+        <h1 class="text-5xl md:text-6xl font-grotesk font-bold text-on-surface">
+            Path Not Found
+        </h1>
+        <p class="text-on-surface-variant text-lg max-w-md mx-auto leading-relaxed">
+            The requested resource could not be located in the current filesystem.
+            The URL may be incorrect or the page has been moved.
         </p>
-        
-        <p class="mb-6 text-neon-cyan">
-            <em>"These aren't the droids pages you're looking for."</em><br>
-            - Obi-Wan Kenobi (probably debugging a web server)
-        </p>
-    </div>
+    </section>
 
-    <div class="space-y-6">
-        <h2 class="text-2xl text-neon-green">AVAILABLE PATHS</h2>
-        
-        <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            <div class="project-card">
-                <h3 class="text-neon-cyan font-bold mb-3">🏠 HOME DIRECTORY</h3>
-                <p class="text-sm mb-4">
-                    Return to the main page with project overview and system information.
-                </p>
-                <a href="/" class="hacker-button">GO HOME</a>
-            </div>
+    <!-- Diagnostic Panel -->
+    <section class="hud-platform rounded-hud p-6 max-w-lg mx-auto text-left space-y-2 label-mono">
+        <div class="text-error">ERR &mdash; Requested path not found</div>
+        <div class="text-on-surface-variant">STATUS &mdash; HTTP 404</div>
+        <div class="text-tertiary">LOCATION &mdash; /dev/null</div>
+        <div class="text-secondary">SUGGESTION &mdash; Check available routes below</div>
+    </section>
 
-            <div class="project-card">
-                <h3 class="text-neon-cyan font-bold mb-3">📝 TECHNICAL POSTS</h3>
-                <p class="text-sm mb-4">
-                    Browse technical articles about Unix, Rust, and infrastructure.
-                </p>
-                <a href="/blog/" class="hacker-button">READ POSTS</a>
-            </div>
+    <!-- Available Paths -->
+    <section class="space-y-6">
+        <h2 class="headline text-on-surface-variant text-sm">Available Paths</h2>
 
-            <div class="project-card">
-                <h3 class="text-neon-cyan font-bold mb-3">👤 ABOUT</h3>
-                <p class="text-sm mb-4">
-                    Learn about my background in Unix systems, Rust development, and infrastructure.
-                </p>
-                <a href="/about/" class="hacker-button">VIEW PROFILE</a>
-            </div>
+        <div class="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto text-left">
+            <a href="/" class="data-plate space-y-2 block group">
+                <h3 class="font-grotesk font-semibold text-on-surface group-hover:text-primary transition-colors">Terminal</h3>
+                <p class="text-on-surface-variant text-sm">Main page with project overview and system information.</p>
+            </a>
 
-            <div class="project-card">
-                <h3 class="text-neon-cyan font-bold mb-3">🔍 GITHUB</h3>
-                <p class="text-sm mb-4">
-                    Browse open source projects and contributions to the OpenIndiana ecosystem.
-                </p>
-                <a href="https://github.com/toasterson" class="hacker-button" target="_blank">VIEW GITHUB</a>
-            </div>
+            <a href="/blog/" class="data-plate space-y-2 block group">
+                <h3 class="font-grotesk font-semibold text-on-surface group-hover:text-primary transition-colors">Mission Logs</h3>
+                <p class="text-on-surface-variant text-sm">Technical articles about Unix, Rust, and infrastructure.</p>
+            </a>
+
+            <a href="/about/" class="data-plate space-y-2 block group">
+                <h3 class="font-grotesk font-semibold text-on-surface group-hover:text-primary transition-colors">Uplink</h3>
+                <p class="text-on-surface-variant text-sm">Background in Unix systems, Rust development, and infrastructure.</p>
+            </a>
+
+            <a href="https://github.com/toasterson" class="data-plate space-y-2 block group" target="_blank" rel="noopener">
+                <h3 class="font-grotesk font-semibold text-on-surface group-hover:text-primary transition-colors">GitHub</h3>
+                <p class="text-on-surface-variant text-sm">Open source projects and contributions to the OpenIndiana ecosystem.</p>
+            </a>
         </div>
-    </div>
+    </section>
 
-    <div class="mt-12 text-center">
-        <div class="terminal-prompt"></div>
-        <p class="text-neon-purple text-sm">
-            "Do or do not, there is no try... but there is definitely 404."<br>
-            <span class="text-xs text-gray-400">- Yoda (debugging web servers)</span>
-        </p>
-    </div>
-
-    <div class="mt-8 ascii-art text-xs opacity-50">
-          *     .        *  .    *    .   . *   .   *   .
-       .   *           .    .        .        .       .
-             .   .            *                *
-        .                .        .    *            .    *
-     *    .   *    .            .              .        .
-           .            *                 .           .
-                 *           .    *             *    .    *
-      .    *                      .                        .
-    </div>
 </div>
-
-<script>
-    // Add some fun 404 page effects
-    document.addEventListener('DOMContentLoaded', function() {
-        // Simulate search attempts
-        const searchMessages = [
-            'Scanning sector 7G...',
-            'Checking backup archives...',
-            'Consulting the Mentat databases...',
-            'Asking the Oracle...',
-            'Deploying probe droids...',
-            'Search completed. Page remains in the void.'
-        ];
-        
-        let messageIndex = 0;
-        const messageElement = document.querySelector('.text-neon-cyan');
-        
-        const searchInterval = setInterval(() => {
-            if (messageIndex < searchMessages.length - 1) {
-                messageElement.textContent = `[SEARCHING] ${searchMessages[messageIndex]}`;
-                messageIndex++;
-            } else {
-                messageElement.textContent = '[COMPLETE] Search protocols exhausted. Page not found in this reality.';
-                clearInterval(searchInterval);
-            }
-        }, 1500);
-        
-        // Add some random glitch effects to the error code
-        const errorCode = document.querySelector('h1');
-        setInterval(() => {
-            if (Math.random() < 0.1) {
-                errorCode.style.transform = `translateX(${Math.random() * 4 - 2}px)`;
-                setTimeout(() => {
-                    errorCode.style.transform = 'translateX(0)';
-                }, 100);
-            }
-        }, 2000);
-    });
-</script>

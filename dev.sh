@@ -1,3 +1,3 @@
 #!/bin/bash
-export PATH="$HOME/.deno/bin:$PATH"
-cd lume-site && deno task serve
+export PATH="$HOME/.deno/bin:$HOME/.local/share/mise/shims:$PATH"
+deno task serve

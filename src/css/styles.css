@@ -1,456 +1,494 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --neon-green: #00ff41;
-    --neon-cyan: #00ffff;
-    --neon-blue: #4d9de0;
-    --neon-purple: #9d4edd;
-    --neon-orange: #ff6b35;
-    --terminal-bg: #0a0a0a;
-    --terminal-border: #333;
-    --space-blue: #0b1426;
-    --deep-space: #030712;
-}
+/* ═══════════════════════════════════════════════════════════════
+   OBSIDIAN HUD — Emerald Terminal Design System
+   Creative North Star: "The Obsidian HUD"
+   A sophisticated digital cockpit with tonal depth
+   and atmospheric legibility.
+   ═══════════════════════════════════════════════════════════════ */
 
 * {
     box-sizing: border-box;
 }
 
 body {
-    @apply bg-gray-900 text-gray-100;
-    background: linear-gradient(
-        45deg,
-        var(--deep-space) 0%,
-        var(--space-blue) 100%
-    );
-    font-family: "JetBrains Mono", monospace;
+    background-color: #0d1418;
+    color: #bdcbb5;
+    font-family: "Space Grotesk", sans-serif;
     min-height: 100vh;
-    position: relative;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Animated background stars */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        radial-gradient(2px 2px at 20px 30px, var(--neon-cyan), transparent),
-        radial-gradient(2px 2px at 40px 70px, var(--neon-green), transparent),
-        radial-gradient(1px 1px at 90px 40px, var(--neon-blue), transparent),
-        radial-gradient(1px 1px at 130px 80px, var(--neon-purple), transparent),
-        radial-gradient(2px 2px at 160px 30px, var(--neon-orange), transparent);
-    background-repeat: repeat;
-    background-size: 200px 100px;
-    animation: starfield 20s linear infinite;
-    opacity: 0.1;
-    z-index: -1;
+/* ── Surface Hierarchy ────────────────────────────────────────
+   The Void → The Platform → The Module
+   Depth through tonal layering, not shadows or borders.
+   ──────────────────────────────────────────────────────────── */
+
+.hud-void {
+    background-color: #0d1418;
 }
 
-@keyframes starfield {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-100px);
-    }
+.hud-platform {
+    background-color: #161d21;
 }
 
-/* Terminal window styling */
-.terminal-window {
-    background: rgba(10, 10, 10, 0.95);
-    border: 2px solid var(--neon-green);
-    border-radius: 8px;
-    box-shadow:
-        0 0 20px rgba(0, 255, 65, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    position: relative;
+.hud-module {
+    background-color: #2f363a;
 }
 
-.terminal-window::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 30px;
-    background: linear-gradient(90deg, #ff5f56, #ffbd2e, #27ca3f);
-    border-radius: 6px 6px 0 0;
-    opacity: 0.8;
+.hud-container {
+    background-color: #1a2125;
 }
 
-.terminal-header {
-    display: flex;
-    align-items: center;
-    padding: 8px 16px;
-    background: rgba(0, 0, 0, 0.8);
-    border-bottom: 1px solid var(--neon-green);
-    margin-top: 30px;
-    font-size: 14px;
-    color: var(--neon-green);
+/* ── Ghost Border ─────────────────────────────────────────────
+   Only when visual containment is required for accessibility.
+   ──────────────────────────────────────────────────────────── */
+
+.ghost-border {
+    border: 1px solid rgba(135, 149, 129, 0.15);
 }
 
-.terminal-content {
-    padding: 20px;
-    background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.9) 0%,
-        rgba(0, 0, 0, 0.7) 100%
-    );
+/* ── Glass & Gradient ─────────────────────────────────────────
+   For floating status bars and modal overlays.
+   ──────────────────────────────────────────────────────────── */
+
+.hud-glass {
+    background: rgba(26, 33, 37, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
-/* Navigation styling */
-.nav-container {
-    background: rgba(0, 0, 0, 0.9);
-    border-bottom: 2px solid var(--neon-cyan);
-    box-shadow: 0 2px 20px rgba(0, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+/* ── Typography ───────────────────────────────────────────────
+   Space Grotesk: structural
+   JetBrains Mono: metadata, code, labels
+   ──────────────────────────────────────────────────────────── */
+
+.text-bloom {
+    text-shadow: 0 0 12px rgba(96, 224, 85, 0.4);
+}
+
+.text-bloom-secondary {
+    text-shadow: 0 0 12px rgba(68, 231, 231, 0.3);
+}
+
+.headline {
+    font-family: "Space Grotesk", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.label-mono {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+}
+
+/* ── Navigation ───────────────────────────────────────────────
+   HUD-style top bar with system status indicators.
+   ──────────────────────────────────────────────────────────── */
+
+.nav-bar {
+    background-color: #080f13;
+    border-bottom: none;
 }
 
 .nav-link {
-    @apply transition-all duration-300;
-    color: var(--neon-cyan);
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: 1px solid transparent;
+    @apply transition-colors duration-200;
+    color: #bdcbb5;
+    font-family: "Space Grotesk", sans-serif;
     font-weight: 500;
-    position: relative;
-    overflow: hidden;
-}
-
-.nav-link::before {
-    content: "> ";
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.nav-link:hover::before {
-    opacity: 1;
-}
-
-.nav-link:hover {
-    color: var(--neon-green);
-    border-color: var(--neon-green);
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
-    text-shadow: 0 0 10px var(--neon-green);
-}
-
-/* Glowing text effects */
-.glow-text {
-    text-shadow: 0 0 10px currentColor;
-    animation: textGlow 2s ease-in-out infinite alternate;
-}
-
-@keyframes textGlow {
-    from {
-        text-shadow: 0 0 10px currentColor;
-    }
-    to {
-        text-shadow:
-            0 0 20px currentColor,
-            0 0 30px currentColor;
-    }
-}
-
-/* Terminal prompt styling */
-.terminal-prompt::before {
-    content: "[toasty@illumos ~]$ ";
-    color: var(--neon-green);
-    font-weight: bold;
-    text-shadow: 0 0 5px var(--neon-green);
-}
-
-/* ASCII art styling */
-.ascii-art {
-    font-family: "JetBrains Mono", monospace;
-    color: var(--neon-cyan);
-    text-shadow: 0 0 5px var(--neon-cyan);
-    white-space: pre;
-    line-height: 1em;
-    font-size: 12px;
-}
-
-/* Button styling */
-.hacker-button {
-    background: transparent;
-    border: 2px solid var(--neon-green);
-    color: var(--neon-green);
-    padding: 12px 24px;
-    font-family: "JetBrains Mono", monospace;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.hacker-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(0, 255, 65, 0.2),
-        transparent
-    );
-    transition: left 0.5s ease;
-}
-
-.hacker-button:hover::before {
-    left: 100%;
-}
-
-.hacker-button:hover {
-    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
-    text-shadow: 0 0 10px var(--neon-green);
-    transform: scale(1.05);
-}
-
-/* Code blocks */
-.prose pre {
-    background: rgba(0, 0, 0, 0.9) !important;
-    border: 1px solid var(--neon-blue);
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(77, 157, 224, 0.2);
-    line-height: 1em;
-}
-
-.prose code {
-    background: rgba(0, 0, 0, 0.7) !important;
-    color: var(--neon-cyan) !important;
-    border: 1px solid rgba(0, 255, 255, 0.3);
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
     border-radius: 4px;
-    padding: 2px 6px;
-    line-height: 1em;
-}
-
-/* Links */
-.prose a,
-a {
-    color: var(--neon-cyan);
     text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
-.prose a:hover,
-a:hover {
-    color: var(--neon-green);
-    border-bottom-color: var(--neon-green);
-    text-shadow: 0 0 8px var(--neon-green);
+.nav-link:hover,
+.nav-link:focus {
+    color: #60e055;
+    background-color: rgba(96, 224, 85, 0.08);
 }
 
-/* Headings */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: var(--neon-green);
-    font-weight: 700;
-    text-shadow: 0 0 10px var(--neon-green);
-    margin-bottom: 1rem;
+.nav-link.active {
+    color: #60e055;
 }
 
-h1 {
-    font-size: 2.5rem;
-    border-bottom: 2px solid var(--neon-green);
-    padding-bottom: 0.5rem;
-    margin-bottom: 2rem;
+/* ── Data Plates ──────────────────────────────────────────────
+   Cards as physical data plates floating in deep space.
+   No divider lines — use spacing and background shifts.
+   ──────────────────────────────────────────────────────────── */
+
+.data-plate {
+    background-color: #161d21;
+    border-radius: 4px;
+    padding: 1.5rem;
+    transition: background-color 0.2s ease, box-shadow 0.3s ease;
 }
 
-/* Typography improvements */
-.prose {
-    @apply max-w-none;
-    color: #e5e7eb;
-    line-height: 1.7;
+.data-plate:hover {
+    background-color: #1a2125;
+    box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.data-plate-header {
+    background-color: #2f363a;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px 4px 0 0;
+    /* Scanline texture for HUD feel */
+    background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.03) 2px,
+        rgba(255, 255, 255, 0.03) 4px
+    );
+}
+
+/* ── Buttons ──────────────────────────────────────────────────
+   Primary: gradient fill
+   Secondary: ghost border + text
+   Tertiary: text-only monospaced
+   ──────────────────────────────────────────────────────────── */
+
+.btn-primary {
+    background: linear-gradient(135deg, #60e055, #2bb12b);
+    color: #003a03;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.15s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 24px -4px rgba(96, 224, 85, 0.4);
+    transform: translateY(-1px);
+    color: #003a03;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #60e055;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
+    padding: 0.625rem 1.25rem;
+    border-radius: 4px;
+    border: 1px solid rgba(135, 149, 129, 0.15);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(96, 224, 85, 0.1);
+    border-color: rgba(96, 224, 85, 0.3);
+    color: #60e055;
+}
+
+.btn-tertiary {
+    background: transparent;
+    color: #44e7e7;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 500;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.5rem 0;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-tertiary:hover {
+    color: #60e055;
+}
+
+/* ── Blog Post Items ──────────────────────────────────────────
+   Mission log entries in the archive listing.
+   ──────────────────────────────────────────────────────────── */
+
+.log-entry {
+    background-color: #161d21;
+    border-radius: 4px;
+    padding: 1.5rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.log-entry:hover {
+    background-color: #1a2125;
+    transform: translateX(4px);
+}
+
+.log-entry + .log-entry {
+    margin-top: 0.75rem;
+}
+
+/* ── Status Indicator ─────────────────────────────────────────
+   Small blinking dot for system status readouts.
+   ──────────────────────────────────────────────────────────── */
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #60e055;
+    box-shadow: 0 0 8px rgba(96, 224, 85, 0.5);
+    animation: statusBlink 2s ease-in-out infinite;
+}
+
+@keyframes statusBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* ── Prose Overrides ──────────────────────────────────────────
+   Article content styling for blog posts.
+   ──────────────────────────────────────────────────────────── */
+
+.prose h1 {
+    color: #60e055;
+    font-family: "Space Grotesk", sans-serif;
+    text-shadow: 0 0 12px rgba(96, 224, 85, 0.4);
+    border: none;
+    padding-bottom: 0;
+}
+
+.prose h2 {
+    color: #44e7e7;
+    font-family: "Space Grotesk", sans-serif;
+    border: none;
+    padding-bottom: 0;
+    margin-top: 2.5rem;
+}
+
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+    color: #dce3e9;
+    font-family: "Space Grotesk", sans-serif;
+    border: none;
 }
 
 .prose p {
-    color: #d1d5db;
-    margin-bottom: 1.5rem;
+    color: #bdcbb5;
+    line-height: 1.75;
+}
+
+.prose a {
+    color: #44e7e7;
+    text-decoration: none;
+    border-bottom: none;
+    transition: color 0.2s ease;
+}
+
+.prose a:hover {
+    color: #60e055;
+    text-shadow: none;
+    border-bottom: none;
 }
 
 .prose ul,
 .prose ol {
-    color: #d1d5db;
+    color: #bdcbb5;
+}
+
+.prose li {
+    margin-bottom: 0.375rem;
+}
+
+.prose li::marker {
+    color: #60e055;
 }
 
 .prose blockquote {
-    border-left: 4px solid var(--neon-purple);
-    background: rgba(157, 78, 221, 0.1);
-    padding: 1rem;
-    border-radius: 0 8px 8px 0;
-    font-style: italic;
-    color: #c4b5fd;
+    border-left: 3px solid #da69ff;
+    background: rgba(218, 105, 255, 0.05);
+    padding: 1rem 1.25rem;
+    border-radius: 0 4px 4px 0;
+    color: #efb0ff;
+    font-style: normal;
 }
 
-/* Blog post styling */
-.blog-post-item {
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid var(--neon-blue);
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
+.prose code {
+    background: #080f13 !important;
+    color: #44e7e7 !important;
+    border: none !important;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.875em;
 }
 
-.blog-post-item:hover {
-    border-color: var(--neon-cyan);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-    transform: translateY(-2px);
+.prose pre {
+    background: #080f13 !important;
+    border: none;
+    border-radius: 4px;
+    padding: 1.25rem;
+    overflow-x: auto;
 }
 
-.blog-post-title {
-    color: var(--neon-cyan);
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 5px var(--neon-cyan);
-}
-
-.blog-post-date {
-    color: var(--neon-orange);
+.prose pre code {
+    background: transparent !important;
+    color: #bdcbb5 !important;
+    padding: 0 !important;
     font-size: 0.875rem;
-    font-weight: 500;
-}
-
-.blog-post-summary {
-    color: #d1d5db;
-    margin-top: 1rem;
     line-height: 1.6;
 }
 
-/* Matrix-like data stream effect */
-.data-stream {
-    position: fixed;
-    top: 0;
+.prose strong {
+    color: #dce3e9;
+    font-weight: 600;
+    text-shadow: none;
+}
+
+.prose em {
+    color: #efb0ff;
+}
+
+.prose img {
+    border-radius: 4px;
+    border: none;
+    margin: 2rem auto;
+}
+
+.prose hr {
+    border: none;
+    height: 1px;
+    background-color: #3e4a3a;
+    margin: 3rem 0;
+}
+
+.prose table {
     width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.1;
+    border-collapse: collapse;
+    background-color: #161d21;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-/* Scanlines effect */
-.scanlines::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(transparent 50%, rgba(0, 255, 65, 0.03) 50%);
-    background-size: 100% 4px;
-    pointer-events: none;
-    animation: scanlines 0.1s linear infinite;
-    z-index: 1000;
+.prose th {
+    background-color: #242b2f;
+    color: #60e055;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(135, 149, 129, 0.15);
 }
 
-@keyframes scanlines {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(4px);
-    }
+.prose td {
+    padding: 0.75rem 1rem;
+    color: #bdcbb5;
+    border-bottom: 1px solid rgba(135, 149, 129, 0.08);
 }
 
-/* Footer styling */
-.footer {
-    background: rgba(0, 0, 0, 0.9);
-    border-top: 2px solid var(--neon-green);
-    margin-top: 4rem;
-    padding: 2rem;
-    text-align: center;
+/* ── Headings (global) ────────────────────────────────────────
+   Override defaults — no borders, no neon glow.
+   ──────────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Space Grotesk", sans-serif;
+    color: #dce3e9;
+    font-weight: 600;
+    text-shadow: none;
+    border: none;
+    margin-bottom: 0.75rem;
 }
 
-/* Project showcase styling */
-.project-card {
-    background: rgba(0, 0, 0, 0.7);
-    border: 2px solid var(--neon-purple);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: all 0.4s ease;
-    backdrop-filter: blur(10px);
+/* ── Links (global) ───────────────────────────────────────── */
+
+a {
+    color: #44e7e7;
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
 
-.project-card:hover {
-    border-color: var(--neon-cyan);
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
-    transform: scale(1.02);
+a:hover {
+    color: #60e055;
+    text-shadow: none;
+    border-bottom: none;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .ascii-art {
-        font-size: 8px;
-    }
+/* ── Custom Scrollbar ─────────────────────────────────────── */
 
-    h1 {
-        font-size: 2rem;
-    }
-
-    .nav-link {
-        padding: 6px 12px;
-        font-size: 0.9rem;
-    }
-}
-
-/* Loading animation */
-.loading-dots::after {
-    content: "";
-    animation: dots 1.5s steps(5, end) infinite;
-}
-
-@keyframes dots {
-    0%,
-    20% {
-        content: "";
-    }
-    40% {
-        content: ".";
-    }
-    60% {
-        content: "..";
-    }
-    80%,
-    100% {
-        content: "...";
-    }
-}
-
-/* Custom scrollbar */
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--terminal-bg);
+    background: #0d1418;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--neon-green);
-    border-radius: 6px;
-    box-shadow: 0 0 10px var(--neon-green);
+    background: #3e4a3a;
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--neon-cyan);
-    box-shadow: 0 0 15px var(--neon-cyan);
+    background: #879581;
 }
+
+/* ── Footer ───────────────────────────────────────────────── */
+
+.site-footer {
+    background-color: #080f13;
+    padding: 2.5rem 0;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .data-plate {
+        padding: 1rem;
+    }
+
+    .nav-link {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* ── Fade-in Animation ────────────────────────────────────── */
+
+.animate-in {
+    animation: fadeIn 0.6s ease-out both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger children */
+.animate-in > *:nth-child(1) { animation-delay: 0.05s; }
+.animate-in > *:nth-child(2) { animation-delay: 0.1s; }
+.animate-in > *:nth-child(3) { animation-delay: 0.15s; }
+.animate-in > *:nth-child(4) { animation-delay: 0.2s; }

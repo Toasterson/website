@@ -1,43 +1,23 @@
 ---
 layout: page.njk
-title: About Till Wegmüller
+title: About Till Wegmueller
 description: Systems Engineer specializing in OpenIndiana distribution development, Rust programming, and Unix infrastructure
 ---
 
-```
-╔══════════════════════════════════════════════════════════════════╗
-║                      OPERATOR DOSSIER                            ║
-║                   [ACCESS LEVEL: PUBLIC]                         ║
-╚══════════════════════════════════════════════════════════════════╝
-```
-
-# Till Wegmüller—@toasterson
-## Systems Engineer • OpenIndiana Developer • Infrastructure Architect
+# Till Wegmueller — @toasterson
+## Systems Engineer &middot; OpenIndiana Developer &middot; Infrastructure Architect
 
 ---
 
-**[SYSTEM LOGIN]** *Grüessech*, and welcome to my profile...
+*Grueessech*, and welcome to my profile.
 
 I'm Till, though most people call me Toasty. I work as an independent systems engineer based in Europe, specializing in OpenIndiana distribution development, Rust programming, and Unix infrastructure.
 
-## **[CORE COMPETENCIES]**
+## Core Competencies
 
 My expertise centers around OpenIndiana distribution development, where I contribute to package maintenance, system integration, and helping users adopt modern Unix environments. I develop primarily in Rust for system-level applications and manage virtualized infrastructure at scale.
 
-```
-> whoami
-toasty@openindiana.node: Systems Engineer & Distribution Developer
-> uname -a
-SunOS openindiana.node 5.11 hipster-20231031 i86pc i386 i86pc Solaris
-> ps aux | grep "current_focus"
-- OpenIndiana distribution development
-- Rust systems programming
-- Container orchestration
-- Virtualization infrastructure
-- Open source contributions
-```
-
-## **[TECHNICAL STACK]**
+## Technical Stack
 
 **Primary Operating Environment:** OpenIndiana
 **Secondary Systems:** Various Unix distributions as needed
@@ -46,31 +26,31 @@ SunOS openindiana.node 5.11 hipster-20231031 i86pc i386 i86pc Solaris
 **Orchestration:** Kubernetes, Docker, containerd
 **Specializations:** Package management, system administration, infrastructure automation
 
-### **[CURRENT PROJECTS]**
+## Current Projects
 
-### ⚙️ **OpenIndiana Distribution Development**
+### OpenIndiana Distribution Development
 **Project Type:** Core Distribution Work
 **Mission:** Contributing to the OpenIndiana operating system through package maintenance, system integration work, and user support. This involves ensuring software compatibility, managing dependencies, and helping the community adopt modern development practices.
 
-**→** [Learn More](https://www.openindiana.org/)
+[Learn More](https://www.openindiana.org/)
 
-### 🦀 **Rust Systems Programming**
+### Rust Systems Programming
 **Project Type:** Language Integration
 **Mission:** Developing system tools and applications in Rust, including projects like [IPS in Rust](https://github.com/OpenFlowLabs/ips) and various infrastructure utilities that require both performance and memory safety.
 
-**→** [Read Technical Posts](/blog/)
+[Read Technical Posts](/blog/)
 
-### **Oxifed**
+### Oxifed
 **Project Type:** ActivityPub Serving Daemons
 **Mission:** Using AI tools to build a ActivityPub server that can handle multiple domains and provide some features I would like it to have.
 
-### 📦 **Infrastructure Tooling**
+### Infrastructure Tooling
 **Project Type:** Developer Experience
-**Mission:** Creating tools that make OpenIndiana and Unix systems more accessible to modern development workflows, from package management to deployment automation. The list of tools currently includes
+**Mission:** Creating tools that make OpenIndiana and Unix systems more accessible to modern development workflows, from package management to deployment automation. The list of tools currently includes:
 - [illumos installer](https://github.com/Toasterson/installer)
 - [OpenIndiana images (Cloud and Vagrant)](https://github.com/OpenIndiana/oi-packer)
 
-## **[COLLABORATION OPPORTUNITIES]**
+## Collaboration Opportunities
 
 I'm always interested in working with fellow engineers on:
 
@@ -80,7 +60,7 @@ I'm always interested in working with fellow engineers on:
 - **Virtualization technology** (hypervisors, container runtimes)
 - **Infrastructure automation** (deployment tools, monitoring)
 
-## **[COMMUNICATION CHANNELS]**
+## Communication Channels
 
 **Primary Networks:**
 - **Mastodon:** [@Toasterson@chaos.social](https://chaos.social/@Toasterson) *(Technical discussions preferred)*
@@ -94,23 +74,23 @@ I'm always interested in working with fellow engineers on:
 **Live Content:**
 - **Twitch:** [Live Coding Sessions](https://twitch.tv/Toasterson) *(Rust, Unix, infrastructure work)*
 
-## **[SUPPORT THE WORK]**
+## Support the Work
 
 If my contributions to open source infrastructure and Unix systems have provided value to your projects, consider supporting continued development:
 
-- **[GitHub Sponsors](https://github.com/sponsors/Toasterson)** - *Sustainable funding for open source work*
-- **[Patreon](https://patreon.com/toasterson)** - *Monthly support for ongoing projects*
-- **[PayPal](https://paypal.me/toasterson)** - *One-time contributions*
+- **[GitHub Sponsors](https://github.com/sponsors/Toasterson)** — Sustainable funding for open source work
+- **[Patreon](https://patreon.com/toasterson)** — Monthly support for ongoing projects
+- **[PayPal](https://paypal.me/toasterson)** — One-time contributions
 
-## **[METRICS & ACTIVITY]**
+## Metrics & Activity
 
 ![Profile Views](https://komarev.com/ghpvc/?username=toasterson&color=green)
 
-[![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Toasterson&show_icons=true&theme=dark&hide_border=true&bg_color=0a0a0a&title_color=00ff41&text_color=00ffff&icon_color=9d4edd)](https://github.com/anuraghazra/github-readme-stats)
+[![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Toasterson&show_icons=true&theme=dark&hide_border=true&bg_color=0d1418&title_color=60e055&text_color=bdcbb5&icon_color=44e7e7)](https://github.com/anuraghazra/github-readme-stats)
 
 [![GitHub Activity](https://raw.githubusercontent.com/toasterson/toasterson/output/github-contribution-grid-snake-dark.svg#gh-dark-mode-only)](https://github.com/toasterson)
 
-## **[CLOSING NOTES]**
+---
 
 I focus on building reliable infrastructure using proven Unix principles enhanced with modern tools. Whether developing efficient Rust applications, maintaining OpenIndiana packages, or orchestrating container workloads, the goal is always creating systems that work reliably and can be maintained by the next engineer.
 
@@ -118,11 +98,4 @@ My approach combines traditional Unix wisdom with contemporary development pract
 
 ---
 
-```
-[SESSION COMPLETE]
-[LOGOUT SUCCESSFUL]
-> Connection to openindiana.node closed.
-```
-
-**[SYSTEM FOOTER]**
-*Last updated: 2025.01 • Status: All systems operational • Focus: Building reliable Unix infrastructure*
+*Last updated: 2025.01 &middot; Status: All systems operational &middot; Focus: Building reliable Unix infrastructure*
