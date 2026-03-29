@@ -115,7 +115,7 @@ jobs:
     permissions:
       contents: read
       packages: write
-    if: github.event_name != 'pull_request'
+    if: startsWith(github.ref, 'refs/tags/v')
 
     steps:
       - name: Checkout repository
@@ -210,14 +210,14 @@ jobs:
             -d '{"name": "ghcr.io/toasterson/website", "tag": "lume"}'
 
   notify:
-    needs: [docker, helm]
+    needs: [docker]
     runs-on: ubuntu-latest
     if: always() && github.event_name != 'pull_request'
 
     steps:
       - name: Notify deployment status
         run: |
-          if [[ "${{ needs.docker.result }}" == "success" && "${{ needs.helm.result }}" == "success" ]]; then
+          if [[ "${{ needs.docker.result }}" == "success" ]]; then
             echo "✅ Deployment pipeline completed successfully"
           else
             echo "❌ Deployment pipeline failed"
