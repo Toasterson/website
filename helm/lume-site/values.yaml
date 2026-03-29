@@ -17,6 +17,11 @@ serviceAccount:
   annotations: {}
   name: ""
 
+deploymentAnnotations: {}
+  # keel.sh/policy: force
+  # keel.sh/trigger: poll
+  # keel.sh/pollSchedule: "@every 5m"
+
 podAnnotations: {}
 
 podSecurityContext:
