@@ -100,6 +100,7 @@ site.use(feed({
 // Copy static assets
 site.copy("favicon.png");
 site.copy("js");
+site.copy("img");
 site.copy("robots.txt");
 
 export default site;
