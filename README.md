@@ -43,3 +43,8 @@ https://www.openindiana.org/funding.json speaks for this domain.
 Open an issue or a pull request on
 [src.oida.foundation/oida/website](https://src.oida.foundation/oida/website).
 Keep member data out of this repository: it is public.
+
+## Licence
+
+[Mozilla Public License 2.0](LICENSE). The IBM Plex fonts are under the SIL Open
+Font License 1.1.
