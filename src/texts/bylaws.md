@@ -41,7 +41,7 @@ The association tries to reach its goals by:
 
 The elements of the association are:
 
-**1.** The General Assembly
+**1.** The general meeting
 
 **2.** The board
 
@@ -55,7 +55,7 @@ The invitation to the assembly including the list of points to be addressed has 
 
 Each member has one vote. The general assembly makes decisions based on the majority of votes cast. Electronic votes or votes by letter are permitted. The Board will give instructions on how members should Identify themselves to the Board for their vote to be permitted.
 
-In the General Assembly the following topics may be discussed if needed:
+In the general meeting the following topics may be discussed if needed:
 
 - Budget for groups from the existing funds.
 - Kind, Amount and regularity of Membership fees.
@@ -69,7 +69,7 @@ The General Assembly can change the topic list and add new topics to that list.
 
 ## 7. The Board
 
-Board members are elected by the General Assembly. The term of office is one year, re-election is possible. The board consists of at least a treasurer and a secretary.
+Board members are elected by the general meeting. The term of office is one year, re-election is possible. The board consists of at least a president, a treasurer and a secretary.
 
 The board must respect the interests of each interest group.
 
@@ -83,11 +83,11 @@ The board is quorate if three or half of the board members are present, whicheve
 
 ## 8. Changing the Bylaws
 
-The bylaws can be changed at the General Assembly and require a two-thirds majority of the cast votes.
+The bylaws can be changed at the general meeting and require a two-thirds majority of the cast votes.
 
 ## 9. Annulment of the Association
 
-The annulment of the association and the disposal of the association funds require a two-thirds majority at the General Assembly.
+The annulment of the association and the disposal of the association funds require a two-thirds majority at the general meeting.
 
 ## 10. Signature and Liability
 
