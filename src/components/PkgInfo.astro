@@ -1,0 +1,71 @@
+---
+// The association's key facts, set as `pkg info` output from IPS,
+// the packaging system OpenIndiana users know.
+import { ORG } from '../config';
+
+const rows: [string, string][] = [
+	['Name', 'association/oida'],
+	['Summary', ORG.name],
+	['State', 'Installed'],
+	['Publisher', 'the OpenIndiana and illumos community'],
+	['Version', ORG.founded.replaceAll('-', '.')],
+	['Legal form', 'Verein, Art. 60–79 ZGB'],
+	['Seat', ORG.seat],
+];
+---
+
+<figure class="pkg" aria-label="Key facts about OIDA">
+	<div class="chrome" aria-hidden="true"><span></span><span></span><span></span></div>
+	<div class="body">
+		<p><span class="prompt" aria-hidden="true">$ </span><span class="cmd">pkg info oida</span></p>
+		<dl>
+			{rows.map(([k, v]) => (
+				<div><dt>{k}:</dt><dd>{v}</dd></div>
+			))}
+		</dl>
+	</div>
+</figure>
+
+<style>
+	.pkg {
+		margin: 0;
+		background: #0f1a24;
+		color: #d9e2ea;
+		border-radius: 6px;
+		box-shadow: 0 1px 0 rgb(0 0 0 / 0.04), 0 18px 40px -18px rgb(15 26 36 / 0.45);
+		overflow: hidden;
+		border: 1px solid transparent;
+	}
+	@media (prefers-color-scheme: dark) {
+		.pkg { border-color: var(--rule); box-shadow: none; }
+	}
+	.chrome {
+		display: flex;
+		gap: 0.4rem;
+		padding: 0.7rem 0.9rem;
+		border-bottom: 1px solid #1f2d3a;
+	}
+	.chrome span {
+		width: 0.6rem;
+		height: 0.6rem;
+		border-radius: 50%;
+		background: #2a3a49;
+	}
+	.body {
+		padding: 1.1rem 1.25rem 1.3rem;
+		font: 400 0.8125rem/1.75 var(--mono);
+	}
+	dl {
+		display: grid;
+		grid-template-columns: max-content 1fr;
+		column-gap: 0.6rem;
+		margin: 0.35rem 0 0;
+	}
+	dl div { display: contents; }
+	dt { text-align: right; }
+	dd { margin: 0; overflow-wrap: anywhere; }
+	.prompt { color: #7f93a6; }
+	.cmd { color: #ffffff; font-weight: 600; }
+	dt { color: #8fb6da; }
+	dd { color: #e9e6df; }
+</style>

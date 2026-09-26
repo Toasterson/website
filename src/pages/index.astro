@@ -1,0 +1,199 @@
+---
+import Base from '../layouts/Base.astro';
+import PkgInfo from '../components/PkgInfo.astro';
+import Finances from '../components/Finances.astro';
+import MastodonFeed from '../components/MastodonFeed.astro';
+import { ORG, CONTACT, LINKS } from '../config';
+
+const base = import.meta.env.BASE_URL;
+
+// Bylaws §3, in plain words.
+const work = [
+	['3.1', 'Keep the machines running', 'We maintain the servers and services the projects need to build, test and ship.'],
+	['3.2', 'Raise money', 'We run fundraisers and ask donors, companies and grant programmes for support.'],
+	['3.3', 'Look after the history', 'We archive and maintain information about the system and its Solaris ancestry.'],
+	['3.4', 'Spread the word', 'We make illumos and OpenIndiana known to new users, developers and companies.'],
+	['3.5', 'Fund improvements', 'We organise projects that pay for development of illumos and OpenIndiana.'],
+];
+---
+
+<Base>
+	<section class="hero">
+		<div class="wrap hero-grid">
+			<div>
+				<p class="eyebrow mono">Swiss association · founded {ORG.foundedText}</p>
+				<h1>We fund and organise the work behind <em>OpenIndiana</em> and <em>illumos</em>.</h1>
+				<p class="lead">
+					OIDA is the members' association of the community. It pays for the infrastructure,
+					raises money for development, and gives the people who build these systems a vote on how it is spent.
+				</p>
+				<div class="actions">
+					<a class="btn btn-primary" href="#membership">Become a member <span class="arrow" aria-hidden="true">→</span></a>
+					<a class="btn" href={LINKS.donate}>Donate</a>
+				</div>
+			</div>
+			<PkgInfo />
+		</div>
+	</section>
+
+	<section class="section" id="work" aria-labelledby="work-title">
+		<div class="wrap section-grid">
+			<p class="section-label"><span class="num">01</span> What we do</p>
+			<div>
+				<h2 id="work-title">Everything a volunteer project needs but nobody gets paid for.</h2>
+				<ol class="work">
+					{work.map(([n, title, text]) => (
+						<li>
+							<span class="mono n">§{n}</span>
+							<h3>{title}</h3>
+							<p>{text}</p>
+						</li>
+					))}
+					<li class="propose">
+						<a href="#membership">
+							<h3>Have a project in mind?</h3>
+							<p>Members propose projects to the General Assembly, which decides what the association funds.</p>
+							<span class="mono">Become a member →</span>
+						</a>
+					</li>
+				</ol>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" id="membership" aria-labelledby="membership-title">
+		<div class="wrap section-grid">
+			<p class="section-label"><span class="num">02</span> Membership</p>
+			<div>
+				<h2 id="membership-title">One member, one vote.</h2>
+				<p class="lead">
+					The General Assembly of all members decides the budget, the membership fees and the bylaws.
+					It meets at least once a year, and members can vote electronically or by letter.
+				</p>
+				<div class="two">
+					<div>
+						<h3>Who can join</h3>
+						<ul class="ticks">
+							<li>Anyone who wants to support illumos and OpenIndiana can apply as an individual.</li>
+							<li>Companies and other organisations can join; the board agrees a membership fee with each one.</li>
+						</ul>
+					</div>
+					<div>
+						<h3>What members do</h3>
+						<ul class="ticks">
+							<li>Elect the board every year.</li>
+							<li>Propose topics for the General Assembly; proposals sent 14 days ahead are addressed.</li>
+							<li>Vote on which projects and infrastructure the association pays for.</li>
+						</ul>
+					</div>
+				</div>
+				<div class="actions">
+					<a class="btn btn-primary" href={`mailto:${CONTACT.secretary}?subject=Membership%20application`}>
+						Apply by email <span class="arrow" aria-hidden="true">→</span>
+					</a>
+					<a class="btn" href={`${base}bylaws/`}>Read the bylaws</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" id="finances" aria-labelledby="finances-title">
+		<div class="wrap section-grid">
+			<p class="section-label"><span class="num">03</span> Finances</p>
+			<div>
+				<h2 id="finances-title">Every donation and every expense is public.</h2>
+				<p class="lead">
+					Donations go through Open Collective, with the{' '}
+					<a href={LINKS.fiscalHost}>Open Source Collective</a> as fiscal host.
+					The members approved spending in three areas:
+				</p>
+				<Finances />
+			</div>
+		</div>
+	</section>
+
+	<section class="section" id="news" aria-labelledby="news-title">
+		<div class="wrap section-grid">
+			<p class="section-label"><span class="num">04</span> News</p>
+			<div>
+				<h2 id="news-title">Follow along on the Fediverse.</h2>
+				<div class="feed"><MastodonFeed /></div>
+			</div>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.hero { padding-block: clamp(3.5rem, 9vw, 7rem); }
+	.hero-grid {
+		display: grid;
+		gap: 3rem;
+		align-items: center;
+	}
+	@media (min-width: 60rem) {
+		.hero-grid { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 4rem; }
+	}
+	.eyebrow { color: var(--ink-2); margin-bottom: 1.5rem; }
+	h1 {
+		font-size: clamp(2.4rem, 5.6vw, 4.25rem);
+		letter-spacing: -0.035em;
+		line-height: 1.02;
+		max-width: 16ch;
+	}
+	h1 em {
+		font-style: normal;
+		color: var(--brand);
+	}
+	.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.25rem; }
+
+	.work {
+		list-style: none;
+		margin: 2.75rem 0 0;
+		padding: 0;
+		display: grid;
+		gap: 2.25rem 2.5rem;
+	}
+	@media (min-width: 48rem) {
+		.work { grid-template-columns: repeat(2, 1fr); }
+	}
+	.work li { border-top: 1px solid var(--rule); padding-top: 1rem; }
+	.work .n { color: var(--accent); }
+	.work h3 { font-size: 1.25rem; margin-top: 0.4rem; letter-spacing: -0.015em; }
+	.work p { color: var(--ink-2); margin-top: 0.4rem; max-width: 34ch; }
+	.work .propose { border-top: 0; padding-top: 0; }
+	.propose a {
+		display: block;
+		height: 100%;
+		padding: 1.25rem 1.4rem;
+		background: var(--brand);
+		color: var(--brand-ink);
+		text-decoration: none;
+		border-radius: 2px;
+	}
+	.propose a:hover { background: var(--ink); color: var(--paper); }
+	.work .propose h3 { margin-top: 0; }
+	.work .propose p { color: inherit; opacity: 0.85; }
+	.propose .mono { display: inline-block; margin-top: 1rem; }
+
+	.two {
+		display: grid;
+		gap: 2rem 3rem;
+		margin-top: 2.5rem;
+	}
+	@media (min-width: 48rem) {
+		.two { grid-template-columns: 1fr 1fr; }
+	}
+	.two h3 { font-size: 1.125rem; }
+	.ticks { margin: 0.75rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.6rem; }
+	.ticks li { padding-left: 1.5rem; position: relative; color: var(--ink-2); }
+	.ticks li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.72em;
+		width: 0.7rem;
+		height: 2px;
+		background: var(--accent);
+	}
+	.feed { margin-top: 2rem; }
+</style>

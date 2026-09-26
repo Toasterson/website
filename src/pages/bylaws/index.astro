@@ -1,0 +1,98 @@
+---
+import '@fontsource/ibm-plex-serif/400.css';
+import '@fontsource/ibm-plex-serif/600.css';
+import Base from '../../layouts/Base.astro';
+import { Content, getHeadings } from '../../texts/bylaws.md';
+import { ORG } from '../../config';
+
+const headings = getHeadings().filter((h) => h.depth === 2);
+---
+
+<Base title="Bylaws" description={`The bylaws of ${ORG.short}, the ${ORG.name}.`}>
+	<div class="wrap page">
+		<header class="head">
+			<p class="mono eyebrow">Bylaws</p>
+			<h1>Bylaws of the association</h1>
+			<p class="note">
+				As adopted by the founding General Assembly on {ORG.foundedText}.
+				The text is published as adopted; changes need a two-thirds majority of the General Assembly.
+			</p>
+		</header>
+
+		<div class="layout">
+			<nav class="toc" aria-label="Sections">
+				<ol>
+					{headings.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+				</ol>
+			</nav>
+			<article class="bylaws">
+				<Content />
+			</article>
+		</div>
+	</div>
+</Base>
+
+<style>
+	.page { padding-block: clamp(3rem, 7vw, 5rem) clamp(4rem, 9vw, 7rem); }
+	.eyebrow { color: var(--accent); }
+	.head h1 {
+		font-size: clamp(2.2rem, 4.5vw, 3.25rem);
+		letter-spacing: -0.03em;
+		margin-top: 0.75rem;
+	}
+	.note {
+		margin-top: 1rem;
+		color: var(--ink-2);
+		max-width: var(--measure);
+	}
+	.layout {
+		display: grid;
+		gap: 2.5rem 4rem;
+		margin-top: 3rem;
+		border-top: 1px solid var(--rule);
+		padding-top: 2.5rem;
+	}
+	@media (min-width: 60rem) {
+		.layout { grid-template-columns: 14rem minmax(0, 1fr); }
+		.toc { position: sticky; top: 6rem; align-self: start; }
+	}
+	.toc ol {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 0.4rem;
+		font-size: 0.9375rem;
+	}
+	.toc a { text-decoration: none; color: var(--ink-2); }
+	.toc a:hover { color: var(--ink); text-decoration: underline; }
+	@media (max-width: 59.99rem) {
+		.toc ol { grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); }
+	}
+
+	.bylaws {
+		font-family: var(--serif);
+		font-size: 1.0625rem;
+		line-height: 1.7;
+		max-width: 40rem;
+	}
+	.bylaws :global(h2) {
+		font-family: var(--sans);
+		font-size: 1.25rem;
+		letter-spacing: -0.01em;
+		margin: 2.75rem 0 0.75rem;
+		scroll-margin-top: 6rem;
+	}
+	.bylaws :global(h2:first-child) { margin-top: 0; }
+	.bylaws :global(p + p) { margin-top: 0.6rem; }
+	.bylaws :global(strong) {
+		font-family: var(--mono);
+		font-size: 0.875em;
+		font-weight: 600;
+		color: var(--accent);
+		margin-right: 0.25em;
+	}
+	.bylaws :global(ul) { margin: 0.6rem 0 0; padding-left: 1.25rem; }
+	.bylaws :global(li + li) { margin-top: 0.25rem; }
+	.bylaws :global(ul + p) { margin-top: 0.6rem; }
+</style>

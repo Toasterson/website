@@ -1,0 +1,97 @@
+---
+// Current Open Collective figures, fetched at build time. Without network
+// access the section still renders, just without the numbers.
+import { LINKS } from '../config';
+
+interface Money { value: number; currency: string }
+let stats: { balance?: Money; yearlyBudget?: Money } = {};
+try {
+	const res = await fetch('https://api.opencollective.com/graphql/v2', {
+		method: 'POST',
+		headers: { 'content-type': 'application/json' },
+		body: JSON.stringify({
+			query: '{ account(slug: "openindiana") { stats { balance { value currency } yearlyBudget { value currency } } } }',
+		}),
+		signal: AbortSignal.timeout(8000),
+	});
+	if (res.ok) stats = (await res.json())?.data?.account?.stats ?? {};
+} catch {
+	stats = {};
+}
+
+const fmt = (m?: Money) =>
+	m ? new Intl.NumberFormat('en-US', { style: 'currency', currency: m.currency, maximumFractionDigits: 0 }).format(m.value) : undefined;
+const balance = fmt(stats.balance);
+const budget = fmt(stats.yearlyBudget);
+const asOf = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+{(balance || budget) && (
+	<dl class="figures">
+		{budget && (
+			<div>
+				<dt class="mono">Estimated annual budget</dt>
+				<dd>{budget}</dd>
+			</div>
+		)}
+		{balance && (
+			<div>
+				<dt class="mono">Balance</dt>
+				<dd>{balance}</dd>
+			</div>
+		)}
+	</dl>
+)}
+{(balance || budget) && <p class="asof mono">Open Collective, as of {asOf}</p>}
+
+<ul class="areas">
+	<li>
+		<h3>Infrastructure</h3>
+		<p>Build servers, package repositories, downloads, and the websites of the projects.</p>
+	</li>
+	<li>
+		<h3>Development projects</h3>
+		<p>Specific kernel and operating system work that members vote to fund.</p>
+	</li>
+	<li>
+		<h3>Merchandise</h3>
+		<p>Printing, distributing and selling merchandise that spreads the word about illumos and OpenIndiana.</p>
+	</li>
+</ul>
+
+<div class="actions">
+	<a class="btn btn-primary" href={LINKS.donate}>Donate on Open Collective <span class="arrow" aria-hidden="true">→</span></a>
+	<a class="btn" href={LINKS.openCollective + '/transactions'}>See every transaction</a>
+</div>
+
+<style>
+	.figures {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.5rem 3.5rem;
+		margin: 2.5rem 0 0;
+	}
+	.figures dt { color: var(--ink-2); }
+	.figures dd {
+		margin: 0.25rem 0 0;
+		font-size: clamp(2rem, 4vw, 2.75rem);
+		font-weight: 600;
+		letter-spacing: -0.02em;
+		font-variant-numeric: tabular-nums;
+	}
+	.asof { color: var(--ink-2); margin-top: 0.75rem; }
+	.areas {
+		list-style: none;
+		margin: 2.5rem 0 0;
+		padding: 0;
+		display: grid;
+		gap: 1.5rem 2rem;
+	}
+	@media (min-width: 48rem) {
+		.areas { grid-template-columns: repeat(3, 1fr); }
+	}
+	.areas li { border-top: 2px solid var(--ink); padding-top: 1rem; }
+	.areas h3 { font-size: 1.125rem; letter-spacing: -0.01em; }
+	.areas p { color: var(--ink-2); margin-top: 0.5rem; }
+	.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }
+</style>

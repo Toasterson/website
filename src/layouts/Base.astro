@@ -1,0 +1,203 @@
+---
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/600.css';
+import '../styles/global.css';
+import { ORG, CONTACT, LINKS, MASTODON } from '../config';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title,
+	description = `${ORG.short} is the members' association of the OpenIndiana and illumos community. It funds infrastructure and development and gives contributors a vote in how the money is spent.`,
+} = Astro.props;
+const pageTitle = title ? `${title} · ${ORG.short}` : `${ORG.short} · ${ORG.name}`;
+const base = import.meta.env.BASE_URL;
+const home = Astro.url.pathname === base;
+const section = (id: string) => (home ? `#${id}` : `${base}#${id}`);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{pageTitle}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+		<link rel="me" href={LINKS.mastodon} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta name="theme-color" content="#1d4a73" />
+	</head>
+	<body>
+		<a class="skip" href="#main">Skip to content</a>
+		<header class="site-header">
+			<div class="wrap bar">
+				<a class="wordmark" href={base} aria-label={`${ORG.short} home`}>
+					<span class="mark">OIDA</span>
+					<span class="full">OpenIndiana &amp; illumos<br />community Development Association</span>
+				</a>
+				<nav aria-label="Main">
+					<ul>
+						<li><a href={section('work')}>What we do</a></li>
+						<li><a href={section('membership')}>Membership</a></li>
+						<li><a href={section('finances')}>Finances</a></li>
+						<li><a href={`${base}bylaws/`} aria-current={Astro.url.pathname.startsWith(`${base}bylaws`) ? 'page' : undefined}>Bylaws</a></li>
+					</ul>
+				</nav>
+				<a class="btn btn-primary donate" href={LINKS.donate}>Donate</a>
+			</div>
+		</header>
+
+		<main id="main">
+			<slot />
+		</main>
+
+		<footer class="site-footer">
+			<div class="wrap cols">
+				<div>
+					<p class="mark">OIDA</p>
+					<p>{ORG.name}</p>
+					<p class="muted">{ORG.legalForm}. Seat: {ORG.seat}.</p>
+				</div>
+				<div>
+					<h2 class="mono">Contact</h2>
+					<ul>
+						<li><a href={`mailto:${CONTACT.info}`}>{CONTACT.info}</a></li>
+						<li><a href={LINKS.mastodon} rel="me">{MASTODON.handle}</a></li>
+					</ul>
+				</div>
+				<div>
+					<h2 class="mono">Projects</h2>
+					<ul>
+						<li><a href={LINKS.openindiana}>OpenIndiana</a></li>
+						<li><a href={LINKS.illumos}>illumos</a></li>
+						<li><a href={LINKS.forge}>Source code</a></li>
+					</ul>
+				</div>
+				<div>
+					<h2 class="mono">Support</h2>
+					<ul>
+						<li><a href={LINKS.openCollective}>Open Collective</a></li>
+						<li><a href={section('membership')}>Become a member</a></li>
+						<li><a href={`${base}bylaws/`}>Bylaws</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="wrap fine mono">
+				<p>This site sets no cookies and loads nothing from third parties.</p>
+				<p><a href={LINKS.source}>Edit this site</a></p>
+			</div>
+		</footer>
+	</body>
+</html>
+
+<style>
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		background: color-mix(in srgb, var(--paper) 92%, transparent);
+		backdrop-filter: blur(8px);
+		border-bottom: 1px solid var(--rule);
+	}
+	.bar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem 2rem;
+		min-height: 4.25rem;
+		flex-wrap: wrap;
+		padding-block: 0.5rem;
+	}
+	.wordmark {
+		display: flex;
+		align-items: center;
+		gap: 0.85rem;
+		text-decoration: none;
+		color: var(--ink);
+	}
+	.mark {
+		font-family: var(--mono);
+		font-weight: 600;
+		font-size: 1.375rem;
+		letter-spacing: 0.12em;
+		margin: 0;
+	}
+	.full {
+		font-size: 0.75rem;
+		line-height: 1.3;
+		color: var(--ink-2);
+		border-left: 1px solid var(--rule);
+		padding-left: 0.85rem;
+	}
+	@media (max-width: 40rem) {
+		.full { display: none; }
+	}
+	nav { margin-left: auto; }
+	nav ul {
+		display: flex;
+		gap: 1.25rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		flex-wrap: wrap;
+	}
+	nav ul a {
+		text-decoration: none;
+		font-size: 0.9375rem;
+		color: var(--ink-2);
+	}
+	nav ul a:hover, nav ul a[aria-current] { color: var(--ink); text-decoration: underline; }
+	.donate { padding: 0.45em 1em; font-size: 0.9375rem; }
+	@media (max-width: 52rem) {
+		.donate { order: 2; }
+		nav { order: 3; width: 100%; margin-left: 0; }
+		nav ul { gap: 0.5rem 1.1rem; }
+	}
+
+	.site-footer {
+		border-top: 1px solid var(--rule);
+		background: var(--paper-2);
+		padding-block: 3.5rem 2rem;
+		font-size: 0.9375rem;
+	}
+	.cols {
+		display: grid;
+		gap: 2rem;
+		grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+	}
+	.cols > div:first-child { grid-column: span 2; max-width: 24rem; }
+	@media (max-width: 40rem) {
+		.cols > div:first-child { grid-column: auto; }
+	}
+	.cols p + p { margin-top: 0.35rem; }
+	.muted { color: var(--ink-2); }
+	.site-footer h2 {
+		font-weight: 400;
+		color: var(--ink-2);
+		margin-bottom: 0.75rem;
+		letter-spacing: 0.02em;
+	}
+	.site-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
+	.site-footer a { text-decoration: none; }
+	.site-footer a:hover { text-decoration: underline; }
+	.fine {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 0.5rem 2rem;
+		margin-top: 3rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--rule);
+		color: var(--ink-2);
+	}
+</style>

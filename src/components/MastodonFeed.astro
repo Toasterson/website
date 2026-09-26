@@ -1,0 +1,101 @@
+---
+// Latest public posts, fetched when the site is built so visitors never
+// contact the Mastodon instance. With no posts, or no network at build
+// time, only the follow link is shown.
+import { MASTODON, LINKS } from '../config';
+
+interface Status {
+	id: string;
+	url: string;
+	created_at: string;
+	content: string;
+	spoiler_text: string;
+}
+
+let posts: Status[] = [];
+try {
+	const opts = { signal: AbortSignal.timeout(8000) };
+	const lookup = await fetch(`${MASTODON.instance}/api/v1/accounts/lookup?acct=${MASTODON.acct}`, opts);
+	if (lookup.ok) {
+		const { id } = await lookup.json();
+		const res = await fetch(
+			`${MASTODON.instance}/api/v1/accounts/${id}/statuses?limit=3&exclude_replies=true&exclude_reblogs=true`,
+			opts,
+		);
+		if (res.ok) posts = await res.json();
+	}
+} catch {
+	posts = [];
+}
+
+// Mastodon returns sanitised HTML; reduce it to plain text for a teaser.
+const text = (html: string) =>
+	html
+		.replace(/<br\s*\/?>/g, ' ')
+		.replace(/<\/p>\s*<p>/g, ' ')
+		.replace(/<[^>]+>/g, '')
+		.replace(/&amp;/g, '&')
+		.replace(/&lt;/g, '<')
+		.replace(/&gt;/g, '>')
+		.replace(/&quot;/g, '"')
+		.replace(/&#39;/g, "'")
+		.trim();
+const date = (iso: string) =>
+	new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+{posts.length > 0 ? (
+	<ol class="posts">
+		{posts.map((p) => (
+			<li>
+				<a href={p.url}>
+					<time class="mono" datetime={p.created_at}>{date(p.created_at)}</time>
+					<p>{p.spoiler_text || text(p.content)}</p>
+				</a>
+			</li>
+		))}
+	</ol>
+) : (
+	<p class="empty">
+		Announcements, calls for the General Assembly and project updates are posted on Mastodon first.
+	</p>
+)}
+<a class="btn follow" href={LINKS.mastodon} rel="me">
+	Follow {MASTODON.handle} <span class="arrow" aria-hidden="true">→</span>
+</a>
+
+<style>
+	.posts {
+		list-style: none;
+		margin: 0 0 2rem;
+		padding: 0;
+		display: grid;
+		gap: 1px;
+		background: var(--rule);
+		border: 1px solid var(--rule);
+	}
+	@media (min-width: 48rem) {
+		.posts { grid-template-columns: repeat(3, 1fr); }
+	}
+	.posts li { background: var(--paper); }
+	.posts a {
+		display: block;
+		height: 100%;
+		padding: 1.25rem;
+		text-decoration: none;
+	}
+	.posts a:hover { background: var(--paper-2); color: inherit; }
+	.posts time { color: var(--ink-2); display: block; margin-bottom: 0.5rem; }
+	.posts p {
+		display: -webkit-box;
+		-webkit-line-clamp: 5;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+	.empty {
+		max-width: var(--measure);
+		color: var(--ink-2);
+		margin-bottom: 1.75rem;
+	}
+	.follow { overflow-wrap: anywhere; }
+</style>
