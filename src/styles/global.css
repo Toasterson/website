@@ -224,18 +224,19 @@ a:hover { color: var(--accent); }
 	color: var(--ink);
 }
 @media (prefers-color-scheme: dark) {
-	.band-mint { --accent: #0f2a1f; --brand: var(--mint-ink); --brand-ink: var(--mint); --accent: var(--ember); }
+	.band-mint { --brand: var(--mint-ink); --brand-ink: var(--mint); --accent: var(--ember); }
 }
 
 /* The DTrace cover's horizontal bands: warm stripes as a section edge. */
 .stripes {
 	height: 0.75rem;
-	background: repeating-linear-gradient(
+	/* Literal colours: a band must not re-map the stripes. */
+	background: linear-gradient(
 		to right,
-		var(--brand) 0 25%,
-		var(--flame) 25% 50%,
-		var(--ember) 50% 75%,
-		var(--accent) 75% 100%
+		#b8321c 0 25%,
+		#e8601e 25% 50%,
+		#f5b640 50% 75%,
+		#b43a0e 75% 100%
 	);
 }
 .stripes-v {
