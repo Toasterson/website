@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import PkgInfo from '../components/PkgInfo.astro';
+import Illustration from '../components/Illustration.astro';
 import Finances from '../components/Finances.astro';
 import MastodonFeed from '../components/MastodonFeed.astro';
 import { ORG, CONTACT, LINKS } from '../config';
@@ -20,7 +20,7 @@ const work = [
 <Base>
 	<section class="hero">
 		<div class="wrap hero-grid">
-			<div>
+			<div class="hero-text">
 				<p class="eyebrow mono">Swiss association · founded {ORG.foundedText}</p>
 				<h1>We fund and organise the work behind <em>OpenIndiana</em> and <em>illumos</em>.</h1>
 				<p class="lead">
@@ -32,11 +32,16 @@ const work = [
 					<a class="btn" href={LINKS.donate}>Donate</a>
 				</div>
 			</div>
-			<PkgInfo />
+			<div class="hero-art">
+				<div class="light" aria-hidden="true"></div>
+				<Illustration name="hero" />
+			</div>
 		</div>
 	</section>
 
-	<section class="section" id="work" aria-labelledby="work-title">
+	<section class="section band band-mint" id="work" aria-labelledby="work-title">
+		<div class="stripes" aria-hidden="true"></div>
+		<div class="beam" aria-hidden="true"></div>
 		<div class="wrap section-grid">
 			<p class="section-label"><span class="num">01</span> What we do</p>
 			<div>
@@ -97,7 +102,7 @@ const work = [
 		</div>
 	</section>
 
-	<section class="section" id="finances" aria-labelledby="finances-title">
+	<section class="section band band-night" id="finances" aria-labelledby="finances-title">
 		<div class="wrap section-grid">
 			<p class="section-label"><span class="num">03</span> Finances</p>
 			<div>
@@ -124,14 +129,14 @@ const work = [
 </Base>
 
 <style>
-	.hero { padding-block: clamp(3.5rem, 9vw, 7rem); }
+	.hero { padding-block: clamp(3rem, 8vw, 6rem) clamp(2rem, 6vw, 5rem); overflow: hidden; }
 	.hero-grid {
 		display: grid;
-		gap: 3rem;
+		gap: 2.5rem;
 		align-items: center;
 	}
 	@media (min-width: 60rem) {
-		.hero-grid { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 4rem; }
+		.hero-grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 3rem; }
 	}
 	.eyebrow { color: var(--ink-2); margin-bottom: 1.5rem; }
 	h1 {
@@ -142,9 +147,44 @@ const work = [
 	}
 	h1 em {
 		font-style: normal;
-		color: var(--brand);
+		color: var(--accent);
 	}
 	.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.25rem; }
+	/* The illustration follows the text in source order, so on a phone the
+	   headline and the buttons come first and the phoenix is capped below. */
+	.hero-art { max-width: 34rem; margin-inline: auto; width: 100%; position: relative; }
+	.hero-art :global(.illustration) { position: relative; }
+	@media (max-width: 59.99rem) {
+		.hero-art { max-width: 22rem; }
+	}
+	/* The beam of light from the DTrace cover: a mint wedge that runs off the
+	   edge of the page behind the bird. */
+	.light {
+		position: absolute;
+		top: -12%;
+		right: -45%;
+		width: 150%;
+		height: 124%;
+		background: var(--mint);
+		clip-path: polygon(58% 0, 100% 0, 100% 34%, 4% 100%, 0 100%, 0 96%);
+		pointer-events: none;
+	}
+	@media (prefers-color-scheme: dark) {
+		.light { opacity: 0.9; }
+	}
+
+	/* The DTrace field: stripes along the top edge, a beam of light across it. */
+	#work { overflow: hidden; padding-top: 0; }
+	#work .stripes { margin-bottom: clamp(3.5rem, 8vw, 6rem); }
+	.beam {
+		position: absolute;
+		inset: 0;
+		background: var(--paper-2);
+		clip-path: polygon(100% 0, 100% 62%, 18% 100%, 0 100%, 0 92%);
+		opacity: 0.6;
+		pointer-events: none;
+	}
+	#work .wrap { position: relative; }
 
 	.work {
 		list-style: none;
@@ -172,7 +212,7 @@ const work = [
 	}
 	.propose a:hover { background: var(--ink); color: var(--paper); }
 	.work .propose h3 { margin-top: 0; }
-	.work .propose p { color: inherit; opacity: 0.85; }
+	.work .propose p { color: inherit; opacity: 0.9; }
 	.propose .mono { display: inline-block; margin-top: 1rem; }
 
 	.two {

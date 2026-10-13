@@ -11,12 +11,15 @@ const headings = getHeadings().filter((h) => h.depth === 2);
 <Base title="Bylaws" description={`The bylaws of ${ORG.short}, the ${ORG.name}.`}>
 	<div class="wrap page">
 		<header class="head">
-			<p class="mono eyebrow">Bylaws</p>
-			<h1>Bylaws of the association</h1>
-			<p class="note">
-				As adopted by the founding General Assembly on {ORG.foundedText}.
-				The text is published as adopted; changes need a two-thirds majority of the General Assembly.
-			</p>
+			<div class="stripes-v spine" aria-hidden="true"></div>
+			<div>
+				<p class="mono eyebrow">Bylaws</p>
+				<h1>Bylaws of the association</h1>
+				<p class="note">
+					As adopted by the founding General Assembly on {ORG.foundedText}.
+					The text is published as adopted; changes need a two-thirds majority of the General Assembly.
+				</p>
+			</div>
 		</header>
 
 		<div class="layout">
@@ -34,6 +37,9 @@ const headings = getHeadings().filter((h) => h.depth === 2);
 
 <style>
 	.page { padding-block: clamp(3rem, 7vw, 5rem) clamp(4rem, 9vw, 7rem); }
+	/* The book spine: the covers' colour bands stand beside the title. */
+	.head { display: grid; grid-template-columns: 0.5rem 1fr; gap: 1.5rem; }
+	.spine { border-radius: 2px; }
 	.eyebrow { color: var(--accent); }
 	.head h1 {
 		font-size: clamp(2.2rem, 4.5vw, 3.25rem);

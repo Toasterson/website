@@ -78,6 +78,7 @@ const asOf = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'lo
 		font-weight: 600;
 		letter-spacing: -0.02em;
 		font-variant-numeric: tabular-nums;
+		color: var(--accent);
 	}
 	.asof { color: var(--ink-2); margin-top: 0.75rem; }
 	.areas {
@@ -90,7 +91,7 @@ const asOf = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'lo
 	@media (min-width: 48rem) {
 		.areas { grid-template-columns: repeat(3, 1fr); }
 	}
-	.areas li { border-top: 2px solid var(--ink); padding-top: 1rem; }
+	.areas li { border-top: 2px solid var(--accent); padding-top: 1rem; }
 	.areas h3 { font-size: 1.125rem; letter-spacing: -0.01em; }
 	.areas p { color: var(--ink-2); margin-top: 0.5rem; }
 	.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }

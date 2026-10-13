@@ -1,17 +1,43 @@
 /*
- * Brand colours are tokens so the palette can follow the new logo:
- * change --brand / --accent (and their dark counterparts) only.
+ * Design tokens. The palette follows the illumos books: a phoenix core of
+ * red, flame and ember on warm paper, plus one bold colour field per section
+ * borrowed from the printed covers (DTrace mint, drivers blue/violet,
+ * debugger black). When the OIDA logo is decided, change the tokens here and
+ * the whole site follows.
+ *
+ * Contrast: every text/background pair below meets WCAG AA (checked with
+ * scripts/contrast.py). Keep it that way when you change a value.
  */
 :root {
-	--paper: #f6f4ef;
-	--paper-2: #ece8df;
-	--ink: #16202b;
-	--ink-2: #4a5563;
-	--rule: #d6d0c4;
-	--brand: #1d4a73;
+	/* Paper and ink */
+	--paper: #faf6ee;
+	--paper-2: #f1ebdf;
+	--ink: #1b1611;
+	--ink-2: #5b5248;
+	--rule: #ddd4c6;
+
+	/* Phoenix core */
+	--accent: #b43a0e;        /* deep flame: small text, rules, numbers */
+	--brand: #c2410c;         /* flame: buttons and emphasis */
 	--brand-ink: #ffffff;
-	--accent: #b4561f;
-	--focus: #d98a2b;
+	--flame: #e8601e;         /* decorative only (never for small text) */
+	--ember: #f5b640;         /* decorative only */
+	--focus: var(--accent);
+
+	/* Cover fields */
+	--mint: #b9f0d3;
+	--mint-2: #8fe3bc;
+	--mint-ink: #0f2a1f;
+	--mint-ink-2: #2d5a46;
+	--night: #1e2a6e;
+	--violet: #4b2f8c;
+	--night-ink: #f4f1ff;
+	--night-ink-2: #c9c4e6;
+	--coal: #141110;
+	--coal-2: #1e1a17;
+	--coal-ink: #f2ede4;
+	--coal-ink-2: #a89f93;
+	--coal-accent: #f0862b;
 
 	--sans: 'IBM Plex Sans', system-ui, sans-serif;
 	--mono: 'IBM Plex Mono', ui-monospace, monospace;
@@ -26,14 +52,21 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--paper: #11161c;
-		--paper-2: #19202a;
-		--ink: #e9e6df;
-		--ink-2: #a7b0bb;
-		--rule: #2c3540;
-		--brand: #8cb8e3;
-		--brand-ink: #0d1620;
-		--accent: #e39461;
+		/* The debugger cover: warm black paper, flame accents. */
+		--paper: #141110;
+		--paper-2: #1e1a17;
+		--ink: #ebe5da;
+		--ink-2: #a89f93;
+		--rule: #332c27;
+		--accent: #f0862b;
+		--brand: #f0862b;
+		--brand-ink: #141110;
+		--mint: #16352a;
+		--mint-2: #1f4a3a;
+		--mint-ink: #dff7ea;
+		--mint-ink-2: #a9d8c0;
+		--night: #171f52;
+		--violet: #3a2470;
 	}
 }
 
@@ -46,6 +79,7 @@ html {
 }
 @media (prefers-reduced-motion: reduce) {
 	html { scroll-behavior: auto; }
+	*, *::before, *::after { transition: none !important; animation: none !important; }
 }
 
 body {
@@ -67,7 +101,7 @@ h1, h2, h3 {
 p { margin: 0; text-wrap: pretty; }
 
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
-a:hover { color: var(--brand); }
+a:hover { color: var(--accent); }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
 .wrap {
@@ -142,4 +176,75 @@ a:hover { color: var(--brand); }
 	color: var(--ink-2);
 	max-width: var(--measure);
 	margin-top: 1.25rem;
+}
+
+/*
+ * Colour fields. A band re-maps the whole token set, so buttons, rules,
+ * labels and links inside it pick up the field's own ink without
+ * per-element overrides, in light and dark schemes alike.
+ */
+.band { border-top: 0; position: relative; }
+.band-mint {
+	--paper: var(--mint);
+	--paper-2: var(--mint-2);
+	--ink: var(--mint-ink);
+	--ink-2: var(--mint-ink-2);
+	--rule: color-mix(in srgb, var(--mint-ink) 22%, var(--mint));
+	--accent: #b43a0e;
+	--brand: #b43a0e;
+	--brand-ink: #ffffff;
+	--focus: var(--mint-ink);
+	background: var(--mint);
+	color: var(--ink);
+}
+.band-night {
+	--paper: var(--night);
+	--paper-2: var(--violet);
+	--ink: var(--night-ink);
+	--ink-2: var(--night-ink-2);
+	--rule: color-mix(in srgb, var(--night-ink) 25%, var(--night));
+	--accent: var(--ember);
+	--brand: var(--ember);
+	--brand-ink: #1e2a6e;
+	--focus: var(--ember);
+	background: linear-gradient(160deg, var(--night) 0%, var(--night) 55%, var(--violet) 100%);
+	color: var(--ink);
+}
+.band-coal {
+	--paper: var(--coal);
+	--paper-2: var(--coal-2);
+	--ink: var(--coal-ink);
+	--ink-2: var(--coal-ink-2);
+	--rule: #332c27;
+	--accent: var(--coal-accent);
+	--brand: var(--coal-accent);
+	--brand-ink: var(--coal);
+	--focus: var(--coal-accent);
+	background: var(--coal);
+	color: var(--ink);
+}
+@media (prefers-color-scheme: dark) {
+	.band-mint { --accent: #0f2a1f; --brand: var(--mint-ink); --brand-ink: var(--mint); --accent: var(--ember); }
+}
+
+/* The DTrace cover's horizontal bands: warm stripes as a section edge. */
+.stripes {
+	height: 0.75rem;
+	background: repeating-linear-gradient(
+		to right,
+		var(--brand) 0 25%,
+		var(--flame) 25% 50%,
+		var(--ember) 50% 75%,
+		var(--accent) 75% 100%
+	);
+}
+.stripes-v {
+	background: linear-gradient(
+		to bottom,
+		#b8321c 0 14%,
+		var(--flame) 14% 36%,
+		var(--ember) 36% 54%,
+		var(--flame) 54% 74%,
+		#b8321c 74% 100%
+	);
 }

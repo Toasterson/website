@@ -1,6 +1,7 @@
 ---
 // The association's key facts, set as `pkg info` output from IPS,
-// the packaging system OpenIndiana users know.
+// the packaging system OpenIndiana users know. Styled like the black
+// cover of the Modular Debugger Guide.
 import { ORG } from '../config';
 
 const rows: [string, string][] = [
@@ -29,28 +30,25 @@ const rows: [string, string][] = [
 <style>
 	.pkg {
 		margin: 0;
-		background: #0f1a24;
-		color: #d9e2ea;
+		background: var(--coal-2);
+		color: var(--coal-ink);
 		border-radius: 6px;
-		box-shadow: 0 1px 0 rgb(0 0 0 / 0.04), 0 18px 40px -18px rgb(15 26 36 / 0.45);
+		border: 1px solid #332c27;
 		overflow: hidden;
-		border: 1px solid transparent;
-	}
-	@media (prefers-color-scheme: dark) {
-		.pkg { border-color: var(--rule); box-shadow: none; }
 	}
 	.chrome {
 		display: flex;
 		gap: 0.4rem;
 		padding: 0.7rem 0.9rem;
-		border-bottom: 1px solid #1f2d3a;
+		border-bottom: 1px solid #332c27;
 	}
 	.chrome span {
 		width: 0.6rem;
 		height: 0.6rem;
 		border-radius: 50%;
-		background: #2a3a49;
+		background: #3a322c;
 	}
+	.chrome span:first-child { background: var(--coal-accent); }
 	.body {
 		padding: 1.1rem 1.25rem 1.3rem;
 		font: 400 0.8125rem/1.75 var(--mono);
@@ -62,10 +60,8 @@ const rows: [string, string][] = [
 		margin: 0.35rem 0 0;
 	}
 	dl div { display: contents; }
-	dt { text-align: right; }
-	dd { margin: 0; overflow-wrap: anywhere; }
-	.prompt { color: #7f93a6; }
+	dt { text-align: right; color: var(--ember); }
+	dd { margin: 0; overflow-wrap: anywhere; color: var(--coal-ink); }
+	.prompt { color: var(--coal-ink-2); }
 	.cmd { color: #ffffff; font-weight: 600; }
-	dt { color: #8fb6da; }
-	dd { color: #e9e6df; }
 </style>
